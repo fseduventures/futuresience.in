@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════════════════════════════
+   Light theme  (<html data-theme="light">)
+   Same content and layout as the classic (dark) design; the navy sections turn
+   white, and motion is a little more visible. Everything is scoped to the
+   attribute, so the classic theme is untouched.
+   ═══════════════════════════════════════════════════════════ */
+[data-theme='light'] { --gold-ink: #b07a06; --soft: #f6f9f1; }
+
+/* Shared text treatments on formerly-dark sections */
+[data-theme='light'] .hl { background-image: linear-gradient(90deg, #5d9a1d, var(--lime)); }
+[data-theme='light'] .eyebrow.light { background: var(--lime-50); color: var(--lime-600); border: 0; }
+[data-theme='light'] .section-head.light h2 { color: var(--ink); }
+[data-theme='light'] .section-head.light .lead { color: var(--text); }
+[data-theme='light'] .section-dark { background: linear-gradient(180deg, var(--soft) 0%, #eef2fa 100%); color: var(--text); }
+[data-theme='light'] .section-dark h3, [data-theme='light'] .section-dark .card-title { color: var(--ink); }
+[data-theme='light'] .badge-gold { background: #fdf4dc; color: var(--gold-ink); border-color: rgba(176, 122, 6, 0.3); }
+[data-theme='light'] .light-text { color: var(--text); }
+[data-theme='light'] .sig { color: var(--lime-600); }
+
+/* Top bar & footer */
+[data-theme='light'] .topbar { background: var(--lime-50); color: var(--text); border-bottom: 1px solid #e1efcf; }
+[data-theme='light'] .topbar svg { color: var(--lime-600); }
+[data-theme='light'] .topbar a:hover { color: var(--ink); }
+[data-theme='light'] .footer { background: var(--tint); color: var(--text); border-top: 1px solid var(--line); }
+[data-theme='light'] .footer .card-title { color: var(--ink); }
+[data-theme='light'] .footer ul a:hover, [data-theme='light'] .footer-tag { color: var(--lime-600); }
+[data-theme='light'] .footer-contact svg { color: var(--lime-600); }
+[data-theme='light'] .footer-logo { box-shadow: var(--shadow); }
+[data-theme='light'] .socials a { background: #fff; color: var(--navy); box-shadow: var(--shadow); }
+[data-theme='light'] .footer-bottom { border-color: var(--line); }
+
+/* Hero */
+[data-theme='light'] .hero { background: #fff; color: var(--text); }
+[data-theme='light'] .hero-bg { background: linear-gradient(100deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.9) 42%, rgba(255, 255, 255, 0.5) 100%), url(/images/gallery/batch-celebration.jpg) center 30% / cover no-repeat; filter: none; }
+[data-theme='light'] .hero-kicker { color: var(--lime-600); }
+[data-theme='light'] .hero-title { color: var(--ink); }
+[data-theme='light'] .hero .lead { color: var(--text); }
+[data-theme='light'] .hero .lead b, [data-theme='light'] .hero-trust b { color: var(--ink); }
+[data-theme='light'] .hero-brochure { color: var(--lime-600); border-color: rgba(111, 168, 42, 0.5); }
+[data-theme='light'] .hero-brochure:hover { color: var(--ink); border-color: var(--ink); }
+[data-theme='light'] .btn-ghost { background: #fff; color: var(--navy); border-color: var(--line); box-shadow: var(--shadow); }
+[data-theme='light'] .btn-ghost:hover { border-color: var(--navy); }
+[data-theme='light'] .avatars img, [data-theme='light'] .avatars span { border-color: #fff; }
+[data-theme='light'] .hero-card { background: rgba(255, 255, 255, 0.86); border-color: var(--line); }
+[data-theme='light'] .hero-card-name, [data-theme='light'] .mega, [data-theme='light'] .bar b { color: var(--ink); }
+[data-theme='light'] .mega small { color: var(--lime-600); }
+[data-theme='light'] .muted-light { color: var(--muted); }
+[data-theme='light'] .bar-track { background: var(--line); }
+[data-theme='light'] .stats, [data-theme='light'] .stat { border-color: var(--line); }
+[data-theme='light'] .stat b { color: var(--navy); }
+[data-theme='light'] .stat:nth-child(odd) b { color: var(--lime-600); }
+[data-theme='light'] .stat > span { color: var(--muted); }
+@media (max-width: 920px) { [data-theme='light'] .stat:nth-child(-n + 2) { border-bottom-color: var(--line); } }
+
+/* Results */
+[data-theme='light'] .topper, [data-theme='light'] .achiever { background: #fff; border-color: var(--line); box-shadow: var(--shadow); }
+[data-theme='light'] .topper:hover, [data-theme='light'] .achiever:hover { border-color: var(--lime); box-shadow: 0 24px 50px -22px rgba(111, 168, 42, 0.55); }
+[data-theme='light'] .topper-score { color: var(--lime-600); }
+[data-theme='light'] .topper-score small, [data-theme='light'] .breakdown b, [data-theme='light'] .achiever-score { color: var(--ink); }
+[data-theme='light'] .topper .muted, [data-theme='light'] .breakdown b::after, [data-theme='light'] .topper.neet .topper-score small, [data-theme='light'] .achiever-name { color: var(--muted); }
+[data-theme='light'] .breakdown li { border-color: var(--line); }
+[data-theme='light'] .breakdown b.perfect { color: var(--gold-ink); }
+[data-theme='light'] .achiever-score small { color: var(--lime-600); }
+[data-theme='light'] .legacy { background: linear-gradient(90deg, var(--lime-50), #fff); border-color: #d9eec0; }
+[data-theme='light'] .testi-ranks div { background: #fff; border-color: var(--line); }
+[data-theme='light'] .testi-ranks b { color: var(--lime-600); }
+[data-theme='light'] .testi-ranks span { color: var(--ink); }
+[data-theme='light'] .testi-ranks small { color: var(--muted); }
+
+/* Then & Now */
+[data-theme='light'] .legacy-sec { color: var(--text); }
+[data-theme='light'] .legacy-photo { background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(246, 249, 241, 0.97)), url(/images/gallery/results-day.jpg) center / cover; }
+[data-theme='light'] .timeline::before { background: linear-gradient(90deg, transparent, rgba(176, 122, 6, 0.55), transparent); }
+[data-theme='light'] .timeline li::before { background: #fff; border-color: var(--gold-ink); }
+[data-theme='light'] .tl-when { color: var(--gold-ink); }
+[data-theme='light'] .timeline b { color: var(--ink); }
+[data-theme='light'] .timeline p { color: var(--text); }
+
+/* Directors */
+[data-theme='light'] .mentors-sec { background: linear-gradient(180deg, #fff 0%, var(--soft) 100%); color: var(--text); }
+[data-theme='light'] .mentors-glow { background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.96)), url(/images/gallery/lecture-mono.jpg) center / cover; opacity: 0.6; }
+[data-theme='light'] .mentor-title, [data-theme='light'] .mentor-traits svg { color: var(--gold-ink); }
+[data-theme='light'] .mentor-portrait::after { background: linear-gradient(90deg, transparent, var(--gold-ink), transparent); }
+[data-theme='light'] .mentor-portrait img { filter: drop-shadow(0 24px 34px rgba(19, 20, 74, 0.22)); }
+[data-theme='light'] .mentor-copy h3, [data-theme='light'] .mentor-traits li, [data-theme='light'] .mentor-voices cite b { color: var(--ink); }
+[data-theme='light'] .mentor-copy > p { color: var(--text); }
+[data-theme='light'] .mentor-voices blockquote { background: #fff; border-color: var(--gold-ink); box-shadow: var(--shadow); }
+[data-theme='light'] .mentor-voices p { color: var(--ink); }
+[data-theme='light'] .mentor-voices cite { color: var(--muted); }
+
+/* Alumni wall */
+[data-theme='light'] .alumnus { background: #fff; border-color: var(--line); }
+[data-theme='light'] .alumnus b { color: var(--ink); }
+[data-theme='light'] .alumnus span { color: var(--muted); }
+[data-theme='light'] .alumnus svg { color: var(--gold-ink); }
+
+/* Page heroes & About "legends" band */
+[data-theme='light'] .page-hero { background: linear-gradient(100deg, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.72)), var(--bg) center/cover no-repeat; color: var(--text); }
+[data-theme='light'] .page-hero h1 { color: var(--ink); }
+[data-theme='light'] .page-hero .lead { color: var(--text); }
+[data-theme='light'] .legends { background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(246, 249, 241, 0.95)), var(--bg) center/cover; color: var(--text); }
+[data-theme='light'] .legend-names span { color: var(--navy); border-color: var(--line); background: #fff; }
+
+/* ── Theme toggle (both themes) lives in styles.css ── */
+
+/* ═══ Livelier motion: light theme only, and only for visitors who allow motion ═══ */
+@media (prefers-reduced-motion: no-preference) {
+  /* bigger, springier scroll reveals */
+  [data-theme='light'] .reveal { transform: translateY(56px) scale(0.96); transition: opacity 0.9s var(--ease), transform 1s cubic-bezier(0.16, 1.2, 0.3, 1); }
+  [data-theme='light'] .reveal.is-in { transform: none; }
+
+  /* highlighter sweeps under key heading words as they appear */
+  [data-theme='light'] .section-head .hl-dark {
+    background: linear-gradient(transparent 60%, rgba(141, 198, 63, 0.35) 60%) no-repeat 0 0 / 0% 100%;
+    transition: background-size 1.1s var(--ease) 0.35s;
+  }
+  [data-theme='light'] .section-head.is-in .hl-dark { background-size: 100% 100%; }
+
+  /* slow zoom on the hero photo, floating spotlight card */
+  [data-theme='light'] .hero-bg { animation: fs-kenburns 26s ease-in-out infinite alternate; transform-origin: 60% 40%; }
+  [data-theme='light'] .hero-card.is-in { animation: fs-float 6s ease-in-out 1s infinite; }
+
+  /* light sheen across primary buttons */
+  [data-theme='light'] .btn-primary { position: relative; overflow: hidden; }
+  [data-theme='light'] .btn-primary::after { content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent); transform: skewX(-20deg); animation: fs-sheen 4.5s ease-in-out infinite; }
+
+  /* cards: deeper lift, lime edge, icon nudge */
+  [data-theme='light'] .program:hover, [data-theme='light'] .track:hover, [data-theme='light'] .value:hover, [data-theme='light'] .step:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -24px rgba(111, 168, 42, 0.45); border-color: var(--lime); }
+  [data-theme='light'] .track .pillar-icon, [data-theme='light'] .step-icon, [data-theme='light'] .program-icon { transition: transform 0.4s cubic-bezier(0.16, 1.4, 0.3, 1); }
+  [data-theme='light'] .track:hover .pillar-icon, [data-theme='light'] .step:hover .step-icon, [data-theme='light'] .program:hover .program-icon { transform: rotate(-8deg) scale(1.12); }
+  [data-theme='light'] .t-card, [data-theme='light'] .alumnus { transition: transform 0.35s var(--ease), box-shadow 0.35s, border-color 0.35s; }
+  [data-theme='light'] .t-card:hover, [data-theme='light'] .alumnus:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--lime); }
+
+  /* directors rise into frame; timeline dots pulse */
+  [data-theme='light'] .mentor-hero .mentor-portrait img { transform: translateY(40px); opacity: 0; transition: transform 1.3s var(--ease) 0.2s, opacity 1.1s var(--ease) 0.2s; }
+  [data-theme='light'] .mentor-hero.is-in .mentor-portrait img { transform: none; opacity: 1; }
+  [data-theme='light'] .timeline li::before { animation: fs-dot 2.4s ease-in-out infinite; }
+  [data-theme='light'] .timeline li:nth-child(2n)::before { animation-delay: 0.6s; }
+  [data-theme='light'] .timeline li:nth-child(3n)::before { animation-delay: 1.2s; }
+
+  /* gallery photos drift slowly */
+  [data-theme='light'] .gal img { animation: fs-drift 18s ease-in-out infinite alternate; }
+  [data-theme='light'] .gal:nth-child(even) img { animation-direction: alternate-reverse; }
+}
+
+@keyframes fs-kenburns { from { transform: scale(1); } to { transform: scale(1.09) translateX(-1.5%); } }
+@keyframes fs-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes fs-sheen { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+@keyframes fs-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(176, 122, 6, 0.35); } 50% { box-shadow: 0 0 0 8px rgba(176, 122, 6, 0); } }
+@keyframes fs-drift { from { transform: scale(1.02); } to { transform: scale(1.1); } }
