@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { brand, contact, nav, programs, branches } from '../data/site.js'
+import { brand, contact, nav, programs, branches, VERSION } from '../data/site.js'
 import Icon from './Icon.jsx'
 import { BrochureButton } from './Section.jsx'
 
 const socialIcons = { instagram: 'Instagram', youtube: 'Youtube', facebook: 'Facebook', linkedin: 'Linkedin' }
+const socialNames = { instagram: 'Instagram', youtube: 'YouTube', facebook: 'Facebook', linkedin: 'LinkedIn' }
 
 export default function Footer() {
   const socials = Object.entries(contact.socials).filter(([, url]) => url)
@@ -18,7 +19,7 @@ export default function Footer() {
           {socials.length > 0 && (
             <div className="socials">
               {socials.map(([k, url]) => (
-                <a key={k} href={url} target="_blank" rel="noreferrer" aria-label={k}><Icon name={socialIcons[k]} size={18} /></a>
+                <a key={k} href={url} target="_blank" rel="noreferrer"><Icon name={socialIcons[k]} size={18} /><span className="sr-only">futureScience on {socialNames[k]}</span></a>
               ))}
             </div>
           )}
@@ -44,7 +45,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} {brand.full} — {brand.parent}.</span>
+        <span>© {new Date().getFullYear()} {brand.full} — {brand.parent}.{VERSION && <span className="site-version"> · v{VERSION}</span>}</span>
         <span className="footer-tag">{brand.tagline}</span>
       </div>
     </footer>

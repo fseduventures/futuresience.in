@@ -36,6 +36,13 @@ ErrorDocument 404 /404.html
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 month"
   ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/plain "access plus 1 day"
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresDefault "access plus 2 days"
   ExpiresByType application/pdf "access plus 1 week"
 </IfModule>
 

@@ -11,6 +11,7 @@ import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Seo from './seo/Seo.jsx'
 import { ThemeProvider } from './theme.jsx'
+import Analytics from './analytics.jsx'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -30,6 +31,7 @@ export default function App() {
     <ThemeProvider>
       <ScrollManager />
       <Seo />
+      <Analytics />
       <Header />
       <main>
         <Routes>

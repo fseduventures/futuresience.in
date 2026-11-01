@@ -569,6 +569,9 @@ a.avatars:hover span { background: #fff; }
 .socials a:hover { background: var(--lime); color: var(--navy-900); }
 .footer-bottom { position: relative; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1.4rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.85rem; }
 .footer-tag { font-family: var(--font-head); color: var(--lime); font-weight: 600; }
+/* Release version: opacity (not a colour) keeps it muted in both themes */
+.site-version { opacity: 0.6; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.topbar-version { padding-left: 1.4rem; border-left: 1px solid rgba(127, 127, 127, 0.35); }
 
 /* ═══ Responsive ═════════════════════════ */
 @media (min-width: 921px) and (max-width: 1180px) {
@@ -620,6 +623,7 @@ a.avatars:hover span { background: #fff; }
 @media (max-width: 640px) {
   .topbar-inner > span:first-child { display: none; }
   .topbar-right { width: 100%; justify-content: space-between; gap: 0.8rem; font-size: 0.78rem; }
+  .topbar-version { display: none !important; }
   .brand img { height: 42px; }
   .tracks, .programs, .values, .pillars, .pillars-3, .steps, .faculty-grid, .footer-grid, .contact-cards, .field-row, .course-facts, .mini-stats { grid-template-columns: 1fr; }
   .achievers { grid-template-columns: repeat(2, 1fr); }

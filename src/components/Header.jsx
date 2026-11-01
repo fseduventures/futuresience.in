@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { nav, contact, brand, ACADEMIC_YEAR } from '../data/site.js'
+import { nav, contact, brand, ACADEMIC_YEAR, VERSION } from '../data/site.js'
 import Icon from './Icon.jsx'
 import { BrochureButton } from './Section.jsx'
 import { useTheme } from '../theme.jsx'
@@ -36,6 +36,7 @@ export default function Header() {
           <span className="topbar-right">
             <a href={`tel:${contact.phone.replace(/\s/g, '')}`}><Icon name="Phone" size={14} /> {contact.phone}</a>
             <a href={`mailto:${contact.email}`}><Icon name="Mail" size={14} /> {contact.email}</a>
+            {VERSION && <span className="site-version topbar-version">v{VERSION}</span>}
           </span>
         </div>
       </div>

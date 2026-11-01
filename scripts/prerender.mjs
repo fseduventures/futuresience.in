@@ -8,12 +8,13 @@ import { pathToFileURL } from 'node:url'
 import { pages, keywords, canonical, schemasFor } from '../src/seo/meta.js'
 import {
   SITE_URL, BROCHURE_URL, ACADEMIC_YEAR, brand, contact, branches, programs, batches, faqs, toppers, achievers, cet2022, tracks, mentors,
-  neetTopper, alumniColleges, testimonials,
+  neetTopper, alumniColleges, testimonials, analytics,
 } from '../src/data/site.js'
 
 const root = path.resolve(import.meta.dirname, '..')
 const dist = path.join(root, 'dist')
 const ssrOut = path.join(root, 'dist-ssr')
+const { version } = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'))
 
 await build({ root, logLevel: 'warn', build: { ssr: 'src/entry-server.jsx', outDir: ssrOut, emptyOutDir: true } })
 const { render } = await import(pathToFileURL(path.join(ssrOut, 'entry-server.js')).href)
@@ -33,6 +34,7 @@ function head(route, { noindex = false } = {}) {
     `<meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'}" />`,
     noindex ? '' : `<link rel="canonical" href="${url}" />`,
     `<meta name="author" content="${esc(brand.full)}" />`,
+    `<meta name="version" content="${esc(version)}" />`,
     `<meta name="geo.region" content="IN-MH" />`,
     `<meta name="geo.placename" content="Kandivali West, Malad West, Mumbai" />`,
     `<meta property="og:type" content="website" />`,
@@ -51,7 +53,26 @@ function head(route, { noindex = false } = {}) {
     `<meta name="twitter:image" content="${image}" />`,
     `<link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt" />`,
     ...(noindex ? [] : schemasFor(route).map((s) => `<script type="application/ld+json">${json(s)}</script>`)),
+    ...trackers(),
   ].filter(Boolean).join('\n    ')
+}
+
+// Only in the built pages, so local dev visits never pollute the reports.
+// GA4 counts in-app page changes itself (enhanced measurement); src/analytics.jsx does it for the Pixel.
+function trackers() {
+  const out = []
+  if (analytics.ga4) {
+    out.push(
+      `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(analytics.ga4)}"></script>`,
+      `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config',${json(analytics.ga4)});</script>`,
+    )
+  }
+  if (analytics.metaPixel) {
+    out.push(
+      `<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',${json(analytics.metaPixel)});fbq('track','PageView');</script>`,
+    )
+  }
+  return out
 }
 
 function page(route, opts) {

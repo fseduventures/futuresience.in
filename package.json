@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && vite build && node scripts/prerender.mjs",
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && vite build && node scripts/prerender.mjs && node scripts/optimize-images.mjs",
     "preview": "vite preview --port 4173",
     "start": "npm run build && vite preview --port 4173 --open",
     "brochure": "node scripts/make-brochure.mjs",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "sharp": "^0.35.5",
     "vite": "^5.4.11"
   }
 }

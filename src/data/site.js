@@ -7,6 +7,8 @@
 export const SITE_URL = 'https://www.futurescience.in'
 export const BROCHURE_URL = '/downloads/futureScience-Brochure-2027-29.pdf'
 export const ACADEMIC_YEAR = '2027–29'
+// Release version from package.json, injected by vite.config.js (empty when plain Node imports this file)
+export const VERSION = typeof __APP_VERSION__ === 'undefined' ? '' : __APP_VERSION__
 
 // TODO: confirm email below (it was stored in the old WordPress database).
 export const contact = {
@@ -16,11 +18,18 @@ export const contact = {
   address: 'Kandivali West & Malad West, Mumbai',
   hours: 'Mon – Sat · 8:00 AM – 8:00 PM',
   socials: {
-    instagram: '',
+    instagram: 'https://www.instagram.com/futurescience.in/',
     youtube: '',
-    facebook: '',
-    linkedin: '',
+    facebook: 'https://www.facebook.com/futurescience.in/',
+    linkedin: 'https://in.linkedin.com/company/futurescience',
   },
+}
+
+// Tracking IDs. Empty = that tracker is not loaded at all.
+// ga4: Google Analytics "Measurement ID" (G-XXXXXXXXXX); metaPixel: Meta Pixel / Dataset ID (digits only)
+export const analytics = {
+  ga4: 'G-6C9RV8YZ4W',
+  metaPixel: '',
 }
 
 export const branches = [
