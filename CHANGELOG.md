@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-01
+
 ### Added
 - Google Analytics 4 on every page, with phone, WhatsApp and email taps reported as `generate_lead` (Meta Pixel ready, switched off until an ID is set)
 - Instagram, Facebook and LinkedIn links in the footer and in the structured data (`sameAs`)
