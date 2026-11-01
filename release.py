@@ -160,7 +160,7 @@ def gh_problem():
         return "the GitHub CLI (gh) isn't installed (winget install GitHub.cli)"
     r = subprocess.run(["gh", "auth", "status"], cwd=ROOT, capture_output=True, text=True)
     if r.returncode != 0:
-        return "gh isn't logged in — run: gh auth login"
+        return "gh isn't logged in - run: gh auth login"
     return None
 
 
@@ -199,9 +199,9 @@ def publish_github_release(tag):
 def get_args_parser():
     parser = argparse.ArgumentParser(description="Cut a futureScience website release.")
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("-j", "--major", action="store_true", help="X.0.0 — redesign or big restructure")
-    group.add_argument("-n", "--minor", action="store_true", help="x.Y.0 — new pages, sections or features")
-    group.add_argument("-p", "--patch", action="store_true", help="x.y.Z — content updates and fixes")
+    group.add_argument("-j", "--major", action="store_true", help="X.0.0 - redesign or big restructure")
+    group.add_argument("-n", "--minor", action="store_true", help="x.Y.0 - new pages, sections or features")
+    group.add_argument("-p", "--patch", action="store_true", help="x.y.Z - content updates and fixes")
     group.add_argument(
         "--set-version", metavar="X.Y.Z", help="release exactly this version (must be higher than the current one)"
     )
@@ -257,11 +257,11 @@ def main():
         gh_plan = "skipped"
     else:
         problem = gh_problem()
-        gh_plan = f"create {tag} with the CHANGELOG notes + upload zip" if not problem else f"WILL BE SKIPPED — {problem}"
+        gh_plan = f"create {tag} with the CHANGELOG notes + upload zip" if not problem else f"WILL BE SKIPPED - {problem}"
     print(f"  github   : {gh_plan}")
 
     if args.dry_run:
-        print("\nDry run — nothing changed.")
+        print("\nDry run - nothing changed.")
         return
 
     # ── Apply ─────────────────────────────────────────────────────────────────
