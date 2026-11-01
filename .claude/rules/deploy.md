@@ -23,7 +23,7 @@ Every `npm run build` ends with `scripts/zip-dist.mjs`, which writes **`dist-bui
    - commits "Release vX.Y.Z", adds an annotated tag and pushes both to `origin` (github.com/fseduventures/futuresience.in)
    - creates the GitHub Release with the changelog notes and the zip attached
 4. The GitHub Release step needs `gh` (installed at `C:\Program Files\GitHub CLI`) and a one-time `gh auth login --web`. If it was skipped, run `python release.py --publish vX.Y.Z`.
-5. In cPanel File Manager, upload the zip to `public_html`, **Extract** (overwrite) and delete the zip. It already contains `.htaccess`. Then check that the footer shows the new version.
+5. In cPanel File Manager, upload the zip to `public_html`, **Extract** (overwrite) and delete the zip. It already contains `.htaccess`. Then **clear the nginx cache**: cPanel → search "NGINX" → *NGINX Manager* → **Clear Cache**. Otherwise cached responses can keep serving the old version. Then check that the footer shows the new version.
 6. Re-run Seobility on https://www.futurescience.in/ (and any changed page) to confirm.
 
 Never move or delete a pushed tag to "fix" a version. Release the next version instead. (The one exception: `v1.1.0` was abandoned before any GitHub Release and replaced by `v6.4.0`, so the user may delete it.)
