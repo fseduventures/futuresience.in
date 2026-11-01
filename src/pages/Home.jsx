@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Reveal, { Counter } from '../components/Reveal.jsx'
@@ -6,8 +7,83 @@ import {
   TopperCard, AchieverCard, ProgramCard, Methodology, Testimonials, BatchTable, Branches, Faq, Tracks,
   MentorsFeature, AlumniWall, Gallery, TestimonialWall, NeetCard, Legacy,
 } from '../components/Blocks.jsx'
-import { heroStats, exams, toppers, achievers, programs, cet2022, testimonials, ACADEMIC_YEAR } from '../data/site.js'
+import { heroStats, exams, toppers, achievers, programs, cet2022, testimonials, spotlight, ACADEMIC_YEAR } from '../data/site.js'
 import { pages } from '../seo/meta.js'
+
+// Hero carousel: a scroll-snap track, so phones can swipe natively. All slides are in the
+// pre-rendered HTML; it auto-advances every 5s until the visitor hovers, focuses or touches it.
+function TopperSpotlight() {
+  const track = useRef(null)
+  const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  const go = (i) => {
+    const el = track.current
+    if (el) el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' })
+  }
+  // the dots follow manual swipes as well as auto-advance
+  const onScroll = () => {
+    const el = track.current
+    if (el) setActive(Math.round(el.scrollLeft / el.clientWidth))
+  }
+
+  useEffect(() => {
+    if (paused || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+    const t = setTimeout(() => go((active + 1) % spotlight.length), 5000)
+    return () => clearTimeout(t)
+  }, [active, paused])
+
+  return (
+    <Reveal
+      className="hero-card"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+    >
+      <div className="hero-card-head">
+        <span className="pill">Topper Spotlight</span>
+        <span className="muted-light">{spotlight[active].exam}</span>
+      </div>
+      <div className="spot-track" ref={track} onScroll={onScroll}>
+        {spotlight.map((t, i) => (
+          <div className="spot-slide" key={t.name} aria-hidden={i !== active}>
+            <div className="hero-card-main">
+              <img src={t.photo} alt={t.name} />
+              <div>
+                <p className="hero-card-name">{t.name}</p>
+                <div className="mega"><Counter value={t.score} decimals={2} /><small>%ile</small></div>
+                {t.badge && <span className="badge-gold"><Icon name="Medal" size={14} /> {t.badge}</span>}
+              </div>
+            </div>
+            {t.breakdown && (
+              <div className="hero-card-bars">
+                {t.breakdown.map(([s, v]) => (
+                  <div key={s} className="bar">
+                    <span>{s}</span>
+                    <div className="bar-track"><div className="bar-fill" style={{ '--w': `${v}%` }} /></div>
+                    <b>{v}</b>
+                  </div>
+                ))}
+              </div>
+            )}
+            {t.facts && (
+              <div className="spot-facts">
+                {t.facts.map(([label, value]) => <p key={label} className="spot-fact"><span>{label}</span><b>{value}</b></p>)}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="spot-dots">
+        {spotlight.map((t, i) => (
+          <button key={t.name} type="button" onClick={() => go(i)} aria-label={`Show ${t.name}`} aria-current={i === active} />
+        ))}
+      </div>
+    </Reveal>
+  )
+}
 
 export default function Home() {
   return (
@@ -40,29 +116,7 @@ export default function Home() {
             <BrochureButton className="hero-brochure" label={`Download the ${ACADEMIC_YEAR} brochure (PDF)`} size={17} />
           </div>
 
-          <Reveal className="hero-card">
-            <div className="hero-card-head">
-              <span className="pill">Topper Spotlight</span>
-              <span className="muted-light">MHT-CET 2024 · PCB</span>
-            </div>
-            <div className="hero-card-main">
-              <img src={toppers[0].photo} alt={toppers[0].name} />
-              <div>
-                <p className="hero-card-name">{toppers[0].name}</p>
-                <div className="mega"><Counter value={99.98} decimals={2} /><small>%ile</small></div>
-                <span className="badge-gold"><Icon name="Medal" size={14} /> Rank 2 · Mumbai University</span>
-              </div>
-            </div>
-            <div className="hero-card-bars">
-              {toppers[0].breakdown.map(([s, v]) => (
-                <div key={s} className="bar">
-                  <span>{s}</span>
-                  <div className="bar-track"><div className="bar-fill" style={{ '--w': `${v}%` }} /></div>
-                  <b>{v}</b>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+          <TopperSpotlight />
         </div>
 
         <div className="container">

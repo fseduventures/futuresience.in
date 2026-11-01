@@ -46,7 +46,7 @@ export default function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} {brand.full} — {brand.parent}.{VERSION && <span className="site-version"> · v{VERSION}</span>}</span>
-        <span className="footer-tag">{brand.tagline}</span>
+        <span className="footer-links"><Link to="/privacy">Privacy Policy</Link><span className="footer-tag">{brand.tagline}</span></span>
       </div>
     </footer>
   )

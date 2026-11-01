@@ -25,4 +25,5 @@
 - Reports: Engagement → Pages and screens (most visited), Engagement → Events, Acquisition → Traffic acquisition, Realtime.
 
 ## Privacy
-Once tracking is live, the site should carry a short privacy note naming Google Analytics (and Meta when enabled), as expected under India's DPDP Act.
+- `src/pages/Privacy.jsx` (`/privacy/`, linked from the footer bottom only, not the header nav) describes exactly what the site collects. **When tracking changes (a new event, a new tracker, the Meta Pixel switched on), update that page and its `UPDATED` date.** The Meta paragraph appears automatically once `metaPixel` is set.
+- Most students are under 18. India's DPDP Act restricts tracking and behavioural monitoring of children, so don't add ad remarketing or audience building without the user deciding on consent first.

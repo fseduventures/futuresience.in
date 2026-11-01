@@ -44,6 +44,11 @@ export const pages = {
     description: 'Visit futureScience at Mahavir Nagar, Kandivali West or S.V. Road, Malad West, Mumbai. Call/WhatsApp +91 93217 84940 for JEE, NEET, CET & CUET admissions.',
     breadcrumb: 'Contact',
   },
+  '/privacy': {
+    title: 'Privacy Policy | futureScience',
+    description: 'How futureScience Private Tutorials, Kandivali West & Malad West, Mumbai, handles enquiries and Google Analytics data on futurescience.in.',
+    breadcrumb: 'Privacy Policy',
+  },
 }
 
 export const keywords = KEYWORDS.join(', ')

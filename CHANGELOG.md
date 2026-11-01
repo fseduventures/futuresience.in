@@ -5,6 +5,10 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Added
+- Topper Spotlight on the homepage is now a carousel: Lyra Uchil, Tvisha Vedant, Shrey Soni and Atharv Vedant. It auto-advances every 5 seconds, can be swiped on phones, and pauses on hover or touch.
+- Privacy Policy page (`/privacy/`), linked from the footer only
+
 ## [6.4.1] - 2026-11-01
 
 ### Added

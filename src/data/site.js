@@ -360,6 +360,22 @@ export const cet2022 = {
   ],
 }
 
+// Homepage hero carousel, in display order. Built from the records above so scores live in one place.
+// `breakdown` rows draw subject bars; `facts` rows (no bar) suit ranks.
+export const spotlight = [
+  { ...toppers[0], exam: 'MHT-CET 2024 · PCB' },
+  {
+    name: cet2022.name, photo: cet2022.photo, exam: `${cet2022.exam} · PCM`, score: parseFloat(cet2022.score),
+    badge: `Rank ${cet2022.ranks[0][0]} · ${cet2022.ranks[0][1]}`,
+    facts: cet2022.ranks.slice(1).map(([rank, where, cat]) => [`${where} · ${cat}`, `Rank ${rank}`]),
+  },
+  {
+    name: neetTopper.name, photo: neetTopper.photo, exam: `${neetTopper.exam} · PCB`, score: parseFloat(neetTopper.percentile),
+    badge: `${neetTopper.marks} / ${neetTopper.outOf} marks`, breakdown: neetTopper.breakdown,
+  },
+  { ...toppers[1], exam: 'MHT-CET 2024 · PCM' },
+]
+
 // Student testimonials (from the futureScience prospectus; lightly trimmed, "…" marks a cut)
 export const testimonials = [
   {

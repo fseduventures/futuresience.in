@@ -4,6 +4,8 @@
 - Check every change at **360px and 412px wide** (common Android phones). Nothing may overflow sideways.
 - **Use `repeat(n, minmax(0, 1fr))` for grid columns, not `repeat(n, 1fr)`**, wherever a cell holds big unbreakable text such as numbers like `99.98%ile`. Plain `1fr` lets the longest word widen its column past the screen edge, which caused the cut-off homepage stats.
 - Large display numbers scale with the viewport, for example `font-size: clamp(1.45rem, 7vw, 2rem)` on phones.
+- Grid **items** that hold a horizontal scroller (the hero spotlight carousel) also need `min-width: 0`, or the track's full width stretches the column and the page overflows.
+- When asked to add a feature to an existing section, keep that section's layout exactly as it is. Add to it; don't rearrange it.
 - Breakpoints in `styles.css`: `max-width: 980px` (tablet) and `max-width: 640px` (phone). Put phone fixes in the 640px block.
 
 ## Theming

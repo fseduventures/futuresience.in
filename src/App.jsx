@@ -8,6 +8,7 @@ import Courses from './pages/Courses.jsx'
 import Results from './pages/Results.jsx'
 import Directors from './pages/Directors.jsx'
 import Contact from './pages/Contact.jsx'
+import Privacy from './pages/Privacy.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Seo from './seo/Seo.jsx'
 import { ThemeProvider } from './theme.jsx'
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/results" element={<Results />} />
           <Route path="/directors" element={<Directors />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

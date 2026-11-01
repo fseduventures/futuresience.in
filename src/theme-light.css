@@ -46,6 +46,10 @@
 [data-theme='light'] .mega small { color: var(--lime-600); }
 [data-theme='light'] .muted-light { color: var(--muted); }
 [data-theme='light'] .bar-track { background: var(--line); }
+[data-theme='light'] .spot-dots button::before { background: var(--line); }
+[data-theme='light'] .spot-dots button[aria-current='true']::before { background: var(--lime-600); }
+[data-theme='light'] .spot-fact { border-color: var(--line); }
+[data-theme='light'] .spot-fact b { color: var(--ink); }
 [data-theme='light'] .stats, [data-theme='light'] .stat { border-color: var(--line); }
 [data-theme='light'] .stat b { color: var(--navy); }
 [data-theme='light'] .stat:nth-child(odd) b { color: var(--lime-600); }
