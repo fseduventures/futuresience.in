@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [6.5.3] - 2026-11-01
+
 ### Changed
 - Faster on phones (Lighthouse mobile 41 → 86 in local tests, layout shift 0.135 → 0, accessibility 96 → 100):
   - Google Analytics loads on the first tap or scroll (or 5s after load) instead of during page load
