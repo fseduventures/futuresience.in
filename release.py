@@ -13,8 +13,8 @@ Steps:
   2. Turns CHANGELOG.md's "## [Unreleased]" section into "## [X.Y.Z] - date"
      and opens a new, empty Unreleased section above it.
   3. Runs `npm run build` and `npm run seo:check`, so the version is baked into
-     dist/, then zips dist/ (including .htaccess) into
-     release-dist/futurescience-site-vX.Y.Z.zip, ready to upload to public_html.
+     dist/. The build also writes dist-build.zip (dist/ contents incl. .htaccess);
+     it is copied to release-dist/futurescience-site-vX.Y.Z.zip for the GitHub Release.
      If either fails, the version and changelog edits are rolled back.
   4. Commits exactly those files ("Release vX.Y.Z"), creates an annotated tag
      vX.Y.Z, and pushes the branch and tag atomically.
@@ -41,7 +41,7 @@ ROOT = Path(__file__).resolve().parent
 VERSION_FILE = ROOT / "package.json"
 MIRRORS = [ROOT / "package-lock.json"]
 CHANGELOG = ROOT / "CHANGELOG.md"
-DIST = ROOT / "dist"
+BUILD_ZIP = ROOT / "dist-build.zip"  # written by `npm run build` (scripts/zip-dist.mjs)
 ZIP_DIR = ROOT / "release-dist"  # gitignored
 RELEASE_BRANCH = "main"
 
@@ -147,9 +147,11 @@ def build_and_zip(tag):
     """Build the site with the new version and zip dist/; False if the build or SEO check fails."""
     if not npm("run", "build") or not npm("run", "seo:check"):
         return False
+    if not BUILD_ZIP.exists():
+        print(f"error: {BUILD_ZIP.name} wasn't created by the build", file=sys.stderr)
+        return False
     ZIP_DIR.mkdir(exist_ok=True)
-    # make_archive includes dotfiles, so the zip carries .htaccess
-    shutil.make_archive(str(zip_path(tag).with_suffix("")), "zip", DIST)
+    shutil.copyfile(BUILD_ZIP, zip_path(tag))
     print(f"Upload bundle: {zip_path(tag).relative_to(ROOT)}")
     return True
 

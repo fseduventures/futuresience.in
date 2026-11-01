@@ -11,6 +11,7 @@ Unreleased section into the next version and uses it as the GitHub Release notes
   - fonts and the hero photo are preloaded, and phones get a 720px hero photo and gallery images
   - sections below the hero are only rendered when scrolled near
   - the button shine and score-bar animations no longer force layout on every frame
+- Every `npm run build` also writes `dist-build.zip`, the upload file for cPanel (`.htaccess` included); releases attach the same zip
 - Darker green for small light-theme text (Achievers label, active menu item, footer tagline) to meet contrast guidelines; larger tap areas on the Topper Spotlight dots
 
 ## [6.5.2] - 2026-11-01

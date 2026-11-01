@@ -12,8 +12,9 @@ description: Fix issues from a Seobility (or similar) SEO report or screenshot f
 3. **Sort each item into one of three groups:**
    - *Code*: titles, descriptions, headings, alt text, link text, mobile layout. Fix it.
    - *Server*: HTTP headers, charset, compression. Edit `public/.htaccess` and say whether it needs the host's help.
-   - *Performance*: page size, images, caching. See `.claude/rules/performance.md`; most of it is already handled at build time.
+   - *Performance*: page size, images, caching, speed scores. Follow `.claude/skills/pagespeed/SKILL.md`.
    - *Off-site*: backlinks, response time from hosting. Explain what the user can do (see `.claude/rules/deploy.md`). Don't pretend code fixes it.
 4. **Fix at the source:** content in `src/data/site.js`, meta in `src/seo/meta.js` (+ `index.html` fallback), and markup in `src/pages` or `src/components/Blocks.jsx`. Never edit `dist/`.
 5. **Verify:** rebuild, `npm run seo:check` → "All pages pass". For layout fixes, check widths of 360px and 412px.
-6. **Report back** as a short before → after table. List what still needs the user (deploy, hosting, backlinks).
+6. **Upload file:** the build wrote `dist-build.zip`. Tell the user to upload and extract it (or release with the `release` skill).
+7. **Report back** as a short before → after table. List what still needs the user (deploy, hosting, backlinks).

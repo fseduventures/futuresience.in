@@ -4,7 +4,7 @@
 - IDs live in `analytics` in `src/data/site.js`. An empty ID means that tracker isn't loaded at all.
   - `ga4: 'G-6C9RV8YZ4W'` (GA4 property "futureScience.in", stream ID 16246595954)
   - `metaPixel: ''`: on hold, as there's no Facebook Business account yet. Paste the digits-only Pixel ID when there is.
-- `scripts/prerender.mjs` (`trackers()`) writes the tags into every built page, the 404 included. **Never add tracking snippets to `index.html`**, or dev visits would show up in the reports.
+- `scripts/prerender.mjs` (`trackers()`) writes the tags into every built page, the 404 included. **gtag.js is loaded late** for PageSpeed: on the first pointerdown/scroll/keydown/touch/mousemove, or 5s after `load`. `gtag()` calls made earlier wait in `dataLayer`. The trade-off is that a visitor who leaves within 5s without interacting isn't counted. **Never add tracking snippets to `index.html`**, or dev visits would show up in the reports.
 - `src/analytics.jsx` (mounted once in `App.jsx`) holds the client-side events. Every call is `window.gtag?.()` / `window.fbq?.()`, so it does nothing in dev or when an ID is empty.
 
 ## Events

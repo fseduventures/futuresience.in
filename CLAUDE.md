@@ -7,10 +7,11 @@ Git repo: github.com/fseduventures/futuresience.in (branch `main`, releases tagg
 
 ## Commands (PowerShell)
 - `npm run dev`: dev server at http://localhost:5173
-- `npm run build`: build + pre-render into `dist/`
+- `npm run build`: build + pre-render into `dist/`, recompress images, then pack **`dist-build.zip`** (the upload file: extract it into `public_html`)
 - `npm run seo:check`: audits every page in `dist/` for the issues Seobility flags. **Run it after every build that touches content, markup or SEO, and fix anything it reports.**
 - `npm run release`: brochure PDFs + website build
-- `python release.py --patch|--minor|--set-version X.Y.Z`: version bump, build, seo:check, tag, push, GitHub Release and an upload zip in `release-dist/` (see `deploy.md`)
+- `python release.py --patch|--minor|--set-version X.Y.Z`: version bump, build, seo:check, tag, push, GitHub Release with the zip attached (copied to `release-dist/`, see `deploy.md`)
+- `npx lighthouse@12 https://www.futurescience.in/ --chrome-flags="--headless=new"` (`--preset=desktop` for desktop): the PageSpeed audit, locally (see `performance.md`)
 
 ## Where things live
 - `src/data/site.js`: **all content** (stats, programmes, batches, branches, toppers, FAQs, contact). The site, the JSON-LD, `llms.txt` and the brochure all read from it.
@@ -19,7 +20,8 @@ Git repo: github.com/fseduventures/futuresience.in (branch `main`, releases tagg
 - `src/pages/*.jsx`: one file per page. `src/components/Blocks.jsx` holds the shared cards and sections.
 - `src/styles.css` (dark default) + `src/theme-light.css` (light-theme overrides; update both together)
 - `scripts/prerender.mjs`: writes `dist/<page>/index.html`, sitemap, robots, `llms.txt`, plus the analytics tags and `<meta name="version">`
-- `scripts/optimize-images.mjs`: recompresses `dist/images` after the build (originals in `public/images` stay untouched)
+- `scripts/optimize-images.mjs`: recompresses `dist/images` and writes 720px `-sm` phone copies (originals in `public/images` stay untouched)
+- `scripts/zip-dist.mjs`: last build step, packs `dist/` into `dist-build.zip` (no dependencies)
 - `src/analytics.jsx`: GA4 / Meta Pixel events (leads, brochure downloads, theme). IDs are in `analytics` in `site.js`.
 - `CHANGELOG.md` + `release.py`: versioning. The version comes from `package.json` and shows in the header and footer.
 - `public/.htaccess`: HTTPS + www redirect, charset, compression, caching, header hardening
@@ -31,7 +33,8 @@ Detailed rules are in `.claude/rules/`:
 - `layout-and-css.md`: mobile layout, theming, heading-styled non-headings
 - `deploy.md`: versioning, release steps, server headers and off-site SEO work
 - `analytics.md`: GA4/Pixel setup, the event list, GA4 admin steps
-- `performance.md`: image optimisation, caching, compression
+- `performance.md`: PageSpeed findings (animations, deferred gtag, preloads, phone images), image optimisation, caching
 
 For a pasted Seobility/SEO report, follow `.claude/skills/seo-audit/SKILL.md`.
+For a PageSpeed/Lighthouse report or link, follow `.claude/skills/pagespeed/SKILL.md`.
 To cut a release, follow `.claude/skills/release/SKILL.md`.

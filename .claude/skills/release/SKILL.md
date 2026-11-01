@@ -18,8 +18,8 @@ description: Cut a new version of the futureScience website (bump version, chang
 8. **Verify:**
    - `grep 'name="version"' dist/index.html` shows the new version
    - `seo:check` passed
-   - the zip exists in `release-dist/` and contains `.htaccess`
+   - `dist-build.zip` and the copy in `release-dist/` exist and contain `.htaccess`
    - delete older zips there so the wrong one can't be uploaded
-9. **Report:** version, commit and tag pushed, Release link or the pending `--publish` command, the zip path, and the reminder to extract it into `public_html`.
+9. **Report:** version, commit and tag pushed, Release link or the pending `--publish` command, the zip path (`dist-build.zip` is the same file), and the reminder to upload it to `public_html` and extract it.
 
 Never delete or move a pushed tag, and never force-push `main`. If a version was wrong, release the next one.

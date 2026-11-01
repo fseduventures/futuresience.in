@@ -21,7 +21,7 @@ npm run seo:check    # audit ./dist for title/description length, headings, alt 
 
 Everything (text, batches, branches, results, FAQs, contact) is in **`src/data/site.js`**.
 The website, the SEO data (schema.org JSON-LD, sitemap, `llms.txt`) and the brochure all read from it,
-so after editing run `npm run release` and upload `dist/` again.
+so after editing run `npm run release` and upload `dist-build.zip` again.
 
 Page titles and descriptions for search results are in `src/seo/meta.js`.
 
@@ -46,4 +46,6 @@ Photos from the 2023–25 prospectus were extracted with `scripts/pdf-tools/` an
 Close the PDFs in your viewer before regenerating, otherwise Windows locks the files.
 
 ## Uploading to cPanel
-Upload the **contents** of `dist/` (including the hidden `.htaccess`) into `public_html`.
+Every `npm run build` also writes **`dist-build.zip`** in the project folder: the contents of `dist/`, `.htaccess` included.
+In cPanel File Manager, upload it to `public_html`, right-click → **Extract** (overwrite), then delete the zip there.
+Releases (`python release.py`) attach the same zip to the GitHub Release as `futurescience-site-vX.Y.Z.zip`.

@@ -9,6 +9,9 @@
   - major: a redesign
 - `CHANGELOG.md` (repo root) has a `## [Unreleased]` section. Add a bullet to it with every change.
 
+## Upload file
+Every `npm run build` ends with `scripts/zip-dist.mjs`, which writes **`dist-build.zip`** at the project root (gitignored). It holds the contents of `dist/` at the zip's root, `.htaccess` included, so it extracts straight into `public_html`. After any build, point the user to this file. Don't ask them to upload the `dist/` folder by hand.
+
 ## Release checklist
 1. Brochure changed? Run `npm run brochure` first and commit the PDFs. Close any open brochure PDFs first, because Windows locks them.
 2. Add the changes to `## [Unreleased]` in `CHANGELOG.md` and commit everything (the script refuses a dirty tree).
@@ -16,11 +19,11 @@
    - bumps `package.json` and `package-lock.json`
    - dates the changelog
    - runs `npm run build` and `npm run seo:check` (rolling back if either fails)
-   - zips `dist/` into `release-dist/futurescience-site-vX.Y.Z.zip` (gitignored, includes `.htaccess`)
+   - copies the build's `dist-build.zip` to `release-dist/futurescience-site-vX.Y.Z.zip` (gitignored, includes `.htaccess`)
    - commits "Release vX.Y.Z", adds an annotated tag and pushes both to `origin` (github.com/fseduventures/futuresience.in)
    - creates the GitHub Release with the changelog notes and the zip attached
 4. The GitHub Release step needs `gh` (installed at `C:\Program Files\GitHub CLI`) and a one-time `gh auth login --web`. If it was skipped, run `python release.py --publish vX.Y.Z`.
-5. Extract the zip into `public_html`, **including the hidden `.htaccess`**. Then check that the footer shows the new version.
+5. In cPanel File Manager, upload the zip to `public_html`, **Extract** (overwrite) and delete the zip. It already contains `.htaccess`. Then check that the footer shows the new version.
 6. Re-run Seobility on https://www.futurescience.in/ (and any changed page) to confirm.
 
 Never move or delete a pushed tag to "fix" a version. Release the next version instead. (The one exception: `v1.1.0` was abandoned before any GitHub Release and replaced by `v6.4.0`, so the user may delete it.)
