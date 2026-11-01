@@ -149,9 +149,13 @@ p { margin: 0 0 1em; }
 [data-theme='light'] .tt-thumb { transform: translateX(24px); color: var(--gold-ink); }
 
 /* ── Hero ────────────────────────────────── */
+/* Sections below the hero aren't laid out or painted (nor their background images fetched) until
+   they near the viewport. It cuts mobile main-thread work a lot; the 900px estimate keeps the scrollbar steady. */
+main > section ~ section { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 .hero { position: relative; overflow: hidden; background: var(--navy-900); color: #c9cbe3; padding: clamp(3.5rem, 8vw, 6rem) 0 0; }
 /* Real classroom photography under a deep navy wash, with a fine gold rule at the base */
-.hero-bg { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(11, 12, 46, 0.97) 0%, rgba(11, 12, 46, 0.9) 42%, rgba(11, 12, 46, 0.62) 100%), url(/images/gallery/batch-celebration.jpg) center 30% / cover no-repeat; filter: saturate(0.85); }
+/* --hero-img: phones get the 720px copy made by optimize-images.mjs; prerender.mjs preloads the same files */
+.hero-bg { --hero-img: url(/images/gallery/batch-celebration.jpg); position: absolute; inset: 0; background: linear-gradient(100deg, rgba(11, 12, 46, 0.97) 0%, rgba(11, 12, 46, 0.9) 42%, rgba(11, 12, 46, 0.62) 100%), var(--hero-img) center 30% / cover no-repeat; filter: saturate(0.85); }
 .hero-bg::before { content: ''; position: absolute; inset: auto 0 0 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.6; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 3.5rem; align-items: center; }
@@ -191,15 +195,16 @@ a.avatars:hover span { background: #fff; }
 .bar { display: grid; grid-template-columns: 90px 1fr 50px; align-items: center; gap: 0.8rem; font-size: 0.86rem; }
 .bar b { color: #fff; text-align: right; }
 .bar-track { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 99px; overflow: hidden; }
-.bar-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, var(--lime-600), var(--lime)); border-radius: inherit; animation: grow 1.8s var(--ease) both 0.4s; }
-@keyframes grow { from { width: 0; } }
+.bar-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, var(--lime-600), var(--lime)); border-radius: inherit; transform-origin: left; animation: grow 1.8s var(--ease) both 0.4s; }
+/* transform, not width: width would re-run layout on every frame */
+@keyframes grow { from { transform: scaleX(0); } }
 /* Topper spotlight carousel (Home.jsx): native swipe via scroll-snap, scrollbar hidden */
 .hero-card { min-width: 0; }
 .spot-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
 .spot-track::-webkit-scrollbar { display: none; }
 .spot-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
 .spot-dots { display: flex; justify-content: center; align-items: center; margin: 0.9rem 0 -0.6rem; }
-.spot-dots button { display: grid; place-items: center; width: 22px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+.spot-dots button { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
 .spot-dots button::before { content: ''; width: 8px; height: 8px; border-radius: 99px; background: rgba(255, 255, 255, 0.3); transition: width 0.3s, background 0.3s; }
 .spot-dots button[aria-current='true'] { width: 30px; }
 .spot-dots button[aria-current='true']::before { width: 20px; background: var(--lime); }
@@ -589,8 +594,7 @@ a.avatars:hover span { background: #fff; }
 .legal p, .legal li { line-height: 1.75; }
 .legal ul { padding-left: 1.2rem; display: grid; gap: 0.5rem; }
 .legal a:not(.btn) { text-decoration: underline; text-underline-offset: 3px; }
-/* Release version: opacity (not a colour) keeps it muted in both themes */
-.site-version { opacity: 0.6; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.site-version { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
 .topbar-version { padding-left: 1.4rem; border-left: 1px solid rgba(127, 127, 127, 0.35); }
 
 /* ═══ Responsive ═════════════════════════ */
@@ -641,6 +645,7 @@ a.avatars:hover span { background: #fff; }
   .quote-band { background-attachment: scroll; }
 }
 @media (max-width: 640px) {
+  .hero-bg { --hero-img: url(/images/gallery/batch-celebration-sm.jpg); }
   .topbar-inner > span:first-child { display: none; }
   .topbar-right { width: 100%; justify-content: space-between; gap: 0.8rem; font-size: 0.78rem; }
   .topbar-version { display: none !important; }

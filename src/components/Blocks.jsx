@@ -94,12 +94,20 @@ export function AlumniWall({ light = false }) {
   )
 }
 
+// Photos wider than 900px get a 720px "-sm" copy at build time (scripts/optimize-images.mjs), so phones
+// download that instead (in dev, vite.config.js serves the original for -sm URLs).
+const smallSrc = (src) => (/\.jpe?g$/i.test(src) && !SMALL_ONLY.has(src)
+  ? { srcSet: `${src.replace(/(\.jpe?g)$/i, '-sm$1')} 720w, ${src} 1400w`, sizes: '(max-width: 640px) 100vw, 50vw' }
+  : {})
+// gallery photos already 900px wide or less, so they have no -sm copy
+const SMALL_ONLY = new Set(['/images/gallery/felicitation.jpg', '/images/gallery/sunday-test.jpg'])
+
 export function Gallery() {
   return (
     <div className="gallery">
       {gallery.map((g, i) => (
         <Reveal as="figure" className={`gal ${g.wide ? 'wide' : ''}`} key={g.src} delay={(i % 3) * 80}>
-          <img src={g.src} alt={g.alt} loading="lazy" />
+          <img src={g.src} alt={g.alt} loading="lazy" {...smallSrc(g.src)} />
           <figcaption>{g.caption}</figcaption>
         </Reveal>
       ))}

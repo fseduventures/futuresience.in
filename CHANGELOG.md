@@ -5,6 +5,14 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Changed
+- Faster on phones (Lighthouse mobile 41 → 86 in local tests, layout shift 0.135 → 0, accessibility 96 → 100):
+  - Google Analytics loads on the first tap or scroll (or 5s after load) instead of during page load
+  - fonts and the hero photo are preloaded, and phones get a 720px hero photo and gallery images
+  - sections below the hero are only rendered when scrolled near
+  - the button shine and score-bar animations no longer force layout on every frame
+- Darker green for small light-theme text (Achievers label, active menu item, footer tagline) to meet contrast guidelines; larger tap areas on the Topper Spotlight dots
+
 ## [6.5.2] - 2026-11-01
 
 ### Added

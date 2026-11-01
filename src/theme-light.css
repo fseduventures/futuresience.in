@@ -4,11 +4,13 @@
    white, and motion is a little more visible. Everything is scoped to the
    attribute, so the classic theme is untouched.
    ═══════════════════════════════════════════════════════════ */
-[data-theme='light'] { --gold-ink: #b07a06; --soft: #f6f9f1; }
+[data-theme='light'] { --gold-ink: #b07a06; --lime-ink: #4a7a16; --soft: #f6f9f1; }
 
 /* Shared text treatments on formerly-dark sections */
 [data-theme='light'] .hl { background-image: linear-gradient(90deg, #5d9a1d, var(--lime)); }
-[data-theme='light'] .eyebrow.light { background: var(--lime-50); color: var(--lime-600); border: 0; }
+[data-theme='light'] .eyebrow.light { background: var(--lime-50); color: var(--lime-ink); border: 0; }
+/* lime text on white fails contrast; --lime-ink is the same green, darker (4.8:1) */
+[data-theme='light'] .nav a.active, [data-theme='light'] .footer-tag { color: var(--lime-ink); }
 [data-theme='light'] .section-head.light h2 { color: var(--ink); }
 [data-theme='light'] .section-head.light .lead { color: var(--text); }
 [data-theme='light'] .section-dark { background: linear-gradient(180deg, var(--soft) 0%, #eef2fa 100%); color: var(--text); }
@@ -23,7 +25,7 @@
 [data-theme='light'] .topbar a:hover { color: var(--ink); }
 [data-theme='light'] .footer { background: var(--tint); color: var(--text); border-top: 1px solid var(--line); }
 [data-theme='light'] .footer .card-title { color: var(--ink); }
-[data-theme='light'] .footer ul a:hover, [data-theme='light'] .footer-tag { color: var(--lime-600); }
+[data-theme='light'] .footer ul a:hover { color: var(--lime-600); }
 [data-theme='light'] .footer-contact svg { color: var(--lime-600); }
 [data-theme='light'] .footer-logo { box-shadow: var(--shadow); }
 [data-theme='light'] .socials a { background: #fff; color: var(--navy); box-shadow: var(--shadow); }
@@ -31,7 +33,7 @@
 
 /* Hero */
 [data-theme='light'] .hero { background: #fff; color: var(--text); }
-[data-theme='light'] .hero-bg { background: linear-gradient(100deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.9) 42%, rgba(255, 255, 255, 0.5) 100%), url(/images/gallery/batch-celebration.jpg) center 30% / cover no-repeat; filter: none; }
+[data-theme='light'] .hero-bg { background: linear-gradient(100deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.9) 42%, rgba(255, 255, 255, 0.5) 100%), var(--hero-img) center 30% / cover no-repeat; filter: none; }
 [data-theme='light'] .hero-kicker { color: var(--lime-600); }
 [data-theme='light'] .hero-title { color: var(--ink); }
 [data-theme='light'] .hero .lead { color: var(--text); }
@@ -121,12 +123,12 @@
   [data-theme='light'] .section-head.is-in .hl-dark { background-size: 100% 100%; }
 
   /* slow zoom on the hero photo, floating spotlight card */
-  [data-theme='light'] .hero-bg { animation: fs-kenburns 26s ease-in-out infinite alternate; transform-origin: 60% 40%; }
+  [data-theme='light'] .hero-bg { animation: fs-kenburns 26s ease-in-out 2.5s infinite alternate; transform-origin: 60% 40%; }
   [data-theme='light'] .hero-card.is-in { animation: fs-float 6s ease-in-out 1s infinite; }
 
   /* light sheen across primary buttons */
   [data-theme='light'] .btn-primary { position: relative; overflow: hidden; }
-  [data-theme='light'] .btn-primary::after { content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent); transform: skewX(-20deg); animation: fs-sheen 4.5s ease-in-out infinite; }
+  [data-theme='light'] .btn-primary::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent); transform: translateX(-150%) skewX(-20deg); animation: fs-sheen 4.5s ease-in-out infinite; }
 
   /* cards: deeper lift, lime edge, icon nudge */
   [data-theme='light'] .program:hover, [data-theme='light'] .track:hover, [data-theme='light'] .value:hover, [data-theme='light'] .step:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -24px rgba(111, 168, 42, 0.45); border-color: var(--lime); }
@@ -149,6 +151,7 @@
 
 @keyframes fs-kenburns { from { transform: scale(1); } to { transform: scale(1.09) translateX(-1.5%); } }
 @keyframes fs-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-@keyframes fs-sheen { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+/* transform, not left: animating left re-ran layout every frame on every button */
+@keyframes fs-sheen { 0%, 70% { transform: translateX(-150%) skewX(-20deg); } 100% { transform: translateX(325%) skewX(-20deg); } }
 @keyframes fs-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(176, 122, 6, 0.35); } 50% { box-shadow: 0 0 0 8px rgba(176, 122, 6, 0); } }
 @keyframes fs-drift { from { transform: scale(1.02); } to { transform: scale(1.1); } }

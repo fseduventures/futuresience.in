@@ -8,6 +8,9 @@
 - When asked to add a feature to an existing section, keep that section's layout exactly as it is. Add to it; don't rearrange it.
 - Breakpoints in `styles.css`: `max-width: 980px` (tablet) and `max-width: 640px` (phone). Put phone fixes in the 640px block.
 
+## Animation
+- Animate only `transform` and `opacity`. Animating `left`, `width`, `top` or `height` forces layout on every frame (see `performance.md`).
+
 ## Theming
 - Dark is the default (`styles.css`). Light mode overrides live in `src/theme-light.css` under `[data-theme='light']`.
 - **When you add or rename a selector that sets a colour, update both files.**

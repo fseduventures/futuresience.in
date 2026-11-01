@@ -50,7 +50,7 @@ function TopperSpotlight() {
         {spotlight.map((t, i) => (
           <div className="spot-slide" key={t.name} aria-hidden={i !== active}>
             <div className="hero-card-main">
-              <img src={t.photo} alt={t.name} />
+              <img src={t.photo} alt={t.name} loading={i === 0 ? 'eager' : 'lazy'} />
               <div>
                 <p className="hero-card-name">{t.name}</p>
                 <div className="mega"><Counter value={t.score} decimals={2} /><small>%ile</small></div>

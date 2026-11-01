@@ -28,6 +28,7 @@ function head(route, { noindex = false } = {}) {
   const url = canonical(route)
   const image = `${SITE_URL}/images/og-image.png`
   return [
+    ...preloads(route),
     `<title>${esc(page.title)}</title>`,
     `<meta name="description" content="${esc(page.description)}" />`,
     `<meta name="keywords" content="${esc(keywords)}" />`,
@@ -57,6 +58,21 @@ function head(route, { noindex = false } = {}) {
   ].filter(Boolean).join('\n    ')
 }
 
+// Fetch what the first screen needs before the CSS asks for it (PageSpeed: LCP and layout shift).
+// The two latin fonts: without them the hero text reflows when they arrive. On the homepage, the hero
+// background too, in the same size the CSS picks (720px copy at 640px and below, see styles.css).
+const fonts = fs.readdirSync(path.join(dist, 'assets')).filter((f) => /^(sora|inter)-latin-wght-normal-.*\.woff2$/.test(f))
+function preloads(route) {
+  const out = fonts.map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`)
+  if (route === '/') {
+    out.push(
+      `<link rel="preload" href="/images/gallery/batch-celebration-sm.jpg" as="image" media="(max-width: 640px)" fetchpriority="high" />`,
+      `<link rel="preload" href="/images/gallery/batch-celebration.jpg" as="image" media="(min-width: 641px)" fetchpriority="high" />`,
+    )
+  }
+  return out
+}
+
 // Only in the built pages, so local dev visits never pollute the reports.
 // GA4 counts in-app page changes itself (enhanced measurement); src/analytics.jsx does it for the Pixel.
 // site_theme comes from <html data-theme>, which index.html sets before this runs.
@@ -64,8 +80,11 @@ function trackers() {
   const out = []
   if (analytics.ga4) {
     out.push(
-      `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(analytics.ga4)}"></script>`,
-      `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('set',{site_theme:document.documentElement.dataset.theme==='light'?'light':'dark'});gtag('config',${json(analytics.ga4)});</script>`,
+      // gtag.js costs ~1s of main thread on phones, so it loads on the first interaction or 5s after
+      // the page has loaded. Calls made before then wait in dataLayer and are sent once it arrives.
+      `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('set',{site_theme:document.documentElement.dataset.theme==='light'?'light':'dark'});gtag('config',${json(analytics.ga4)});`
+        + `(function(){var done=0;function load(){if(done)return;done=1;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=${esc(analytics.ga4)}';document.head.appendChild(s)}`
+        + `['pointerdown','keydown','scroll','touchstart','mousemove'].forEach(function(e){addEventListener(e,load,{once:true,passive:true})});addEventListener('load',function(){setTimeout(load,5000)})})();</script>`,
     )
   }
   if (analytics.metaPixel) {
