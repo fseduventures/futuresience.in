@@ -1,10 +1,29 @@
 # Deploy and off-site SEO
 
+## Versioning
+- The version lives in `package.json` (single source of truth). `vite.config.js` injects it as `__APP_VERSION__`, which is exported as `VERSION` from `site.js`.
+- It shows **on the website only**: in the footer bottom line, in the header top bar (desktop, hidden at 640px and below) and in `<meta name="version">`. The brochure never shows it.
+- Semver, starting from **6.4.0** (2026-11-01):
+  - patch: content updates and fixes
+  - minor: new sections or features
+  - major: a redesign
+- `CHANGELOG.md` (repo root) has a `## [Unreleased]` section. Add a bullet to it with every change.
+
 ## Release checklist
-1. `npm run release` (or `npm run build` if the brochure didn't change). Close any open brochure PDFs first, because Windows locks them.
-2. `npm run seo:check` must print **All pages pass**.
-3. Upload the **contents** of `dist/` into `public_html`, **including the hidden `.htaccess`**.
-4. Re-run Seobility on https://www.futurescience.in/ (and any changed page) to confirm.
+1. Brochure changed? Run `npm run brochure` first and commit the PDFs. Close any open brochure PDFs first, because Windows locks them.
+2. Add the changes to `## [Unreleased]` in `CHANGELOG.md` and commit everything (the script refuses a dirty tree).
+3. Run `python release.py --patch|--minor|--major` (or `--set-version X.Y.Z`; `--dry-run` previews). It:
+   - bumps `package.json` and `package-lock.json`
+   - dates the changelog
+   - runs `npm run build` and `npm run seo:check` (rolling back if either fails)
+   - zips `dist/` into `release-dist/futurescience-site-vX.Y.Z.zip` (gitignored, includes `.htaccess`)
+   - commits "Release vX.Y.Z", adds an annotated tag and pushes both to `origin` (github.com/fseduventures/futuresience.in)
+   - creates the GitHub Release with the changelog notes and the zip attached
+4. The GitHub Release step needs `gh` (installed at `C:\Program Files\GitHub CLI`) and a one-time `gh auth login --web`. If it was skipped, run `python release.py --publish vX.Y.Z`.
+5. Extract the zip into `public_html`, **including the hidden `.htaccess`**. Then check that the footer shows the new version.
+6. Re-run Seobility on https://www.futurescience.in/ (and any changed page) to confirm.
+
+Never move or delete a pushed tag to "fix" a version. Release the next version instead. (The one exception: `v1.1.0` was abandoned before any GitHub Release and replaced by `v6.4.0`, so the user may delete it.)
 
 ## Server (`public/.htaccess`)
 - `AddDefaultCharset UTF-8` sends the charset in the HTTP header (a Seobility check).
@@ -16,5 +35,5 @@
 "External factors" scored 3% because only one domain links to the site. Work on backlinks:
 - Google Business Profile for **each** branch (Kandivali West, Malad West) with the website link
 - Listings on Justdial, Sulekha, UrbanPro and IndiaMART
-- The website link in the Instagram / YouTube / Facebook bios (add the URLs to `contact.socials` in `site.js` too)
+- The website link in the Instagram, Facebook and LinkedIn bios. These are already in `contact.socials` in `site.js` (footer plus `sameAs`). YouTube is still empty, and there's no Twitter/X account.
 - Links from partner schools and junior colleges, and local news coverage of results

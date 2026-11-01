@@ -59,12 +59,13 @@ function head(route, { noindex = false } = {}) {
 
 // Only in the built pages, so local dev visits never pollute the reports.
 // GA4 counts in-app page changes itself (enhanced measurement); src/analytics.jsx does it for the Pixel.
+// site_theme comes from <html data-theme>, which index.html sets before this runs.
 function trackers() {
   const out = []
   if (analytics.ga4) {
     out.push(
       `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(analytics.ga4)}"></script>`,
-      `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config',${json(analytics.ga4)});</script>`,
+      `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('set',{site_theme:document.documentElement.dataset.theme==='light'?'light':'dark'});gtag('config',${json(analytics.ga4)});</script>`,
     )
   }
   if (analytics.metaPixel) {

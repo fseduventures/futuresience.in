@@ -5,6 +5,10 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Added
+- Every GA4 page view and event carries the visitor's theme (`site_theme`: dark / light), plus a `theme_change` event when someone flips the toggle
+- Project rules for analytics, performance and versioning, and a `release` skill
+
 ## [6.4.0] - 2026-11-01
 
 ### Added

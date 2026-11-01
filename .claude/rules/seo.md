@@ -23,9 +23,10 @@ These limits come from the Seobility audit of the homepage (Oct 2026). `npm run 
 - **Every link needs readable text.** `aria-label` alone does not count for SEO.
 - **Don't use the same link text for different URLs** (for example "View details" ×8 or "Directions" ×2). Keep the short visible text and add a hidden suffix:
   `View details<span className="sr-only"> of {p.title}</span>`
+- **Icon-only links** (social icons) need hidden text, not `aria-label`: `<Icon … /><span className="sr-only">futureScience on Instagram</span>`.
 - Repeating the same text for the *same* URL is fine (nav plus footer, several "Enquire" buttons to `/contact`).
 - Internal links use React Router `<Link to="/page">`. Canonical URLs end in `/` (see `canonical()` in `meta.js`).
 
 ## Structured data and crawlers
-- JSON-LD is generated from `src/data/site.js` in `meta.js`. Edit the data, not the schema code.
+- JSON-LD is generated from `src/data/site.js` in `meta.js`. Edit the data, not the schema code. Social profile URLs in `contact.socials` become `sameAs` and the footer icons automatically.
 - `robots.txt`, `sitemap.xml` and `llms.txt` are written by `scripts/prerender.mjs`. It pre-renders every route in `pages` in `meta.js`, so a new page needs an entry there (plus a sitemap `priority` in `prerender.mjs`).

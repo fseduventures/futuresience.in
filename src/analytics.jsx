@@ -1,11 +1,25 @@
 import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useTheme } from './theme.jsx'
 
 // The tracker scripts are added by scripts/prerender.mjs only when IDs are set in site.js,
 // so every call here is a no-op in dev or when tracking is off.
 export default function Analytics() {
   const { pathname } = useLocation()
   const first = useRef(true)
+  const { theme } = useTheme()
+  const sentTheme = useRef(null)
+
+  // The head script tags events with the landing theme; keep site_theme current when it changes.
+  // Read <html data-theme> rather than `theme`, which starts as 'dark' until ThemeProvider mounts.
+  useEffect(() => {
+    const current = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+    if (sentTheme.current === null) { sentTheme.current = current; return }
+    if (current === sentTheme.current) return
+    sentTheme.current = current
+    window.gtag?.('set', { site_theme: current })
+    window.gtag?.('event', 'theme_change', { site_theme: current })
+  }, [theme])
 
   // The Pixel base code counts the landing page; count later in-app navigations here
   useEffect(() => {
