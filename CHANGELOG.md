@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [6.5.4] - 2026-11-01
+
 ### Changed
 - Brochure shows students' results without their passing years (cover toppers, stats, Achievers page, Then & Now); testimonials keep theirs. The website is unchanged. PDFs regenerated.
 
