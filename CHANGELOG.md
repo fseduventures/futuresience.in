@@ -5,6 +5,12 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Changed
+- Brochure shows students' results without their passing years (cover toppers, stats, Achievers page, Then & Now); testimonials keep theirs. The website is unchanged. PDFs regenerated.
+
+### Fixed
+- The brochure source (`src/brochure/`) is now tracked in git; the `brochure/` ignore rule for the generated PDFs had been matching it too
+
 ## [6.5.3] - 2026-11-01
 
 ### Changed

@@ -1,0 +1,79 @@
+/* Light theme for the brochure (?theme=light). Same content and layout; only colours change.
+   Every rule is scoped to .theme-light so the default dark edition is untouched. */
+.theme-light { --gold-ink: #b07a06; } /* gold readable on white */
+
+/* Pages that are navy in the dark edition */
+.theme-light .page.dark { background: linear-gradient(180deg, #ffffff 0%, #f4f6fa 100%); color: var(--text); }
+.theme-light .page.dark h2, .theme-light .page.dark h3 { color: var(--ink); }
+.theme-light .page.dark .hl { color: var(--lime-600); }
+.theme-light .b-eyebrow.light { background: var(--lime-50); color: var(--lime-600); border: 0; }
+.theme-light .folio.dark { border-color: var(--line); color: var(--muted); }
+.theme-light .folio.dark b { color: var(--lime-600); }
+.theme-light .lead.light { color: var(--text); }
+.theme-light .gold { background: #fdf4dc; color: var(--gold-ink); border-color: rgba(176, 122, 6, 0.35); }
+
+/* Cover */
+.theme-light .cover-bg { background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 30%, rgba(255, 255, 255, 0.96) 50%, #fff 60%), url(/images/gallery/batch-celebration.jpg) center top / auto 50% no-repeat, #fff; }
+.theme-light .cover h1 { color: var(--ink); }
+.theme-light .cover-lead { color: var(--text); }
+.theme-light .cover-stats, .theme-light .cover-stats div { border-color: var(--line); }
+.theme-light .cover-stats b { color: var(--navy); }
+.theme-light .cover-stats div:nth-child(odd) b { color: var(--lime-600); }
+.theme-light .cover-stats span { color: var(--muted); }
+.theme-light .cover-topper { background: #fff; border-color: var(--line); box-shadow: 0 2mm 6mm rgba(19, 20, 74, 0.1); }
+.theme-light .cover-topper b { color: var(--ink); }
+.theme-light .cover-topper b small { color: var(--lime-600); }
+.theme-light .cover-topper .name { color: var(--text); }
+
+/* Results */
+.theme-light .b-topper, .theme-light .b-achiever { background: #fff; border-color: var(--line); box-shadow: 0 2mm 6mm rgba(19, 20, 74, 0.08); }
+.theme-light .b-topper .score { color: var(--lime-600); }
+.theme-light .b-topper .score small, .theme-light .b-topper li b { color: var(--ink); }
+.theme-light .b-topper li { border-color: var(--line); }
+.theme-light .b-topper li b::after { color: var(--muted); }
+.theme-light .b-topper li b.perfect { color: var(--gold-ink); }
+.theme-light .b-achiever b { color: var(--ink); }
+.theme-light .b-achiever b small { color: var(--lime-600); }
+.theme-light .b-achiever > span:last-child { color: var(--muted); }
+
+/* Then & Now */
+.theme-light .legacy-bg { background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.97) 40%, #f4f6fa), url(/images/gallery/results-day.jpg) center top / 100% auto no-repeat, #fff; }
+.theme-light .b-legacy { background: linear-gradient(90deg, var(--lime-50), #fff); border-color: rgba(111, 168, 42, 0.35); }
+.theme-light .muted-l, .theme-light .lg-head b, .theme-light .lg-ranks b { color: var(--lime-600); }
+.theme-light .lg-ranks div { background: #fff; border: 0.25mm solid var(--line); }
+.theme-light .lg-ranks span { color: var(--ink); }
+.theme-light .lg-ranks small { color: var(--muted); }
+.theme-light .b-timeline li { border-color: var(--gold-ink); }
+.theme-light .b-timeline span { color: var(--gold-ink); }
+.theme-light .b-timeline b { color: var(--ink); }
+.theme-light .b-timeline p { color: var(--text); }
+
+/* Directors */
+.theme-light .mentors-pg { background: #fff; }
+.theme-light .mentors-bg { background: linear-gradient(180deg, rgba(255, 255, 255, 0.93), rgba(244, 246, 250, 0.97)), url(/images/gallery/lecture-mono.jpg) center / cover; }
+.theme-light .b-mentor-hero .mt { color: var(--gold-ink); }
+.theme-light .b-mentor-hero .portrait::after { background: linear-gradient(90deg, transparent, var(--gold-ink), transparent); }
+.theme-light .b-mentor-hero > p { color: var(--text); }
+.theme-light .b-mentor-hero blockquote { background: #fff; color: var(--ink); border-color: var(--gold-ink); box-shadow: 0 1.5mm 5mm rgba(19, 20, 74, 0.08); }
+.theme-light .b-mentor-hero cite { color: var(--muted); }
+
+/* Bottom bands (method exams, alumni) */
+.theme-light .exam-strip, .theme-light .alumni-strip { background: var(--lime-50); border-top: 0.3mm solid #d9eec0; }
+.theme-light .exam-strip .lbl, .theme-light .b-progs .lbl { color: var(--lime-600); }
+.theme-light .alumni-strip .lbl { color: var(--gold-ink); }
+.theme-light .alumni-strip > div span { background: #fff; border-color: var(--line); color: var(--ink); }
+.theme-light .alumni-strip svg { color: var(--gold-ink); }
+
+/* Back cover */
+.theme-light .b-batch { background: #fff; border-color: var(--line); box-shadow: 0 2mm 6mm rgba(19, 20, 74, 0.08); }
+.theme-light .b-batch .for { color: var(--muted); }
+.theme-light .b-batch p { color: var(--text); }
+.theme-light .b-batch .live { color: var(--lime-600); }
+.theme-light .b-cta { border-color: var(--line); }
+.theme-light .b-contact li span { color: var(--muted); }
+.theme-light .b-contact li b { color: var(--ink); }
+.theme-light .qr { border: 0.3mm solid var(--line); }
+.theme-light .qrs figcaption { color: var(--text); }
+.theme-light .b-progs > div span { background: #fff; border-color: var(--line); color: var(--ink); }
+.theme-light .b-progs > div svg { color: var(--lime-600); }
+.theme-light .logo-plate { box-shadow: 0 1mm 4mm rgba(19, 20, 74, 0.12); }

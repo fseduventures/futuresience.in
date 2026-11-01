@@ -299,12 +299,13 @@ export const alumniColleges = [
 ]
 
 // History + present, using only dated facts from results and student testimonials
+// `exam` replaces the year label in the brochure, which shows results without passing years
 export const legacy = [
   { when: 'Then', title: 'A legacy of doctors & engineers', text: 'Students from the earliest batches went on to MBBS at KEM and Government Medical College, Kolhapur, and to IIT, BITS Pilani, VJTI and ICT.' },
-  { when: '2013–14', title: 'From HSC to MBBS', text: 'Akshay Parag Raut prepared for CET with futureScience and secured General-category MBBS admission at Government Medical College, Kolhapur.' },
+  { when: '2013–14', exam: 'MHT-CET', title: 'From HSC to MBBS', text: 'Akshay Parag Raut prepared for CET with futureScience and secured General-category MBBS admission at Government Medical College, Kolhapur.' },
   { when: 'NEET-UG', title: '630 / 720', text: 'Shrey Soni scored 630/720 (99.36 percentile) in NEET-UG, with 99.46 percentile in Physics.' },
-  { when: '2022', title: '99.97 percentile', text: 'Tvisha Vedant: Rank 2 Mumbai University and Rank 4 Maharashtra (Female/General) in MHT-CET.' },
-  { when: '2024', title: '99.98 percentile', text: 'Lyra Uchil: Rank 2 Mumbai University, with perfect 100 percentiles in Physics and Biology. 100% of students qualified for professional courses.' },
+  { when: '2022', exam: 'MHT-CET', title: '99.97 percentile', text: 'Tvisha Vedant: Rank 2 Mumbai University and Rank 4 Maharashtra (Female/General) in MHT-CET.' },
+  { when: '2024', exam: 'MHT-CET', title: '99.98 percentile', text: 'Lyra Uchil: Rank 2 Mumbai University, with perfect 100 percentiles in Physics and Biology. 100% of students qualified for professional courses.' },
   { when: 'Now', title: `Admissions ${'2027–29'}`, text: 'Two branches in Kandivali West and Malad West, and the next generation of futureScience toppers.' },
 ]
 

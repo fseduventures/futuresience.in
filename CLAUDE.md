@@ -25,7 +25,7 @@ Git repo: github.com/fseduventures/futuresience.in (branch `main`, releases tagg
 - `src/analytics.jsx`: GA4 / Meta Pixel events (leads, brochure downloads, theme). IDs are in `analytics` in `site.js`.
 - `CHANGELOG.md` + `release.py`: versioning. The version comes from `package.json` and shows in the header and footer.
 - `public/.htaccess`: HTTPS + www redirect, charset, compression, caching, header hardening
-- `src/brochure/`: the print brochure (separate build, see README)
+- `src/brochure/`: the print brochure (separate build, see README). It shows student results **without passing years** (`noYear()` in `Brochure.jsx`, `exam` labels on `legacy`); testimonials keep their years, and the website keeps all years. After editing, run `npm run brochure`, then `npm run build`.
 
 ## Rules
 Detailed rules are in `.claude/rules/`:
