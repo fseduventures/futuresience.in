@@ -31,6 +31,11 @@ Never move or delete a pushed tag to "fix" a version. Release the next version i
 ## Server (`public/.htaccess`)
 - `AddDefaultCharset UTF-8` sends the charset in the HTTP header (a Seobility check).
 - `ServerSignature Off` plus `Header unset Server` hide the server version. This works on LiteSpeed. On plain Apache the host must set `ServerTokens Prod` in the main config, and `.htaccess` can't do it.
+- **MilesWeb puts an nginx cache in front of Apache** (checked Nov 2026). Pages Apache serves send `Server: Apache` (no version, passes). Responses from the nginx cache (`X-Server-Cache: true`) send `Server: nginx/1.25.5`, which is Seobility's "web server version" warning. `.htaccess` can't reach nginx. The fixes:
+  - MilesWeb support sets `server_tokens off;` in nginx (keeps the cache)
+  - or Cloudflare in front (sends `Server: cloudflare` and also fixes response time)
+  - or turn off the nginx cache in cPanel (slower, so not recommended)
+- The same nginx layer answers unknown URLs with the 404 page but a **200 status** (a "soft 404"; Apache's `ErrorDocument 404` is bypassed). Ask MilesWeb to return a real 404 there too. Check with `curl -sI https://www.futurescience.in/nope-404`.
 - Response time (Seobility wants under 0.4s, it was 0.72s) depends on the hosting, not the code. Options: Cloudflare free plan in front of the site, LiteSpeed cache, or a faster host.
 - Keep the HTTPS + `www.` redirect; it gives every page one canonical address.
 
