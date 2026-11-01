@@ -13,10 +13,22 @@ export default function Analytics() {
     window.fbq?.('track', 'PageView')
   }, [pathname])
 
-  // Phone, WhatsApp and email taps are this site's enquiries, so report them as leads
+  // Phone, WhatsApp and email taps are this site's enquiries, so report them as leads;
+  // brochure PDFs get their own event so downloads can be counted per button and edition
   useEffect(() => {
     const onClick = (e) => {
-      const href = e.target.closest?.('a[href]')?.getAttribute('href') || ''
+      const link = e.target.closest?.('a[href]')
+      const href = link?.getAttribute('href') || ''
+      if (/\.pdf$/i.test(href)) {
+        const params = {
+          file_name: href.split('/').pop(),
+          edition: /-Light\.pdf$/i.test(href) ? 'light' : 'dark',
+          button_location: link.closest('header') ? 'header' : link.closest('footer') ? 'footer' : 'page',
+        }
+        window.gtag?.('event', 'brochure_download', params)
+        window.fbq?.('trackCustom', 'BrochureDownload', params)
+        return
+      }
       const method = href.startsWith('tel:') ? 'phone' : /wa\.me|whatsapp/.test(href) ? 'whatsapp' : href.startsWith('mailto:') ? 'email' : ''
       if (!method) return
       window.gtag?.('event', 'generate_lead', { method })

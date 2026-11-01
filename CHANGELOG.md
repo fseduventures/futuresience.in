@@ -5,12 +5,11 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
-## [1.1.0] - 2026-11-01
-
 ### Added
 - Google Analytics 4 on every page, with phone, WhatsApp and email taps reported as `generate_lead` (Meta Pixel ready, switched off until an ID is set)
+- Brochure downloads tracked as `brochure_download` in GA4, with the button location (header, footer, page) and edition (dark, light)
 - Instagram, Facebook and LinkedIn links in the footer and in the structured data (`sameAs`)
-- Site version shown in the footer, the header top bar (desktop) and a `<meta name="version">` tag
+- Site version shown on the website only (footer, header top bar on desktop, `<meta name="version">`), not in the brochure
 - `release.py` to bump the version, build, tag, push and publish a GitHub Release with the upload zip
 
 ### Changed
