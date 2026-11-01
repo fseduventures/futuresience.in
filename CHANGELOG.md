@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [6.4.0] - 2026-11-01
+
 ### Added
 - Google Analytics 4 on every page, with phone, WhatsApp and email taps reported as `generate_lead` (Meta Pixel ready, switched off until an ID is set)
 - Brochure downloads tracked as `brochure_download` in GA4, with the button location (header, footer, page) and edition (dark, light)
