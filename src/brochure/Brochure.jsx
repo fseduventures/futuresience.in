@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import QRCode from 'qrcode'
 import Icon from '../components/Icon.jsx'
 import {
-  brand, contact, toppers, achievers, cet2022, neetTopper, programs, methodology, pillars, testimonials, batches, values,
+  brand, contact, toppers, achievers, cet2025, cet2022, neetTopper, programs, methodology, pillars, testimonials, batches, values,
   heroStats, exams, branches, mentors, mentorsIntro, alumniColleges, gallery, legacy, ACADEMIC_YEAR, SITE_URL,
 } from '../data/site.js'
 import { PAGE_COUNT, imposition } from './layout.js'
@@ -14,6 +14,8 @@ const Checks = ({ items }) => (
 
 
 // The brochure shows students' results without their passing years (testimonials keep theirs)
+// so achievers from every batch share one grid, highest first
+const brochureAchievers = [...achievers, ...cet2025.students].sort((a, b) => b.score - a.score)
 const noYear = (s) => s.replace(/,?\s*\b20\d\d\b/g, '')
 function useQr(text) {
   const [svg, setSvg] = useState('')
@@ -147,8 +149,8 @@ function Results({ n }) {
             </div>
           ))}
         </div>
-        <div className="b-achievers">
-          {achievers.map((a) => (
+        <div className="b-achievers six">
+          {brochureAchievers.map((a) => (
             <div className="b-achiever" key={a.name}>
               <img src={a.photo} alt="" />
               <span className="chip sm">{a.stream}</span>

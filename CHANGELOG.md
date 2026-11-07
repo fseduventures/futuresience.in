@@ -11,6 +11,7 @@ Unreleased section into the next version and uses it as the GitHub Release notes
   - a "New · MHT-CET 2025" ribbon in the homepage results section (swipeable on phones)
   - photos for all seven students, cropped from their score cards (only the photo is used), with names as on the score cards; the PCB and PCM toppers show theirs as a ringed portrait on the navy panel. A future student without a photo gets a monogram (initials on navy with a DNA or atom mark)
   - the Results page description and `llms.txt` updated
+  - the brochure (dark and light, PDFs and Illustrator files): the 2025 students join the Achievers page, which now shows 12 achievers in two rows of six, highest first, without years
 
 ### Fixed
 - Score counters could flash a negative number (e.g. "-0.39") on their first animation frame

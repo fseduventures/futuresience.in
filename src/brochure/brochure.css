@@ -130,6 +130,8 @@ p { margin: 0; }
 .b-topper li b::after { content: ' %ile'; color: #9fa1c4; font-weight: 400; font-size: 0.85em; }
 .b-topper li b.perfect { color: var(--gold); }
 .b-achievers { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm; margin-bottom: 6mm; }
+/* two rows of six once the 2025 results joined (12 students) */
+.b-achievers.six { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .b-achiever { text-align: center; background: rgba(255, 255, 255, 0.06); border: 0.3mm solid rgba(255, 255, 255, 0.12); border-radius: 3.5mm; padding: 3.5mm 2mm; }
 .b-achiever img { width: 19mm; height: 19mm; border-radius: 50%; object-fit: cover; object-position: top; border: 0.7mm solid var(--lime); margin: 0 auto 2mm; background: #fff; }
 .b-achiever b { display: block; font-family: var(--head); font-size: 13pt; color: #fff; margin-top: 1.5mm; letter-spacing: -0.02em; }
