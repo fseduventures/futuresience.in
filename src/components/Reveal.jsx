@@ -38,7 +38,8 @@ export function Counter({ value, decimals = 0, prefix = '', suffix = '', duratio
     let raf
     const t0 = performance.now()
     const tick = (t) => {
-      const p = Math.min(1, (t - t0) / duration)
+      // the frame timestamp can predate t0, which made the first frame negative (e.g. "-0.39")
+      const p = Math.min(1, Math.max(0, (t - t0) / duration))
       setN(value * (1 - Math.pow(1 - p, 3)))
       if (p < 1) raf = requestAnimationFrame(tick)
     }

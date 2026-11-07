@@ -217,21 +217,24 @@ export function Tracks() {
   )
 }
 
-// Stand-in portrait for students without a photo: initials on navy, with the stream's symbol behind
-function Monogram({ t }) {
+// Navy panel with the stream's symbol behind: initials when there's no photo, or a small photo as a
+// ringed portrait (the 2025 photos are too small to fill a whole card)
+function Monogram({ t, portrait = false }) {
   return (
-    <div className="monogram" aria-hidden="true">
+    <div className="monogram" aria-hidden={portrait && t.photo ? undefined : 'true'}>
       <Icon name={t.stream === 'PCB' ? 'Dna' : 'Atom'} size={120} strokeWidth={1.2} />
-      <span>{initials(t.name)}</span>
+      {portrait && t.photo ? <img src={t.photo} alt={t.name} loading="lazy" /> : <span>{initials(t.name)}</span>}
     </div>
   )
 }
 
-export function TopperCard({ t, exam = 'MHT-CET 2024', delay = 0 }) {
+// `framed`: show the photo as a portrait on the navy panel instead of filling the card
+export function TopperCard({ t, exam = 'MHT-CET 2024', framed = false, delay = 0 }) {
+  const full = t.photo && !framed
   return (
     <Reveal className="topper" delay={delay}>
-      <div className={`topper-photo ${t.photo ? '' : 'is-mono'}`}>
-        {t.photo ? <img src={t.photo} alt={t.name} loading="lazy" /> : <Monogram t={t} />}
+      <div className={`topper-photo ${full ? '' : 'is-mono'}`}>
+        {full ? <img src={t.photo} alt={t.name} loading="lazy" /> : <Monogram t={t} portrait />}
         <span className="stream-chip">{t.stream}</span>
       </div>
       <div className="topper-body">
@@ -268,7 +271,7 @@ export function Cet2025() {
   return (
     <>
       <div className="toppers">
-        {leads.map((t, i) => <TopperCard t={{ ...t, badge: `${t.stream} topper` }} exam={exam} key={t.name} delay={i * 120} />)}
+        {leads.map((t, i) => <TopperCard t={{ ...t, badge: `${t.stream} topper` }} exam={exam} framed key={t.name} delay={i * 120} />)}
       </div>
       <div className="achievers">
         {rest.map((a, i) => <AchieverCard a={a} key={a.name} delay={i * 70} />)}
@@ -290,7 +293,7 @@ export function Cet2025Ribbon() {
       <ul className="new-results-list">
         {students.map((t) => (
           <li key={t.name}>
-            <span className="new-results-mono"><Monogram t={t} /></span>
+            <span className="new-results-mono">{t.photo ? <img src={t.photo} alt={t.name} loading="lazy" /> : <Monogram t={t} />}</span>
             <b>{t.score.toFixed(2)}<small>%ile</small></b>
             <span>{t.name}</span>
             <small className="new-results-stream">{t.stream}</small>
