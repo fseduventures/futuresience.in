@@ -71,6 +71,7 @@ export const nav = [
   { to: '/courses', label: 'Courses' },
   { to: '/results', label: 'Results' },
   { to: '/directors', label: 'Directors' },
+  { to: '/life', label: 'Life at fS' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -331,7 +332,7 @@ export const gallery = [
   { src: '/images/gallery/felicitation.jpg', alt: 'Toppers felicitated with flowers by their mentors', caption: 'Felicitating our toppers' },
   { src: '/images/gallery/lecture.jpg', alt: 'A packed futureScience lecture', caption: 'Concept-first lectures' },
   { src: '/images/gallery/christmas.jpg', alt: 'Students celebrating Christmas in class', caption: 'Celebrations in class' },
-  { src: '/images/gallery/sunday-test.jpg', alt: 'Students writing the Sunday test', caption: 'Sunday tests, every week' },
+  { src: '/images/gallery/sunday-test.jpg', alt: 'Students writing a futureScience test in exam conditions', caption: 'Regular tests, real exam conditions' },
   { src: '/images/gallery/results-day.jpg', alt: 'Students and mentors together on results day', caption: 'Results day', wide: true },
 ]
 

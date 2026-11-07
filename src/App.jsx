@@ -9,6 +9,7 @@ import Results from './pages/Results.jsx'
 import Directors from './pages/Directors.jsx'
 import Contact from './pages/Contact.jsx'
 import Privacy from './pages/Privacy.jsx'
+import Life from './pages/Life.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Seo from './seo/Seo.jsx'
 import { ThemeProvider } from './theme.jsx'
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/results" element={<Results />} />
           <Route path="/directors" element={<Directors />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/life" element={<Life />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

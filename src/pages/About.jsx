@@ -1,6 +1,6 @@
 import Icon from '../components/Icon.jsx'
 import Reveal from '../components/Reveal.jsx'
-import { PageHero, SectionHead, CtaBand } from '../components/Section.jsx'
+import { PageHero, SectionHead, CtaBand, LifeLink } from '../components/Section.jsx'
 import { Link } from 'react-router-dom'
 import { Methodology, Legacy, MentorsFeature, Gallery } from '../components/Blocks.jsx'
 import { brand, values, pillars, scientists, quote } from '../data/site.js'
@@ -101,6 +101,7 @@ export default function About() {
         <div className="container">
           <SectionHead center eyebrow="Life at futureScience" title={<>Where hard work <span className="hl-dark">meets celebration.</span></>} />
           <Gallery />
+          <div className="section-cta"><LifeLink /></div>
         </div>
       </section>
 

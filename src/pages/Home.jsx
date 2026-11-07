@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Reveal, { Counter } from '../components/Reveal.jsx'
-import { SectionHead, CtaBand, BrochureButton } from '../components/Section.jsx'
+import { SectionHead, CtaBand, BrochureButton, LifeLink } from '../components/Section.jsx'
 import {
   TopperCard, AchieverCard, ProgramCard, Methodology, Testimonials, BatchTable, Branches, Faq, Tracks,
   MentorsFeature, AlumniWall, Gallery, TestimonialWall, NeetCard, Legacy, Cet2025Ribbon,
@@ -181,7 +181,7 @@ export default function Home() {
         <div className="container split">
           <Reveal className="split-media collage">
             <img className="c1" src="/images/gallery/lecture.jpg" alt="A packed futureScience lecture" loading="lazy" />
-            <img className="c2" src="/images/gallery/sunday-test.jpg" alt="Students writing the futureScience Sunday test" loading="lazy" />
+            <img className="c2" src="/images/gallery/sunday-test.jpg" alt="Students writing a futureScience test in exam conditions" loading="lazy" />
             <div className="collage-badge">
               <Icon name="Rocket" size={26} />
               <div><b>Science is</b><span>the Future</span></div>
@@ -281,6 +281,7 @@ export default function Home() {
             title={<>Where hard work <span className="hl-dark">meets celebration.</span></>}
           />
           <Gallery />
+          <div className="section-cta"><LifeLink /></div>
         </div>
       </section>
 

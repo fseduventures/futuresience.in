@@ -111,7 +111,7 @@ fs.writeFileSync(path.join(dist, '404.html'), page('/404', { noindex: true }))
 
 // ── sitemap.xml ──
 const today = new Date().toISOString().slice(0, 10)
-const priority = { '/': '1.0', '/courses': '0.9', '/results': '0.9', '/contact': '0.9', '/about': '0.7', '/directors': '0.8', '/privacy': '0.3' }
+const priority = { '/': '1.0', '/courses': '0.9', '/results': '0.9', '/contact': '0.9', '/about': '0.7', '/directors': '0.8', '/life': '0.6', '/privacy': '0.3' }
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map((r) => `  <url><loc>${canonical(r)}</loc><lastmod>${today}</lastmod><changefreq>${r === '/' || r === '/courses' ? 'weekly' : 'monthly'}</changefreq><priority>${priority[r]}</priority></url>`).join('\n')}
@@ -181,6 +181,7 @@ ${faqs.map((f) => `### ${f.q}\n${f.a}`).join('\n\n')}
 - [Results](${SITE_URL}/results/)
 - [Directors](${SITE_URL}/directors/)
 - [About](${SITE_URL}/about/)
+- [Life at futureScience](${SITE_URL}/life/)
 - [Contact & branches](${SITE_URL}/contact/)
 - [Privacy policy](${SITE_URL}/privacy/)
 - [Brochure ${ACADEMIC_YEAR} (PDF)](${SITE_URL}${BROCHURE_URL})

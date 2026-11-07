@@ -1,0 +1,326 @@
+[
+  {
+    "route": "/",
+    "name": "Home",
+    "slug": "home",
+    "width": 1280,
+    "sections": [
+      {
+        "top": 0,
+        "height": 1180.1875,
+        "label": "Science coaching for Class 11 & 12: JEE, NEET-UG, MHT-CET & CUET in Kandivali West & Malad West, Mumbai",
+        "file": "home-01.jpg"
+      },
+      {
+        "top": 1242.546875,
+        "height": 1917.078125,
+        "label": "Results that speak louder than claims.",
+        "file": "home-02.jpg"
+      },
+      {
+        "top": 3159.625,
+        "height": 792.796875,
+        "label": "A legacy written in ranks, white coats and IIT IDs.",
+        "file": "home-03.jpg"
+      },
+      {
+        "top": 3952.421875,
+        "height": 1886.3125,
+        "label": "Two names behind generations of science careers.",
+        "file": "home-04.jpg"
+      },
+      {
+        "top": 5925.40625,
+        "height": 836.484375,
+        "label": "A launchpad for science careers, built for the top 1%.",
+        "file": "home-05.jpg"
+      },
+      {
+        "top": 6761.890625,
+        "height": 1076.515625,
+        "label": "Engineering, medical & pharmacy entrance, all under one roof.",
+        "file": "home-06.jpg"
+      },
+      {
+        "top": 7838.40625,
+        "height": 1697.40625,
+        "label": "Courses crafted for every ambition.",
+        "file": "home-07.jpg"
+      },
+      {
+        "top": 9535.8125,
+        "height": 1048.21875,
+        "label": "\"Selecting fS as my mentor was the best decision.\"",
+        "file": "home-08.jpg"
+      },
+      {
+        "top": 10584.03125,
+        "height": 1183.421875,
+        "label": "",
+        "file": "home-09.jpg"
+      },
+      {
+        "top": 11767.453125,
+        "height": 922.640625,
+        "label": "Five steps from curiosity to success.",
+        "file": "home-10.jpg"
+      },
+      {
+        "top": 12690.09375,
+        "height": 1165.4375,
+        "label": "Where hard work meets celebration.",
+        "file": "home-11.jpg"
+      },
+      {
+        "top": 13855.53125,
+        "height": 994.90625,
+        "label": "Admissions now open.",
+        "file": "home-12.jpg"
+      },
+      {
+        "top": 14850.4375,
+        "height": 880.109375,
+        "label": "Two branches in Kandivali West & Malad West.",
+        "file": "home-13.jpg"
+      },
+      {
+        "top": 15730.546875,
+        "height": 1489.859375,
+        "label": "Questions parents & students ask us.",
+        "file": "home-14.jpg"
+      },
+      {
+        "top": 17220.40625,
+        "height": 313.203125,
+        "label": "Admissions are open for 2027–29.",
+        "file": "home-15.jpg"
+      }
+    ]
+  },
+  {
+    "route": "/courses/",
+    "name": "Courses",
+    "slug": "courses",
+    "width": 1280,
+    "sections": [
+      {
+        "top": 0,
+        "height": 700.671875,
+        "label": "JEE, NEET, CET & CUET coaching for Class 11 & 12.",
+        "file": "courses-01.jpg"
+      },
+      {
+        "top": 700.671875,
+        "height": 5632.703125,
+        "label": "Std. XI + XII Science",
+        "file": "courses-02.jpg"
+      },
+      {
+        "top": 6333.375,
+        "height": 946.15625,
+        "label": "Upcoming batches & commencement dates.",
+        "file": "courses-03.jpg"
+      },
+      {
+        "top": 7279.53125,
+        "height": 895.578125,
+        "label": "Find the right track for your goal.",
+        "file": "courses-04.jpg"
+      },
+      {
+        "top": 8175.109375,
+        "height": 1230.625,
+        "label": "Course questions, answered.",
+        "file": "courses-05.jpg"
+      },
+      {
+        "top": 9405.734375,
+        "height": 313.203125,
+        "label": "Admissions are open for 2027–29.",
+        "file": "courses-06.jpg"
+      }
+    ]
+  },
+  {
+    "route": "/results/",
+    "name": "Results",
+    "slug": "results",
+    "width": 1280,
+    "sections": [
+      {
+        "top": 0,
+        "height": 595.6875,
+        "label": "Our achievers, our pride.",
+        "file": "results-01.jpg"
+      },
+      {
+        "top": 595.6875,
+        "height": 2248.25,
+        "label": "Fresh off the merit list: 99.97 %ile.",
+        "file": "results-02.jpg"
+      },
+      {
+        "top": 2843.9375,
+        "height": 813.1875,
+        "label": "Tvisha Vedant: four ranks, one student.",
+        "file": "results-03.jpg"
+      },
+      {
+        "top": 3657.125,
+        "height": 644.765625,
+        "label": "Where futureScience students are now.",
+        "file": "results-04.jpg"
+      },
+      {
+        "top": 4301.890625,
+        "height": 1844.078125,
+        "label": "Doctors, engineers & researchers look back.",
+        "file": "results-05.jpg"
+      },
+      {
+        "top": 6145.96875,
+        "height": 2689.265625,
+        "label": "Every result is celebrated together.",
+        "file": "results-06.jpg"
+      },
+      {
+        "top": 8835.234375,
+        "height": 313.203125,
+        "label": "Admissions are open for 2027–29.",
+        "file": "results-07.jpg"
+      }
+    ]
+  },
+  {
+    "route": "/directors/",
+    "name": "Directors",
+    "slug": "directors",
+    "width": 1280,
+    "sections": [
+      {
+        "top": 0,
+        "height": 746.53125,
+        "label": "Nilesh Vedant & Prasanna Raut: the visionaries behind futureScience.",
+        "file": "directors-01.jpg"
+      },
+      {
+        "top": 746.53125,
+        "height": 2345.8125,
+        "label": "Two names behind generations of science careers.",
+        "file": "directors-02.jpg"
+      },
+      {
+        "top": 3092.34375,
+        "height": 785.609375,
+        "label": "Student welfare, not just syllabus.",
+        "file": "directors-03.jpg"
+      },
+      {
+        "top": 3877.953125,
+        "height": 644.765625,
+        "label": "From their classrooms to India's best campuses.",
+        "file": "directors-04.jpg"
+      },
+      {
+        "top": 4522.71875,
+        "height": 1115.40625,
+        "label": "The futureScience family.",
+        "file": "directors-05.jpg"
+      },
+      {
+        "top": 5638.125,
+        "height": 313.203125,
+        "label": "Admissions are open for 2027–29.",
+        "file": "directors-06.jpg"
+      }
+    ]
+  },
+  {
+    "route": "/about/",
+    "name": "About",
+    "slug": "about",
+    "width": 1280,
+    "sections": [
+      {
+        "top": 0,
+        "height": 700.671875,
+        "label": "Science is the Future, and so are you.",
+        "file": "about-01.jpg"
+      },
+      {
+        "top": 700.671875,
+        "height": 785.609375,
+        "label": "A classroom where wonder meets rigour.",
+        "file": "about-02.jpg"
+      },
+      {
+        "top": 1486.28125,
+        "height": 792.796875,
+        "label": "A legacy written in ranks, white coats and IIT IDs.",
+        "file": "about-03.jpg"
+      },
+      {
+        "top": 2279.078125,
+        "height": 1886.3125,
+        "label": "Two names behind generations of science careers.",
+        "file": "about-04.jpg"
+      },
+      {
+        "top": 4252.0625,
+        "height": 850.125,
+        "label": "What drives every lecture.",
+        "file": "about-05.jpg"
+      },
+      {
+        "top": 5102.1875,
+        "height": 791.734375,
+        "label": "Our five-step success ladder.",
+        "file": "about-06.jpg"
+      },
+      {
+        "top": 5893.921875,
+        "height": 556.71875,
+        "label": "Inspired by the greatest minds.",
+        "file": "about-07.jpg"
+      },
+      {
+        "top": 6450.640625,
+        "height": 679.703125,
+        "label": "Built on six promises.",
+        "file": "about-08.jpg"
+      },
+      {
+        "top": 7130.34375,
+        "height": 1165.4375,
+        "label": "Where hard work meets celebration.",
+        "file": "about-09.jpg"
+      },
+      {
+        "top": 8295.78125,
+        "height": 313.203125,
+        "label": "Admissions are open for 2027–29.",
+        "file": "about-10.jpg"
+      }
+    ]
+  },
+  {
+    "route": "/contact/",
+    "name": "Contact",
+    "slug": "contact",
+    "width": 1280,
+    "sections": [
+      {
+        "top": 0,
+        "height": 671.109375,
+        "label": "Contact us in Kandivali West & Malad West.",
+        "file": "contact-01.jpg"
+      },
+      {
+        "top": 671.109375,
+        "height": 1982.875,
+        "label": "Visit a futureScience branch.",
+        "file": "contact-02.jpg"
+      }
+    ]
+  }
+]

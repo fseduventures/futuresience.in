@@ -129,9 +129,10 @@ p { margin: 0 0 1em; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 82px; transition: height 0.3s; }
 .header.is-scrolled .header-inner { height: 68px; }
 .brand img { height: 52px; width: auto; transition: height 0.3s; }
+.brand { flex-shrink: 0; }
 .header.is-scrolled .brand img { height: 44px; }
 .nav { display: flex; align-items: center; gap: 0.35rem; }
-.nav a:not(.btn) { position: relative; padding: 0.5rem 0.85rem; font-family: var(--font-head); font-weight: 550; font-size: 0.93rem; color: var(--ink); border-radius: 999px; transition: color 0.2s, background 0.2s; }
+.nav a:not(.btn) { position: relative; white-space: nowrap; padding: 0.5rem 0.85rem; font-family: var(--font-head); font-weight: 550; font-size: 0.93rem; color: var(--ink); border-radius: 999px; transition: color 0.2s, background 0.2s; }
 .nav a:not(.btn):hover { background: var(--tint); }
 .nav a.active { color: var(--lime-600); }
 .nav a.active::after { content: ''; position: absolute; left: 50%; bottom: 2px; width: 5px; height: 5px; border-radius: 50%; background: var(--lime); transform: translateX(-50%); }
@@ -552,6 +553,8 @@ a.avatars:hover span { background: #fff; }
 .gal:hover img { transform: scale(1.05); }
 .gal figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.2rem 1.1rem 0.9rem; background: linear-gradient(transparent, rgba(11, 12, 46, 0.85)); color: #fff; font-family: var(--font-head); font-weight: 600; font-size: 0.95rem; }
 .gallery-gap { margin-top: 3rem; }
+.section-cta { display: flex; justify-content: center; margin-top: 2.2rem; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
 .gal.tall { grid-row: span 2; }
 /* Festival album above the general gallery (Results page) */
 .festival { margin-bottom: 3rem; }
@@ -627,8 +630,14 @@ a.avatars:hover span { background: #fff; }
 .topbar-version { padding-left: 1.4rem; border-left: 1px solid rgba(127, 127, 127, 0.35); }
 
 /* ═══ Responsive ═════════════════════════ */
-@media (min-width: 921px) and (max-width: 1180px) {
+@media (min-width: 921px) and (max-width: 1320px) {
   .nav-brochure { display: none; } /* not enough room beside the nav; still in hero, CTA band and footer */
+}
+/* narrow laptops (above the 980px menu button): eight menu items need tighter spacing */
+@media (min-width: 981px) and (max-width: 1100px) {
+  .nav { gap: 0.1rem; }
+  .nav a:not(.btn) { padding: 0.5rem 0.5rem; font-size: 0.88rem; }
+  .brand img { height: 44px; }
 }
 @media (max-width: 1080px) {
   .programs { grid-template-columns: repeat(2, 1fr); }

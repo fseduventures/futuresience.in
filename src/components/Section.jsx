@@ -53,3 +53,8 @@ export function CtaBand() {
     </section>
   )
 }
+
+// Link to the Life at futureScience page, under every gallery section
+export function LifeLink({ className = 'btn btn-outline' }) {
+  return <Link to="/life" className={className}>See life at futureScience <Icon name="ArrowRight" size={18} /></Link>
+}

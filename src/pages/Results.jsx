@@ -1,6 +1,6 @@
 import Icon from '../components/Icon.jsx'
 import Reveal from '../components/Reveal.jsx'
-import { PageHero, SectionHead, CtaBand, BrochureButton } from '../components/Section.jsx'
+import { PageHero, SectionHead, CtaBand, BrochureButton, LifeLink } from '../components/Section.jsx'
 import { TopperCard, AchieverCard, NeetCard, AlumniWall, TestimonialWall, Gallery, Cet2025, Celebrations } from '../components/Blocks.jsx'
 import { toppers, achievers, cet2022 } from '../data/site.js'
 
@@ -79,7 +79,10 @@ export default function Results() {
         <div className="container split">
           <div>
             <SectionHead eyebrow="Celebrations" title={<>Every result is <span className="hl-dark">celebrated together.</span></>} lead="Results days, felicitations and festivals: the futureScience family celebrates every milestone." />
-            <BrochureButton className="btn btn-primary" label="Download full brochure (PDF)" />
+            <div className="btn-row">
+              <BrochureButton className="btn btn-primary" label="Download full brochure (PDF)" />
+              <LifeLink />
+            </div>
           </div>
           <Reveal className="brochure">
             <img src="/images/brochure-achievers.jpg" alt="futureScience Achievers 2024 brochure" loading="lazy" />

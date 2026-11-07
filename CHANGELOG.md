@@ -7,6 +7,11 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ### Added
 - Diwali 2026 album (6 photos) in the Celebrations section of the Results page, as a mosaic above the gallery. Website only; the brochure is unchanged.
+- **Life at futureScience** page (`/life/`): every festival album plus the gallery. Linked from the header menu ("Life at fS", so on every page and in the footer) and with a "See life at futureScience" button under the galleries on Home, About and Directors and in the Results page Celebrations section.
+
+### Changed
+- The tests photo caption no longer mentions Sunday: "Regular tests, real exam conditions" (website and brochure text).
+- Header: menu links never wrap; the Brochure button in the header shows from 1321px (it's still in the hero, CTA band and footer); tighter menu spacing between 981 and 1100px.
 
 ## [6.6.0] - 2026-11-07
 

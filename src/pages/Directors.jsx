@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Reveal from '../components/Reveal.jsx'
-import { PageHero, SectionHead, CtaBand } from '../components/Section.jsx'
+import { PageHero, SectionHead, CtaBand, LifeLink } from '../components/Section.jsx'
 import { MentorsFeature, AlumniWall, Gallery } from '../components/Blocks.jsx'
 
 export default function Directors() {
@@ -49,6 +49,7 @@ export default function Directors() {
         <div className="container">
           <SectionHead center eyebrow="Life at futureScience" title={<>The futureScience <span className="hl-dark">family.</span></>} />
           <Gallery />
+          <div className="section-cta"><LifeLink /></div>
         </div>
       </section>
 

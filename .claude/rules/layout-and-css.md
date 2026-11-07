@@ -6,6 +6,7 @@
 - Large display numbers scale with the viewport, for example `font-size: clamp(1.45rem, 7vw, 2rem)` on phones.
 - Grid **items** that hold a horizontal scroller (the hero spotlight carousel) also need `min-width: 0`, or the track's full width stretches the column and the page overflows.
 - When asked to add a feature to an existing section, keep that section's layout exactly as it is. Add to it; don't rearrange it.
+- The header menu has 8 items (`nav` in `site.js`). After adding one, check widths 982, 1000, 1100, 1200, 1280 and 1366px: nothing may wrap or be cut off. The header Brochure button hides below 1321px, and 981–1100px uses tighter link spacing.
 - Breakpoints in `styles.css`: `max-width: 980px` (tablet) and `max-width: 640px` (phone). Put phone fixes in the 640px block.
 
 ## Animation
