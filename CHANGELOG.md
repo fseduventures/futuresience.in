@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [6.6.0] - 2026-11-07
+
 ### Added
 - MHT-CET 2025 results (7 students, led by Aarna Diwan 99.97 %ile PCB and Param Shah 99.41 %ile PCM):
   - a new block at the top of the Results page, with feature cards for the PCB and PCM toppers and the rest in the achiever row
