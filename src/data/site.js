@@ -309,6 +309,23 @@ export const legacy = [
   { when: 'Now', title: `Admissions ${'2027–29'}`, text: 'Two branches in Kandivali West and Malad West, and the next generation of futureScience toppers.' },
 ]
 
+// Festival albums for the website's Celebrations section (Results page), newest first.
+// Website only: the brochure reads `gallery`, not this. `wide` spans 2 columns, `tall` spans 2 rows.
+export const celebrations = [
+  {
+    title: 'Diwali 2026',
+    lead: 'Traditional wear, gifts, sweets and a whiteboard full of Diwali wishes and formulas.',
+    photos: [
+      { src: '/images/gallery/diwali-2026-group.jpg', alt: 'Students and teachers of futureScience together for Diwali', caption: 'Diwali with the fS family', wide: true },
+      { src: '/images/gallery/diwali-2026-gifts.jpg', alt: 'Students exchanging Diwali gifts in front of the decorated whiteboard', caption: 'Gifts and greetings', tall: true },
+      { src: '/images/gallery/diwali-2026-sweets.jpg', alt: 'Students receiving a box of Diwali sweets from their teacher', caption: 'Sweets for the class' },
+      { src: '/images/gallery/diwali-2026-selfie.jpg', alt: 'A Diwali selfie with futureScience teachers and students', caption: 'Selfie time' },
+      { src: '/images/gallery/diwali-2026-class.jpg', alt: 'Students and teachers celebrating Diwali in the classroom', caption: 'Happy Diwali from futureScience', wide: true },
+      { src: '/images/gallery/diwali-2026-teacher.jpg', alt: 'A teacher handing Diwali sweets to a group of students', caption: 'A sweet tradition' },
+    ],
+  },
+]
+
 export const gallery = [
   { src: '/images/gallery/batch-celebration.jpg', alt: 'A full futureScience batch celebrating together', caption: 'One batch, one family', wide: true },
   { src: '/images/gallery/felicitation.jpg', alt: 'Toppers felicitated with flowers by their mentors', caption: 'Felicitating our toppers' },

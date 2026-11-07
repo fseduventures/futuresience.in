@@ -5,6 +5,9 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Added
+- Diwali 2026 album (6 photos) in the Celebrations section of the Results page, as a mosaic above the gallery. Website only; the brochure is unchanged.
+
 ## [6.6.0] - 2026-11-07
 
 ### Added

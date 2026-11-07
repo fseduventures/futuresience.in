@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import Reveal, { Counter } from './Reveal.jsx'
 import {
-  methodology, testimonials, batches, branches, contact, faqs, tracks, brand, mentors, mentorsIntro, alumniColleges, gallery, neetTopper, legacy, cet2025,
+  methodology, testimonials, batches, branches, contact, faqs, tracks, brand, mentors, mentorsIntro, alumniColleges, gallery, neetTopper, legacy, cet2025, celebrations,
 } from '../data/site.js'
 
 const initials = (name) => name.split(/\s+/).filter((w) => /^[A-Z]/.test(w)).slice(0, 2).map((w) => w[0]).join('')
@@ -113,6 +113,26 @@ export function Gallery() {
       ))}
     </div>
   )
+}
+
+// Festival albums (Results page): one mosaic per event, newest first
+export function Celebrations() {
+  return celebrations.map((ev) => (
+    <div className="festival" key={ev.title}>
+      <div className="festival-head">
+        <span className="pill">{ev.title}</span>
+        <p>{ev.lead}</p>
+      </div>
+      <div className="gallery">
+        {ev.photos.map((g, i) => (
+          <Reveal as="figure" className={`gal ${g.wide ? 'wide' : ''} ${g.tall ? 'tall' : ''}`} key={g.src} delay={(i % 3) * 80}>
+            <img src={g.src} alt={g.alt} loading="lazy" {...smallSrc(g.src)} />
+            <figcaption>{g.caption}</figcaption>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  ))
 }
 
 export function TestimonialWall({ items = testimonials }) {

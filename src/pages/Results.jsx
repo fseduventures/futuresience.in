@@ -1,7 +1,7 @@
 import Icon from '../components/Icon.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { PageHero, SectionHead, CtaBand, BrochureButton } from '../components/Section.jsx'
-import { TopperCard, AchieverCard, NeetCard, AlumniWall, TestimonialWall, Gallery, Cet2025 } from '../components/Blocks.jsx'
+import { TopperCard, AchieverCard, NeetCard, AlumniWall, TestimonialWall, Gallery, Cet2025, Celebrations } from '../components/Blocks.jsx'
 import { toppers, achievers, cet2022 } from '../data/site.js'
 
 export default function Results() {
@@ -87,6 +87,7 @@ export default function Results() {
           </Reveal>
         </div>
         <div className="container gallery-gap">
+          <Celebrations />
           <Gallery />
         </div>
       </section>

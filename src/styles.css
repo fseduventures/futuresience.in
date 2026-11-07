@@ -552,6 +552,11 @@ a.avatars:hover span { background: #fff; }
 .gal:hover img { transform: scale(1.05); }
 .gal figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.2rem 1.1rem 0.9rem; background: linear-gradient(transparent, rgba(11, 12, 46, 0.85)); color: #fff; font-family: var(--font-head); font-weight: 600; font-size: 0.95rem; }
 .gallery-gap { margin-top: 3rem; }
+.gal.tall { grid-row: span 2; }
+/* Festival album above the general gallery (Results page) */
+.festival { margin-bottom: 3rem; }
+.festival-head { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
+.festival-head p { margin: 0; color: var(--muted); }
 
 /* ── Coaching tracks ─────────────────────── */
 .tracks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
