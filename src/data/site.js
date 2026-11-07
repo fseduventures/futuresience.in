@@ -338,7 +338,7 @@ export const achievers = [
 ]
 
 // MHT-CET 2025, highest first. Percentiles rounded to 2 decimals like the 2024 results.
-// Photos were cropped from the score cards (small, ~110px): feature cards show them as a ringed portrait.
+// Names and photos as on the score cards (photos are small, ~110px): feature cards show them as a ringed portrait.
 // A student without `photo` gets a monogram.
 export const cet2025 = {
   exam: 'MHT-CET 2025',
@@ -348,8 +348,8 @@ export const cet2025 = {
     { name: 'Manthan Joshi', photo: '/images/achievers/manthan-joshi.jpg', stream: 'PCB', score: 99.47, breakdown: [['Physics', '95.65'], ['Chemistry', '99.55'], ['Biology', '99.80']] },
     { name: 'Param Shah', photo: '/images/achievers/param-shah.jpg', stream: 'PCM', score: 99.41, breakdown: [['Physics', '99.69'], ['Chemistry', '93.56'], ['Mathematics', '99.64']] },
     { name: 'Darshit Shinde', photo: '/images/achievers/darshit-shinde.jpg', stream: 'PCM', score: 97.81, breakdown: [['Physics', '98.77'], ['Chemistry', '99.37'], ['Mathematics', '93.47']] },
-    { name: 'Bhavya Ambavat', stream: 'PCM', score: 94.63, breakdown: [['Physics', '95.86'], ['Chemistry', '90.79'], ['Mathematics', '94.26']] },
-    { name: 'Aditya Jani', photo: '/images/achievers/aditya-jani.jpg', stream: 'PCM', score: 94.06, breakdown: [['Physics', '91.44'], ['Chemistry', '94.14'], ['Mathematics', '93.33']] },
+    { name: 'Bhavya Ambavat', photo: '/images/achievers/bhavya-ambavat.jpg', stream: 'PCM', score: 94.63, breakdown: [['Physics', '95.86'], ['Chemistry', '90.79'], ['Mathematics', '94.26']] },
+    { name: 'Aaditya Jani', photo: '/images/achievers/aaditya-jani.jpg', stream: 'PCM', score: 94.06, breakdown: [['Physics', '91.44'], ['Chemistry', '94.14'], ['Mathematics', '93.33']] },
   ],
 }
 

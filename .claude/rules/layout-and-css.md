@@ -22,7 +22,9 @@
 - `.sr-only` hides text visually but keeps it for screen readers and crawlers.
 
 ## Students without photos
-- `TopperCard` and `AchieverCard` show a `Monogram` (initials on navy, a DNA mark for PCB and an atom for PCM) when a student has no `photo`. It's used for MHT-CET 2025 (`cet2025` in `site.js`). When a photo arrives, add `photo: '/images/achievers/<name>.jpg'` to that student; nothing else changes.
+- `TopperCard` and `AchieverCard` show a `Monogram` (initials on navy, a DNA mark for PCB and an atom for PCM) when a student has no `photo`. When a photo arrives, add `photo: '/images/achievers/<name>.jpg'` to that student; nothing else changes.
+- Small photos (the MHT-CET 2025 ones were cropped from score-card screenshots, ~110px) go on feature cards with `framed`: a ringed portrait on the navy panel instead of a blurry full-card photo. Crop just inside the photo frame, enlarge 2x with lanczos3, sharpen lightly, and save as JPEG q90. Use only the photo: never commit score cards or any other detail on them.
+- Names follow the official score card's spelling.
 - A new year's results: add a `cetYYYY` object like `cet2025`, a block on the Results page (newest first), the homepage ribbon, the Results meta description and the `llms.txt` lines in `prerender.mjs`. The brochure only changes if asked, and without years (see CLAUDE.md).
 
 ## Code style

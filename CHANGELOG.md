@@ -9,7 +9,7 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 - MHT-CET 2025 results (7 students, led by Aarna Diwan 99.97 %ile PCB and Param Shah 99.41 %ile PCM):
   - a new block at the top of the Results page, with feature cards for the PCB and PCM toppers and the rest in the achiever row
   - a "New · MHT-CET 2025" ribbon in the homepage results section (swipeable on phones)
-  - photos for six students, cropped from their score cards (only the photo is used); the PCB and PCM toppers show theirs as a ringed portrait on the navy panel, and a student without a photo gets a monogram (initials on navy with a DNA or atom mark)
+  - photos for all seven students, cropped from their score cards (only the photo is used), with names as on the score cards; the PCB and PCM toppers show theirs as a ringed portrait on the navy panel. A future student without a photo gets a monogram (initials on navy with a DNA or atom mark)
   - the Results page description and `llms.txt` updated
 
 ### Fixed
