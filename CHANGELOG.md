@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [6.7.0] - 2026-11-07
+
 ### Added
 - Diwali 2026 album (6 photos) in the Celebrations section of the Results page, as a mosaic above the gallery. Website only; the brochure is unchanged.
 - **Life at futureScience** page (`/life/`): every festival album plus the gallery. Linked from the header menu ("Life at fS", so on every page and in the footer) and with a "See life at futureScience" button under the galleries on Home, About and Directors and in the Results page Celebrations section.
