@@ -100,7 +100,7 @@ const smallSrc = (src) => (/\.jpe?g$/i.test(src) && !SMALL_ONLY.has(src)
   ? { srcSet: `${src.replace(/(\.jpe?g)$/i, '-sm$1')} 720w, ${src} 1400w`, sizes: '(max-width: 640px) 100vw, 50vw' }
   : {})
 // gallery photos already 900px wide or less, so they have no -sm copy
-const SMALL_ONLY = new Set(['/images/gallery/felicitation.jpg', '/images/gallery/sunday-test.jpg'])
+const SMALL_ONLY = new Set(['/images/gallery/felicitation.jpg'])
 
 export function Gallery() {
   return (

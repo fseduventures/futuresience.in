@@ -97,7 +97,7 @@ function About({ n }) {
         </p>
         <div className="about-collage">
           <img className="a1" src="/images/gallery/lecture.jpg" alt="" />
-          <img className="a2" src="/images/gallery/sunday-test.jpg" alt="" />
+          <img className="a2" src="/images/gallery/class-test.jpg" alt="" />
           <div className="a-badge"><Icon name="Rocket" size={18} /><div><b>Science is</b><span>the Future</span></div></div>
         </div>
         <div className="mini-stats">

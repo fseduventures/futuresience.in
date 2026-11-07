@@ -181,7 +181,7 @@ export default function Home() {
         <div className="container split">
           <Reveal className="split-media collage">
             <img className="c1" src="/images/gallery/lecture.jpg" alt="A packed futureScience lecture" loading="lazy" />
-            <img className="c2" src="/images/gallery/sunday-test.jpg" alt="Students writing a futureScience test in exam conditions" loading="lazy" />
+            <img className="c2" src="/images/gallery/class-test.jpg" alt="Students writing a futureScience test in exam conditions" loading="lazy" />
             <div className="collage-badge">
               <Icon name="Rocket" size={26} />
               <div><b>Science is</b><span>the Future</span></div>

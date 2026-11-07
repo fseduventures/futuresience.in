@@ -322,7 +322,7 @@ export const celebrations = [
       { src: '/images/gallery/diwali-2026-sweets.jpg', alt: 'Students receiving a box of Diwali sweets from their teacher', caption: 'Sweets for the class' },
       { src: '/images/gallery/diwali-2026-selfie.jpg', alt: 'A Diwali selfie with futureScience teachers and students', caption: 'Selfie time' },
       { src: '/images/gallery/diwali-2026-class.jpg', alt: 'Students and teachers celebrating Diwali in the classroom', caption: 'Happy Diwali from futureScience', wide: true },
-      { src: '/images/gallery/diwali-2026-teacher.jpg', alt: 'A teacher handing Diwali sweets to a group of students', caption: 'A sweet tradition' },
+      { src: '/images/gallery/diwali-2026-classphoto.jpg', alt: 'A class photo of futureScience students with their teachers', caption: 'The whole class, together' },
     ],
   },
 ]
@@ -332,7 +332,7 @@ export const gallery = [
   { src: '/images/gallery/felicitation.jpg', alt: 'Toppers felicitated with flowers by their mentors', caption: 'Felicitating our toppers' },
   { src: '/images/gallery/lecture.jpg', alt: 'A packed futureScience lecture', caption: 'Concept-first lectures' },
   { src: '/images/gallery/christmas.jpg', alt: 'Students celebrating Christmas in class', caption: 'Celebrations in class' },
-  { src: '/images/gallery/sunday-test.jpg', alt: 'Students writing a futureScience test in exam conditions', caption: 'Regular tests, real exam conditions' },
+  { src: '/images/gallery/class-test.jpg', alt: 'Students writing a futureScience test in exam conditions', caption: 'Regular tests, real exam conditions' },
   { src: '/images/gallery/results-day.jpg', alt: 'Students and mentors together on results day', caption: 'Results day', wide: true },
 ]
 

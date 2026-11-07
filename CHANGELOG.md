@@ -12,7 +12,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 - **futureScience presentation** (`npm run deck`): a Prezi-style PowerPoint about futureScience, built from the same data as the website and brochure. 15 designed frames (about, results, legacy, directors, method, courses, admissions, testimonials, alumni, Life at fS, contact) on one canvas, with Morph camera moves and preset reading times (about 3 minutes), ready for *Create a Video*. Regenerated and attached to the GitHub Release on every release.
 
 ### Changed
-- The tests photo caption no longer mentions Sunday: "Regular tests, real exam conditions" (website and brochure text).
+- The tests photo is now a real exam-hall photo (replacing an Instagram screenshot), with the caption "Regular tests, real exam conditions" instead of mentioning Sunday: in the website gallery, the homepage classroom collage and the brochure (regenerated).
+- Diwali 2026 album: the class photo added (camera watermark strip cropped off, enhanced); "A sweet tradition" removed as a near-duplicate.
 - Header: menu links never wrap; the Brochure button in the header shows from 1321px (it's still in the hero, CTA band and footer); tighter menu spacing between 981 and 1100px.
 
 ## [6.6.0] - 2026-11-07
