@@ -345,7 +345,7 @@ export const cet2025 = {
   students: [
     { name: 'Aarna Diwan', photo: '/images/achievers/aarna-diwan.jpg', stream: 'PCB', score: 99.97, breakdown: [['Physics', '99.35'], ['Chemistry', '99.93'], ['Biology', '99.99']] },
     { name: 'Aarya Mankame', photo: '/images/achievers/aarya-mankame.jpg', stream: 'PCB', score: 99.50, breakdown: [['Physics', '97.57'], ['Chemistry', '99.45'], ['Biology', '99.68']] },
-    { name: 'Manthan Dave', photo: '/images/achievers/manthan-dave.jpg', stream: 'PCB', score: 99.47, breakdown: [['Physics', '95.65'], ['Chemistry', '99.55'], ['Biology', '99.80']] },
+    { name: 'Manthan Joshi', photo: '/images/achievers/manthan-joshi.jpg', stream: 'PCB', score: 99.47, breakdown: [['Physics', '95.65'], ['Chemistry', '99.55'], ['Biology', '99.80']] },
     { name: 'Param Shah', photo: '/images/achievers/param-shah.jpg', stream: 'PCM', score: 99.41, breakdown: [['Physics', '99.69'], ['Chemistry', '93.56'], ['Mathematics', '99.64']] },
     { name: 'Darshit Shinde', photo: '/images/achievers/darshit-shinde.jpg', stream: 'PCM', score: 97.81, breakdown: [['Physics', '98.77'], ['Chemistry', '99.37'], ['Mathematics', '93.47']] },
     { name: 'Bhavya Ambavat', stream: 'PCM', score: 94.63, breakdown: [['Physics', '95.86'], ['Chemistry', '90.79'], ['Mathematics', '94.26']] },
