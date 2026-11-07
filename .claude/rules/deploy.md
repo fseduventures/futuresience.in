@@ -12,13 +12,13 @@
 ## Upload file
 Every `npm run build` ends with `scripts/zip-dist.mjs`, which writes **`dist-build.zip`** at the project root (gitignored). It holds the contents of `dist/` at the zip's root, `.htaccess` included, so it extracts straight into `public_html`. After any build, point the user to this file. Don't ask them to upload the `dist/` folder by hand.
 
-## Website-tour deck (`npm run deck`)
-- `deck-capture.mjs` loads every page of `dist/` in headless Chrome (dark theme, 1280px at 1.5×) and saves each `main > section` as a JPEG. Each section is captured by sizing the window to it: capturing far outside the window blanks out on the long homepage (Chrome's ~16,000px limit).
-- `make-deck.mjs` lays the pages out as columns on one canvas. The slides run: title, then for each page an overview followed by a zoom into the page and a pan through its sections, then a final overview and a closing slide. A section repeated on another page (same heading) gets one stop only.
-- Morph is added to each slide's XML afterwards (pptxgenjs can't write it), with `advTm` auto-advance. Objects that should move share a `!!name`. Images are de-duplicated (from 137 MB down to ~12 MB).
-- PowerPoint won't open objects ~170in off the slide, so zoomed slides only carry sections within `NEAR` (40in) of the view.
-- Live text uses Sora and Inter: install `brochure/illustrator/fonts/*.ttf` on the PC that exports the video.
-- New page: add it to `PAGES` in `deck-capture.mjs`. Timings: `T` in `make-deck.mjs`.
+## Presentation (`npm run deck`)
+- `scripts/make-deck.mjs` builds `deck/futureScience-Presentation.pptx` from `site.js`. It's a presentation **about futureScience**, like the brochure, not a website tour. 15 frames: title, about, top results, merit list, legacy, directors, method, Advantage, courses ×2, admissions, testimonials, alumni, Life at fS, contact.
+- The frames sit on one canvas, five per row in a snake. Every slide carries the whole canvas with each object named `!!f<frame>-<key>`, so Morph moves the "camera": title → overview → each frame → overview → contact. Hold time per frame comes from its word count (`T` at the top of the file).
+- Morph and `advTm` auto-advance are added to the slide XML afterwards (pptxgenjs can't write them), and images are de-duplicated.
+- Results show **without passing years** (`noYear`), as in the brochure. Testimonials keep theirs.
+- Fonts: Sora and Inter are used only if installed on the PC; otherwise Segoe UI. A **missing** font makes PowerPoint repeat words at line breaks. To get the brand fonts, install `brochure/illustrator/fonts/*.ttf` and run `npm run deck` again.
+- Check a change by opening the file in PowerPoint (COM `Presentations.Open`) and exporting slides as PNG. PowerPoint refuses objects ~170in off the slide, so keep the canvas compact.
 
 ## Release checklist
 1. Brochure changed? Run `npm run brochure` first and commit the PDFs. Close any open brochure PDFs first, because Windows locks them.
@@ -28,7 +28,7 @@ Every `npm run build` ends with `scripts/zip-dist.mjs`, which writes **`dist-bui
    - dates the changelog
    - runs `npm run build` and `npm run seo:check` (rolling back if either fails)
    - copies the build's `dist-build.zip` to `release-dist/futurescience-site-vX.Y.Z.zip` (gitignored, includes `.htaccess`)
-   - runs `npm run deck` and copies the website-tour PowerPoint to `release-dist/futurescience-website-tour-vX.Y.Z.pptx` (if it fails, for example because the deck is open in PowerPoint, the release carries on without it)
+   - runs `npm run deck` and copies the presentation to `release-dist/futurescience-presentation-vX.Y.Z.pptx` (if it fails, for example because it's open in PowerPoint, the release carries on without it)
    - commits "Release vX.Y.Z", adds an annotated tag and pushes both to `origin` (github.com/fseduventures/futuresience.in)
    - creates the GitHub Release with the changelog notes, the zip and the deck attached
 4. The GitHub Release step needs `gh` (installed at `C:\Program Files\GitHub CLI`) and a one-time `gh auth login --web`. If it was skipped, run `python release.py --publish vX.Y.Z`.

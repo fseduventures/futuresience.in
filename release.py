@@ -15,8 +15,8 @@ Steps:
   3. Runs `npm run build` and `npm run seo:check`, so the version is baked into
      dist/. The build also writes dist-build.zip (dist/ contents incl. .htaccess);
      it is copied to release-dist/futurescience-site-vX.Y.Z.zip for the GitHub Release.
-     Then `npm run deck` regenerates the website-tour PowerPoint from that build
-     (release-dist/futurescience-website-tour-vX.Y.Z.pptx), also attached to the Release.
+     Then `npm run deck` regenerates the futureScience presentation (PowerPoint) from site.js
+     (release-dist/futurescience-presentation-vX.Y.Z.pptx), also attached to the Release.
      If either fails, the version and changelog edits are rolled back.
   4. Commits exactly those files ("Release vX.Y.Z"), creates an annotated tag
      vX.Y.Z, and pushes the branch and tag atomically.
@@ -44,7 +44,7 @@ VERSION_FILE = ROOT / "package.json"
 MIRRORS = [ROOT / "package-lock.json"]
 CHANGELOG = ROOT / "CHANGELOG.md"
 BUILD_ZIP = ROOT / "dist-build.zip"  # written by `npm run build` (scripts/zip-dist.mjs)
-DECK = ROOT / "deck" / "futureScience-Website-Tour.pptx"  # written by `npm run deck`
+DECK = ROOT / "deck" / "futureScience-Presentation.pptx"  # written by `npm run deck`
 ZIP_DIR = ROOT / "release-dist"  # gitignored
 RELEASE_BRANCH = "main"
 
@@ -147,17 +147,17 @@ def zip_path(tag):
 
 
 def deck_path(tag):
-    return ZIP_DIR / f"futurescience-website-tour-{tag}.pptx"
+    return ZIP_DIR / f"futurescience-presentation-{tag}.pptx"
 
 
 def build_deck(tag):
-    """Regenerate the website-tour PowerPoint from the new build. A failure (e.g. the deck is
+    """Regenerate the futureScience presentation (PowerPoint) from site.js. A failure (e.g. the deck is
     open in PowerPoint) is reported but doesn't stop the release."""
     if not npm("run", "deck"):
-        print("warning: the website-tour deck wasn't rebuilt (close it in PowerPoint and run: npm run deck)")
+        print("warning: the presentation wasn't rebuilt (close it in PowerPoint and run: npm run deck)")
         return
     shutil.copyfile(DECK, deck_path(tag))
-    print(f"Website tour deck: {deck_path(tag).relative_to(ROOT)}")
+    print(f"Presentation: {deck_path(tag).relative_to(ROOT)}")
 
 
 def build_and_zip(tag):
@@ -205,7 +205,7 @@ def publish_github_release(tag):
     else:
         print(f"note: {zip_path(tag).relative_to(ROOT)} not found, publishing without the upload bundle")
     if deck_path(tag).exists():
-        cmd.append(f"{deck_path(tag)}#Website tour (PowerPoint, export as video)")
+        cmd.append(f"{deck_path(tag)}#futureScience presentation (PowerPoint, export as video)")
     r = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True)
     notes_file.unlink(missing_ok=True)
     if r.returncode != 0:

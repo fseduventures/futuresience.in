@@ -9,7 +9,7 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 - Diwali 2026 album (6 photos) in the Celebrations section of the Results page, as a mosaic above the gallery. Website only; the brochure is unchanged.
 - **Life at futureScience** page (`/life/`): every festival album plus the gallery. Linked from the header menu ("Life at fS", so on every page and in the footer) and with a "See life at futureScience" button under the galleries on Home, About and Directors and in the Results page Celebrations section.
 
-- **Website-tour PowerPoint** (`npm run deck`): a Prezi-style tour of every page, built from the live build. An overview of all pages zooms into each page and pans through its sections using Morph transitions, with preset timings (about 5½ minutes) so PowerPoint's *Create a Video* exports it as-is. Regenerated and attached to the GitHub Release on every release.
+- **futureScience presentation** (`npm run deck`): a Prezi-style PowerPoint about futureScience, built from the same data as the website and brochure. 15 designed frames (about, results, legacy, directors, method, courses, admissions, testimonials, alumni, Life at fS, contact) on one canvas, with Morph camera moves and preset reading times (about 3 minutes), ready for *Create a Video*. Regenerated and attached to the GitHub Release on every release.
 
 ### Changed
 - The tests photo caption no longer mentions Sunday: "Regular tests, real exam conditions" (website and brochure text).
