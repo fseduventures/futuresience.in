@@ -67,6 +67,12 @@
 [data-theme='light'] .breakdown li { border-color: var(--line); }
 [data-theme='light'] .breakdown b.perfect { color: var(--gold-ink); }
 [data-theme='light'] .achiever-score small { color: var(--lime-600); }
+[data-theme='light'] .new-results { background: linear-gradient(120deg, var(--lime-50), #fff); border-color: rgba(111, 168, 42, 0.35); box-shadow: var(--shadow); }
+[data-theme='light'] .new-results-list li { background: #fff; border: 1px solid var(--line); }
+[data-theme='light'] .new-results-list b { color: var(--ink); }
+[data-theme='light'] .new-results-list b small, [data-theme='light'] .new-results-link { color: var(--lime-ink); }
+[data-theme='light'] .new-results-list li > span:not(.new-results-mono), [data-theme='light'] .new-results-stream { color: var(--muted); }
+[data-theme='light'] .results-divider { background: linear-gradient(90deg, transparent, var(--lime-600), transparent); }
 [data-theme='light'] .legacy { background: linear-gradient(90deg, var(--lime-50), #fff); border-color: #d9eec0; }
 [data-theme='light'] .testi-ranks div { background: #fff; border-color: var(--line); }
 [data-theme='light'] .testi-ranks b { color: var(--lime-600); }

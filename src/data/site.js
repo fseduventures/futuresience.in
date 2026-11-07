@@ -337,6 +337,21 @@ export const achievers = [
   { name: 'Vir Mehta', stream: 'PCB', score: 94.83, photo: '/images/achievers/vir-mehta.jpg' },
 ]
 
+// MHT-CET 2025, highest first. Percentiles rounded to 2 decimals like the 2024 results.
+// No photos yet: cards show a monogram. Add `photo: '/images/achievers/<name>.jpg'` when one arrives.
+export const cet2025 = {
+  exam: 'MHT-CET 2025',
+  students: [
+    { name: 'Aarna Diwan', stream: 'PCB', score: 99.97, breakdown: [['Physics', '99.35'], ['Chemistry', '99.93'], ['Biology', '99.99']] },
+    { name: 'Aarya Mankame', stream: 'PCB', score: 99.50, breakdown: [['Physics', '97.57'], ['Chemistry', '99.45'], ['Biology', '99.68']] },
+    { name: 'Manthan Dave', stream: 'PCB', score: 99.47, breakdown: [['Physics', '95.65'], ['Chemistry', '99.55'], ['Biology', '99.80']] },
+    { name: 'Param Shah', stream: 'PCM', score: 99.41, breakdown: [['Physics', '99.69'], ['Chemistry', '93.56'], ['Mathematics', '99.64']] },
+    { name: 'Darshit Shinde', stream: 'PCM', score: 97.81, breakdown: [['Physics', '98.77'], ['Chemistry', '99.37'], ['Mathematics', '93.47']] },
+    { name: 'Bhavya Ambavat', stream: 'PCM', score: 94.63, breakdown: [['Physics', '95.86'], ['Chemistry', '90.79'], ['Mathematics', '94.26']] },
+    { name: 'Aditya Jani', stream: 'PCM', score: 94.06, breakdown: [['Physics', '91.44'], ['Chemistry', '94.14'], ['Mathematics', '93.33']] },
+  ],
+}
+
 export const neetTopper = {
   name: 'Shrey Soni',
   photo: '/images/achievers/shrey-soni.jpg',

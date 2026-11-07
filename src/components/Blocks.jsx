@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import Reveal, { Counter } from './Reveal.jsx'
 import {
-  methodology, testimonials, batches, branches, contact, faqs, tracks, brand, mentors, mentorsIntro, alumniColleges, gallery, neetTopper, legacy,
+  methodology, testimonials, batches, branches, contact, faqs, tracks, brand, mentors, mentorsIntro, alumniColleges, gallery, neetTopper, legacy, cet2025,
 } from '../data/site.js'
 
 const initials = (name) => name.split(/\s+/).filter((w) => /^[A-Z]/.test(w)).slice(0, 2).map((w) => w[0]).join('')
@@ -217,18 +217,28 @@ export function Tracks() {
   )
 }
 
-export function TopperCard({ t, delay = 0 }) {
+// Stand-in portrait for students without a photo: initials on navy, with the stream's symbol behind
+function Monogram({ t }) {
+  return (
+    <div className="monogram" aria-hidden="true">
+      <Icon name={t.stream === 'PCB' ? 'Dna' : 'Atom'} size={120} strokeWidth={1.2} />
+      <span>{initials(t.name)}</span>
+    </div>
+  )
+}
+
+export function TopperCard({ t, exam = 'MHT-CET 2024', delay = 0 }) {
   return (
     <Reveal className="topper" delay={delay}>
-      <div className="topper-photo">
-        <img src={t.photo} alt={t.name} loading="lazy" />
+      <div className={`topper-photo ${t.photo ? '' : 'is-mono'}`}>
+        {t.photo ? <img src={t.photo} alt={t.name} loading="lazy" /> : <Monogram t={t} />}
         <span className="stream-chip">{t.stream}</span>
       </div>
       <div className="topper-body">
         {t.badge && <span className="badge-gold"><Icon name="Medal" size={14} /> {t.badge}</span>}
         <h3>{t.name}</h3>
         <div className="topper-score"><Counter value={t.score} decimals={2} /><small>%ile</small></div>
-        <span className="muted">MHT-CET 2024</span>
+        <span className="muted">{exam}</span>
         <ul className="breakdown">
           {t.breakdown.map(([s, v]) => (
             <li key={s}><span>{s}</span><b className={v === '100' ? 'perfect' : ''}>{v}</b></li>
@@ -242,10 +252,51 @@ export function TopperCard({ t, delay = 0 }) {
 export function AchieverCard({ a, delay = 0 }) {
   return (
     <Reveal className="achiever" delay={delay}>
-      <div className="achiever-photo"><img src={a.photo} alt={a.name} loading="lazy" /></div>
+      <div className="achiever-photo">{a.photo ? <img src={a.photo} alt={a.name} loading="lazy" /> : <Monogram t={a} />}</div>
       <span className="stream-chip sm">{a.stream}</span>
       <b className="achiever-score">{a.score.toFixed(2)}<small>%ile</small></b>
       <span className="achiever-name">{a.name}</span>
+    </Reveal>
+  )
+}
+
+// MHT-CET 2025: the best PCB and PCM scores as feature cards, everyone else in the achiever row
+export function Cet2025() {
+  const { exam, students } = cet2025
+  const leads = ['PCB', 'PCM'].map((s) => students.find((t) => t.stream === s))
+  const rest = students.filter((t) => !leads.includes(t))
+  return (
+    <>
+      <div className="toppers">
+        {leads.map((t, i) => <TopperCard t={{ ...t, badge: `${t.stream} topper` }} exam={exam} key={t.name} delay={i * 120} />)}
+      </div>
+      <div className="achievers">
+        {rest.map((a, i) => <AchieverCard a={a} key={a.name} delay={i * 70} />)}
+      </div>
+    </>
+  )
+}
+
+// Homepage teaser: every 2025 result in one strip, linking to the full block on /results
+export function Cet2025Ribbon() {
+  const { exam, students } = cet2025
+  return (
+    <Reveal className="new-results">
+      <div className="new-results-head">
+        <span className="pill">New</span>
+        <p className="card-title">{exam} results</p>
+        <Link to="/results#cet-2025" className="new-results-link">See all <Icon name="ArrowRight" size={16} /><span className="sr-only"> {exam} results</span></Link>
+      </div>
+      <ul className="new-results-list">
+        {students.map((t) => (
+          <li key={t.name}>
+            <span className="new-results-mono"><Monogram t={t} /></span>
+            <b>{t.score.toFixed(2)}<small>%ile</small></b>
+            <span>{t.name}</span>
+            <small className="new-results-stream">{t.stream}</small>
+          </li>
+        ))}
+      </ul>
     </Reveal>
   )
 }

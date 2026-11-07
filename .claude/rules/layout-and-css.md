@@ -21,6 +21,10 @@
 - Generic rules such as `.track p` would override `.card-title`, so write them as `.track p:not(.card-title)`.
 - `.sr-only` hides text visually but keeps it for screen readers and crawlers.
 
+## Students without photos
+- `TopperCard` and `AchieverCard` show a `Monogram` (initials on navy, a DNA mark for PCB and an atom for PCM) when a student has no `photo`. It's used for MHT-CET 2025 (`cet2025` in `site.js`). When a photo arrives, add `photo: '/images/achievers/<name>.jpg'` to that student; nothing else changes.
+- A new year's results: add a `cetYYYY` object like `cet2025`, a block on the Results page (newest first), the homepage ribbon, the Results meta description and the `llms.txt` lines in `prerender.mjs`. The brochure only changes if asked, and without years (see CLAUDE.md).
+
 ## Code style
 - Follow the existing style: function components, data from `src/data/site.js`, `Icon` from `components/Icon.jsx`, and `Reveal` for scroll-in animation.
 - `Counter` starts at its real value so pre-rendered HTML shows true numbers. Keep it that way.

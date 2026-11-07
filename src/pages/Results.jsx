@@ -1,7 +1,7 @@
 import Icon from '../components/Icon.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { PageHero, SectionHead, CtaBand, BrochureButton } from '../components/Section.jsx'
-import { TopperCard, AchieverCard, NeetCard, AlumniWall, TestimonialWall, Gallery } from '../components/Blocks.jsx'
+import { TopperCard, AchieverCard, NeetCard, AlumniWall, TestimonialWall, Gallery, Cet2025 } from '../components/Blocks.jsx'
 import { toppers, achievers, cet2022 } from '../data/site.js'
 
 export default function Results() {
@@ -16,6 +16,11 @@ export default function Results() {
 
       <section className="section section-dark results-sec">
         <div className="container">
+          <div id="cet-2025" className="anchor">
+            <SectionHead center light eyebrow="Latest · MHT-CET 2025" title={<>Fresh off the merit list: <span className="hl">99.97 %ile.</span></>} />
+            <Cet2025 />
+          </div>
+          <div className="results-divider" />
           <SectionHead center light eyebrow="MHT-CET 2024 · NEET-UG" title={<>Toppers who <span className="hl">set the bar.</span></>} />
           <div className="toppers three">
             {toppers.map((t, i) => <TopperCard t={t} key={t.name} delay={i * 120} />)}

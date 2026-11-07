@@ -31,7 +31,7 @@ export const pages = {
   },
   '/results': {
     title: 'Results | 99.98 %ile MHT-CET 2024 | futureScience',
-    description: 'Lyra Uchil 99.98 %ile (Rank 2, Mumbai University), Atharv Vedant 99.82 %ile, Shrey Soni 630/720 in NEET-UG. 100% qualified for professional courses.',
+    description: 'MHT-CET 2025: Aarna Diwan 99.97 %ile, Param Shah 99.41. MHT-CET 2024: Lyra Uchil 99.98 %ile (Rank 2, Mumbai University). Shrey Soni 630/720 NEET-UG.',
     breadcrumb: 'Results',
   },
   '/directors': {

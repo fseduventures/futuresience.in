@@ -5,7 +5,7 @@ import Reveal, { Counter } from '../components/Reveal.jsx'
 import { SectionHead, CtaBand, BrochureButton } from '../components/Section.jsx'
 import {
   TopperCard, AchieverCard, ProgramCard, Methodology, Testimonials, BatchTable, Branches, Faq, Tracks,
-  MentorsFeature, AlumniWall, Gallery, TestimonialWall, NeetCard, Legacy,
+  MentorsFeature, AlumniWall, Gallery, TestimonialWall, NeetCard, Legacy, Cet2025Ribbon,
 } from '../components/Blocks.jsx'
 import { heroStats, exams, toppers, achievers, programs, cet2022, testimonials, spotlight, ACADEMIC_YEAR } from '../data/site.js'
 import { pages } from '../seo/meta.js'
@@ -147,6 +147,7 @@ export default function Home() {
             title={<>Results that speak <span className="hl">louder than claims.</span></>}
             lead="Top of the MHT-CET merit list, perfect 100 percentiles, and 630/720 in NEET-UG."
           />
+          <Cet2025Ribbon />
           <div className="toppers three">
             {toppers.map((t, i) => <TopperCard t={t} key={t.name} delay={i * 120} />)}
             <NeetCard delay={240} />

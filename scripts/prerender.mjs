@@ -8,7 +8,7 @@ import { pathToFileURL } from 'node:url'
 import { pages, keywords, canonical, schemasFor } from '../src/seo/meta.js'
 import {
   SITE_URL, BROCHURE_URL, ACADEMIC_YEAR, brand, contact, branches, programs, batches, faqs, toppers, achievers, cet2022, tracks, mentors,
-  neetTopper, alumniColleges, testimonials, analytics,
+  neetTopper, alumniColleges, testimonials, analytics, cet2025,
 } from '../src/data/site.js'
 
 const root = path.resolve(import.meta.dirname, '..')
@@ -159,6 +159,7 @@ ${programs.map((p) => `- [${p.title}](${SITE_URL}/courses/#${p.id}): ${p.sub}. $
 ## Results
 ${toppers.map((t) => `- ${t.name} (${t.stream}): ${t.score} percentile, MHT-CET 2024${t.badge ? `, ${t.badge}` : ''}. ${t.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
 ${achievers.map((a) => `- ${a.name} (${a.stream}): ${a.score} percentile, MHT-CET 2024.`).join('\n')}
+${cet2025.students.map((t) => `- ${t.name} (${t.stream}): ${t.score.toFixed(2)} percentile, ${cet2025.exam}. ${t.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
 - ${cet2022.name}: ${cet2022.score}, ${cet2022.exam}. ${cet2022.ranks.map(([r, w, c]) => `Rank ${r} ${w} (${c})`).join('; ')}.
 - ${neetTopper.name}: ${neetTopper.marks}/${neetTopper.outOf} (${neetTopper.percentile} percentile), ${neetTopper.exam}. ${neetTopper.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.
 
