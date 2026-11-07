@@ -19,6 +19,7 @@ description: Cut a new version of the futureScience website (bump version, chang
    - `grep 'name="version"' dist/index.html` shows the new version
    - `seo:check` passed
    - `dist-build.zip` and the copy in `release-dist/` exist and contain `.htaccess`
+   - `release-dist/futurescience-website-tour-vX.Y.Z.pptx` exists (if the deck step warned, close the deck in PowerPoint, run `npm run deck`, and attach it with `gh release upload vX.Y.Z <file>`)
    - delete older zips there so the wrong one can't be uploaded
 9. **Report:** version, commit and tag pushed, Release link or the pending `--publish` command, the zip path (`dist-build.zip` is the same file), and the reminder to upload it to `public_html` and extract it.
 

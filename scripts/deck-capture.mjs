@@ -14,6 +14,7 @@ export const PAGES = [
   { route: '/results/', name: 'Results' },
   { route: '/directors/', name: 'Directors' },
   { route: '/about/', name: 'About' },
+  { route: '/life/', name: 'Life at futureScience' },
   { route: '/contact/', name: 'Contact' },
 ]
 // 1280 CSS px at 1.5x = 1920px wide images: sharp in a 1080p video
@@ -32,6 +33,7 @@ const FREEZE = `
   main > section ~ section { content-visibility: visible !important; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
+  .header { position: relative !important; } /* stays at the top of the page, not over every section */
 `
 
 export async function capture({ theme = 'dark' } = {}) {
@@ -63,6 +65,9 @@ export async function capture({ theme = 'dark' } = {}) {
         const track = document.querySelector('.spot-track')
         if (track) track.scrollLeft = 0
       })
+      // hovering the Topper Spotlight pauses its auto-advance, so it stays on the first topper
+      if (await page.$('.hero-card')) await page.hover('.hero-card')
+      await page.evaluate(() => { const t = document.querySelector('.spot-track'); if (t) t.scrollLeft = 0 })
       await new Promise((r) => setTimeout(r, 2000))
 
       const sections = await page.evaluate((min) => {
@@ -82,10 +87,12 @@ export async function capture({ theme = 'dark' } = {}) {
       const slug = p.route === '/' ? 'home' : p.route.replace(/\//g, '')
       for (const [i, s] of sections.entries()) {
         const file = `${slug}-${String(i + 1).padStart(2, '0')}.jpg`
-        await page.screenshot({
-          path: path.join(out, file), type: 'jpeg', quality: 82, captureBeyondViewport: true,
-          clip: { x: 0, y: Math.round(s.top), width: WIDTH, height: Math.round(s.height) },
-        })
+        // Size the window to the section and scroll to it: capturing far outside the window
+        // (the long homepage is ~16,000px) hits Chrome's texture limit and comes out blank
+        await page.setViewport({ width: WIDTH, height: Math.round(s.height), deviceScaleFactor: SCALE })
+        await page.evaluate((y) => window.scrollTo(0, y), Math.round(s.top))
+        await new Promise((r) => setTimeout(r, 250))
+        await page.screenshot({ path: path.join(out, file), type: 'jpeg', quality: 82 })
         Object.assign(s, { file })
       }
       manifest.push({ ...p, slug, width: WIDTH, sections })
