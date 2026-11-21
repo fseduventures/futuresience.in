@@ -44,7 +44,7 @@ export default function About() {
 
       <MentorsFeature />
       <div className="mentors-cta">
-        <Link to="/directors" className="btn btn-outline">Meet the Directors <Icon name="ArrowRight" size={18} /></Link>
+        <Link to="/directors/" className="btn btn-outline">Meet the Directors <Icon name="ArrowRight" size={18} /></Link>
       </div>
 
       <section className="section section-tint">

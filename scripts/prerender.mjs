@@ -98,7 +98,8 @@ function trackers() {
 function page(route, opts) {
   return template
     .replace(/<!--seo-head-->[\s\S]*?<!--\/seo-head-->/, head(route, opts))
-    .replace('<!--app-html-->', render(route))
+    // render at the address visitors get (/about/), so the menu's active link matches after hydration
+    .replace('<!--app-html-->', render(route === '/' ? route : `${route}/`))
 }
 
 const routes = Object.keys(pages)

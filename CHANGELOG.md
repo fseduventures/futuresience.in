@@ -5,6 +5,13 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Fixed
+- Google Search Console indexing issues:
+  - every internal link now points straight at the canonical slash URL (`/courses/` rather than `/courses`, which redirected), and `seo:check` guards against regressions
+  - pages are pre-rendered at their slash address, so the menu's active link is in the HTML
+  - `/index.html` and `/<page>/index.html` redirect to the clean URL
+  - the bare `/images/`, `/assets/` and `/downloads/` folders return 404 instead of 403
+
 ## [6.7.0] - 2026-11-07
 
 ### Added

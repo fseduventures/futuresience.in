@@ -25,7 +25,8 @@ These limits come from the Seobility audit of the homepage (Oct 2026). `npm run 
   `View details<span className="sr-only"> of {p.title}</span>`
 - **Icon-only links** (social icons) need hidden text, not `aria-label`: `<Icon … /><span className="sr-only">futureScience on Instagram</span>`.
 - Repeating the same text for the *same* URL is fine (nav plus footer, several "Enquire" buttons to `/contact`).
-- Internal links use React Router `<Link to="/page">`. Canonical URLs end in `/` (see `canonical()` in `meta.js`).
+- Internal links use React Router `<Link to="/page/">` **with the trailing slash** (`/courses/`, `/courses/#id`, and `nav` in `site.js`). Canonical URLs end in `/` (see `canonical()` in `meta.js`). `/courses` 301-redirects to `/courses/`, and Search Console reported those as "Page with redirect". `seo:check` flags any link without the slash.
+- `prerender.mjs` renders each page at its slash address, so the menu's active link is in the pre-rendered HTML.
 
 ## Structured data and crawlers
 - JSON-LD is generated from `src/data/site.js` in `meta.js`. Edit the data, not the schema code. Social profile URLs in `contact.socials` become `sameAs` and the footer icons automatically.

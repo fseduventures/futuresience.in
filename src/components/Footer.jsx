@@ -30,13 +30,13 @@ export default function Footer() {
         </div>
         <div>
           <p className="card-title">Programmes</p>
-          <ul>{programs.map((p) => <li key={p.id}><Link to={`/courses#${p.id}`}>{p.title}</Link></li>)}</ul>
+          <ul>{programs.map((p) => <li key={p.id}><Link to={`/courses/#${p.id}`}>{p.title}</Link></li>)}</ul>
         </div>
         <div>
           <p className="card-title">Get in touch</p>
           <ul className="footer-contact">
             {branches.map((b) => (
-              <li key={b.id}><Icon name="MapPin" size={17} /> <Link to={`/contact#${b.id}`}>{b.street}, {b.locality}, {b.city} {b.postalCode}</Link></li>
+              <li key={b.id}><Icon name="MapPin" size={17} /> <Link to={`/contact/#${b.id}`}>{b.street}, {b.locality}, {b.city} {b.postalCode}</Link></li>
             ))}
             <li><Icon name="Phone" size={17} /> <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a></li>
             <li><Icon name="Mail" size={17} /> <a href={`mailto:${contact.email}`}>{contact.email}</a></li>
@@ -46,7 +46,7 @@ export default function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} {brand.full} — {brand.parent}.{VERSION && <span className="site-version"> · v{VERSION}</span>}</span>
-        <span className="footer-links"><Link to="/privacy">Privacy Policy</Link><span className="footer-tag">{brand.tagline}</span></span>
+        <span className="footer-links"><Link to="/privacy/">Privacy Policy</Link><span className="footer-tag">{brand.tagline}</span></span>
       </div>
     </footer>
   )

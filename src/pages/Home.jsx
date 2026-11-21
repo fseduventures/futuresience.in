@@ -103,15 +103,15 @@ export default function Home() {
               with deep concepts, disciplined systems and mentors who are there for every doubt.
             </p>
             <div className="hero-actions">
-              <Link to="/contact" className="btn btn-primary btn-lg">Book Free Counselling <Icon name="ArrowRight" size={18} /></Link>
-              <Link to="/results" className="btn btn-ghost btn-lg"><Icon name="Award" size={18} /> See Our Results</Link>
+              <Link to="/contact/" className="btn btn-primary btn-lg">Book Free Counselling <Icon name="ArrowRight" size={18} /></Link>
+              <Link to="/results/" className="btn btn-ghost btn-lg"><Icon name="Award" size={18} /> See Our Results</Link>
             </div>
             <div className="hero-trust">
-              <Link to="/results" className="avatars" aria-label="See all our results">
+              <Link to="/results/" className="avatars" aria-label="See all our results">
                 {achievers.slice(0, 4).map((a) => <img key={a.name} src={a.photo} alt={a.name} />)}
                 <span><Icon name="Plus" size={18} strokeWidth={3} /></span>
               </Link>
-              <p><Link to="/results"><b>100% students</b> qualified for <b>professional courses</b></Link></p>
+              <p><Link to="/results/"><b>100% students</b> qualified for <b>professional courses</b></Link></p>
             </div>
             <BrochureButton className="hero-brochure" label={`Download the ${ACADEMIC_YEAR} brochure (PDF)`} size={17} />
           </div>
@@ -162,7 +162,7 @@ export default function Home() {
               <h3>{cet2022.name}: {cet2022.score}</h3>
               <p>Rank 2 Mumbai University (Female/General) · Rank 4 Maharashtra State (Female/General)</p>
             </div>
-            <Link to="/results" className="btn btn-primary">All Results <Icon name="ArrowRight" size={18} /></Link>
+            <Link to="/results/" className="btn btn-primary">All Results <Icon name="ArrowRight" size={18} /></Link>
           </Reveal>
         </div>
       </section>
@@ -173,7 +173,7 @@ export default function Home() {
       {/* ── MENTORS ───────────────────────── */}
       <MentorsFeature />
       <div className="mentors-cta">
-        <Link to="/directors" className="btn btn-outline">Meet the Directors <Icon name="ArrowRight" size={18} /></Link>
+        <Link to="/directors/" className="btn btn-outline">Meet the Directors <Icon name="ArrowRight" size={18} /></Link>
       </div>
 
       {/* ── WHY futureScience ─────────────── */}
@@ -199,7 +199,7 @@ export default function Home() {
               <li><Icon name="CheckCircle2" size={20} /> Weekly tests with analysis of strengths & weaknesses</li>
               <li><Icon name="CheckCircle2" size={20} /> Online classes as good as the best offline classroom</li>
             </ul>
-            <Link to="/about" className="btn btn-dark">Discover Our Story <Icon name="ArrowRight" size={18} /></Link>
+            <Link to="/about/" className="btn btn-dark">Discover Our Story <Icon name="ArrowRight" size={18} /></Link>
           </div>
         </div>
       </section>
@@ -226,7 +226,7 @@ export default function Home() {
               title={<>Courses crafted for <span className="hl-dark">every ambition.</span></>}
               lead="From the Bridge Course to the two-year integrated programme, every course combines coaching, tests and mentoring."
             />
-            <Link to="/courses" className="btn btn-outline">All Courses <Icon name="ArrowRight" size={18} /></Link>
+            <Link to="/courses/" className="btn btn-outline">All Courses <Icon name="ArrowRight" size={18} /></Link>
           </div>
           <div className="programs">
             {programs.map((p, i) => <ProgramCard p={p} key={p.id} delay={(i % 4) * 90} />)}
@@ -254,7 +254,7 @@ export default function Home() {
         <div className="container">
           <TestimonialWall items={testimonials.slice(1, 7)} />
           <div className="center-row">
-            <Link to="/results#voices" className="btn btn-outline">Read all testimonials <Icon name="ArrowRight" size={18} /></Link>
+            <Link to="/results/#voices" className="btn btn-outline">Read all testimonials <Icon name="ArrowRight" size={18} /></Link>
           </div>
         </div>
       </section>

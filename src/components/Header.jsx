@@ -52,7 +52,7 @@ export default function Header() {
               </NavLink>
             ))}
             <BrochureButton className="btn btn-outline nav-brochure" label="Brochure" size={16} />
-            <Link to="/contact" className="btn btn-primary nav-cta">Enrol Now <Icon name="ArrowUpRight" size={16} /></Link>
+            <Link to="/contact/" className="btn btn-primary nav-cta">Enrol Now <Icon name="ArrowUpRight" size={16} /></Link>
           </nav>
           <div className="header-tools">
             <ThemeToggle />

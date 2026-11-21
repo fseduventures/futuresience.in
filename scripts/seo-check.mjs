@@ -55,6 +55,9 @@ for (const file of pages(DIST)) {
   for (const m of body.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)) {
     // resolve "#x" and "/courses#x" to the same address before comparing
     const raw = decode(m[1].match(/href="([^"]*)"/)?.[1] ?? '')
+    // internal page links must use the canonical slash URL: "/courses" 301-redirects, and Search
+    // Console then reports the redirecting address as "Page with redirect"
+    if (/^\/[a-z0-9-]+(#|$)/i.test(raw)) issues.push(`internal link without trailing slash (redirects): ${raw}`)
     const href = new URL(raw, pageUrl).href.replace(/\/(#|$)/, '$1')
     const t = text(m[2])
     if (!t) { issues.push(`link without anchor text: ${href}`); continue }

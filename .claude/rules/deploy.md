@@ -47,6 +47,12 @@ Never move or delete a pushed tag to "fix" a version. Release the next version i
 - The same nginx layer answers unknown URLs with the 404 page but a **200 status** (a "soft 404"; Apache's `ErrorDocument 404` is bypassed). Ask MilesWeb to return a real 404 there too. Check with `curl -sI https://www.futurescience.in/nope-404`.
 - Response time (Seobility wants under 0.4s, it was 0.72s) depends on the hosting, not the code. Options: Cloudflare free plan in front of the site, LiteSpeed cache, or a faster host.
 - Keep the HTTPS + `www.` redirect; it gives every page one canonical address.
+- `/index.html` and `/<page>/index.html` 301 to the clean URL (matched on `THE_REQUEST`, so Apache's own DirectoryIndex lookup isn't caught). The bare asset folders `/images/`, `/assets/` and `/downloads/` return 404, not 403 (Search Console listed the 403s as "Blocked due to access forbidden").
+
+## Search Console (page indexing, Nov 2026: 8 indexed, 14 not)
+- "Page with redirect": internal links without the trailing slash (fixed in 6.7.1), plus http/non-www variants, which are expected and stay.
+- "Excluded by noindex": `/404.html`, which is deliberate.
+- "Discovered/Crawled – currently not indexed": a young site with few backlinks. After a release, use *URL inspection → Request indexing* for the main pages, and *Validate fix* on each fixed reason.
 
 ## Off-site (the code can't fix these)
 "External factors" scored 3% because only one domain links to the site. Work on backlinks:

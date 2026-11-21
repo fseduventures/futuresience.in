@@ -19,6 +19,14 @@ ServerSignature Off
 
   # Old Faculty / Mentors pages became Directors
   RewriteRule ^(faculty|mentors)/?$ /directors/ [L,R=301]
+
+  # /index.html and /courses/index.html are the same pages as / and /courses/: one address each
+  # (THE_REQUEST: only what the visitor asked for, not Apache's own DirectoryIndex lookup)
+  RewriteCond %{THE_REQUEST} \s/((?:[^\s?]*/)?)index\.html[\s?]
+  RewriteRule ^ /%1 [L,R=301]
+
+  # Asset folders aren't pages: "not found" rather than "forbidden" (Search Console reported the 403s)
+  RewriteRule ^(images|assets|downloads)/?$ - [R=404,L]
 </IfModule>
 
 # Every page is pre-rendered into its own folder, so unknown URLs get a real 404

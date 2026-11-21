@@ -308,7 +308,7 @@ export function Cet2025Ribbon() {
       <div className="new-results-head">
         <span className="pill">New</span>
         <p className="card-title">{exam} results</p>
-        <Link to="/results#cet-2025" className="new-results-link">See all <Icon name="ArrowRight" size={16} /><span className="sr-only"> {exam} results</span></Link>
+        <Link to="/results/#cet-2025" className="new-results-link">See all <Icon name="ArrowRight" size={16} /><span className="sr-only"> {exam} results</span></Link>
       </div>
       <ul className="new-results-list">
         {students.map((t) => (
@@ -338,7 +338,7 @@ export function ProgramCard({ p, delay = 0 }) {
         <div className="program-meta">
           <span><Icon name="Clock" size={15} /> {p.duration}</span>
         </div>
-        <Link to={`/courses#${p.id}`} className="text-link">View details<span className="sr-only"> of {p.title}</span> <Icon name="ArrowRight" size={16} /></Link>
+        <Link to={`/courses/#${p.id}`} className="text-link">View details<span className="sr-only"> of {p.title}</span> <Icon name="ArrowRight" size={16} /></Link>
       </div>
     </Reveal>
   )
@@ -406,7 +406,7 @@ export function BatchTable() {
           </div>
           <div className="batch-status">
             <span><span className="live-dot" /> {b.status}</span>
-            <Link to="/contact" className="btn btn-primary btn-sm">Enquire</Link>
+            <Link to="/contact/" className="btn btn-primary btn-sm">Enquire</Link>
           </div>
         </Reveal>
       ))}

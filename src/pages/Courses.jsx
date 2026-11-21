@@ -53,7 +53,7 @@ export default function Courses() {
                   <ul className="check-list compact">
                     {p.points.map((pt) => <li key={pt}><Icon name="CheckCircle2" size={18} /> {pt}</li>)}
                   </ul>
-                  <Link to="/contact" className="btn btn-primary">Enquire about this course <Icon name="ArrowRight" size={18} /></Link>
+                  <Link to="/contact/" className="btn btn-primary">Enquire about this course <Icon name="ArrowRight" size={18} /></Link>
                 </div>
               </Reveal>
             ))}

@@ -30,7 +30,7 @@ export default function Directors() {
               <li><Icon name="CheckCircle2" size={20} /> Regular one-to-one conversations with parents</li>
               <li><Icon name="CheckCircle2" size={20} /> Motivation and steadiness through exam season</li>
             </ul>
-            <Link to="/contact" className="btn btn-dark">Meet them at a branch <Icon name="ArrowRight" size={18} /></Link>
+            <Link to="/contact/" className="btn btn-dark">Meet them at a branch <Icon name="ArrowRight" size={18} /></Link>
           </div>
           <Reveal className="split-media">
             <img src="/images/gallery/felicitation.jpg" alt="Toppers felicitated by the futureScience directors" loading="lazy" />

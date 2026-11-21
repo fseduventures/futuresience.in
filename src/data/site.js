@@ -67,12 +67,12 @@ export const brand = {
 
 export const nav = [
   { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/courses', label: 'Courses' },
-  { to: '/results', label: 'Results' },
-  { to: '/directors', label: 'Directors' },
-  { to: '/life', label: 'Life at fS' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/about/', label: 'About' },
+  { to: '/courses/', label: 'Courses' },
+  { to: '/results/', label: 'Results' },
+  { to: '/directors/', label: 'Directors' },
+  { to: '/life/', label: 'Life at fS' },
+  { to: '/contact/', label: 'Contact' },
 ]
 
 export const heroStats = [

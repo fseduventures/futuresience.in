@@ -88,7 +88,7 @@ export default function Privacy() {
           <p>
             For any question, request or complaint about your information, email <a href={`mailto:${contact.email}`}>{contact.email}</a> or
             call <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a> ({contact.hours}). You can also visit either
-            branch; see <Link to="/contact">Contact & branches</Link>. We reply within 30 days.
+            branch; see <Link to="/contact/">Contact & branches</Link>. We reply within 30 days.
           </p>
 
           <h2>Changes to this policy</h2>
