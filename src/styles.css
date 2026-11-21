@@ -132,6 +132,7 @@ p { margin: 0 0 1em; }
 .brand { flex-shrink: 0; }
 .header.is-scrolled .brand img { height: 44px; }
 .header-inner { gap: 1.6rem; } /* keeps Home clear of the logo */
+.header .container { width: min(1360px, 100% - 40px); } /* the full header needs ~1,284px, more than the 1,200px page column */
 .nav { display: flex; align-items: center; gap: 0.35rem; }
 .nav a:not(.btn) { position: relative; white-space: nowrap; padding: 0.5rem 0.85rem; font-family: var(--font-head); font-weight: 550; font-size: 0.93rem; color: var(--ink); border-radius: 999px; transition: color 0.2s, background 0.2s; }
 .nav a:not(.btn):hover { background: var(--tint); }
@@ -632,17 +633,11 @@ a.avatars:hover span { background: #fff; }
 .topbar-version { padding-left: 1.4rem; border-left: 1px solid rgba(127, 127, 127, 0.35); }
 
 /* ═══ Responsive ═════════════════════════ */
-@media (min-width: 1101px) and (max-width: 1560px) {
+@media (min-width: 1061px) and (max-width: 1334px) {
   .nav-brochure { display: none; } /* not enough room beside the nav; still in hero, CTA band, footer and the phone menu */
 }
-@media (min-width: 1101px) and (max-width: 1279px) {
+@media (min-width: 1061px) and (max-width: 1186px) {
   .nav-long { display: none; } /* the login button reads just "Login" */
-}
-/* narrow laptops (just above the 1100px menu button): tighter link spacing */
-@media (min-width: 1101px) and (max-width: 1200px) {
-  .nav { gap: 0.1rem; }
-  .nav a:not(.btn) { padding: 0.5rem 0.5rem; font-size: 0.88rem; }
-  .brand img { height: 44px; }
 }
 @media (max-width: 1080px) {
   .programs { grid-template-columns: repeat(2, 1fr); }
@@ -659,8 +654,8 @@ a.avatars:hover span { background: #fff; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .contact-cards { grid-template-columns: repeat(2, 1fr); }
 }
-/* Header: the menu button and drawer take over below 1100px, where six links and two buttons no longer fit */
-@media (max-width: 1100px) {
+/* Header: the menu button and drawer take over at 1060px and below, where the links and buttons no longer fit */
+@media (max-width: 1060px) {
   .menu-btn { display: block; }
   /* header's backdrop-filter is the containing block, so anchor the drawer just below it.
      It stays inside the viewport when closed (fade, not slide off-screen) so it can't cause sideways scroll. */

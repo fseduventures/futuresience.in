@@ -6,10 +6,9 @@
 - Large display numbers scale with the viewport, for example `font-size: clamp(1.45rem, 7vw, 2rem)` on phones.
 - Grid **items** that hold a horizontal scroller (the hero spotlight carousel) also need `min-width: 0`, or the track's full width stretches the column and the page overflows.
 - When asked to add a feature to an existing section, keep that section's layout exactly as it is. Add to it; don't rearrange it.
-- Header: six links (`nav` in `site.js`; Directors has `header: false`, so it's footer-only) plus three same-size buttons (`.nav-btn`): Brochure, Parent / Student Login (`portal` in `site.js`, external, new tab) and Enrol Now.
-  - ≥1561px: everything. 1280–1560px: the header Brochure button hides (it's in the hero, CTA band, footer and phone menu). 1101–1279px: the login button reads "Login" (`.nav-long` hidden; the full label stays in the HTML). 1101–1200px: tighter link spacing.
-  - ≤1100px: the menu button and drawer (its own media block in `styles.css`, separate from the 920px layout block).
-  - After any header change, check 1100, 1101, 1200, 1279, 1280, 1366, 1440, 1560, 1561 and 1600px with nothing wrapping or cut off (measure `.header-tools` right edge ≤ width), and the phone drawer.
+- Header: five links (`nav` in `site.js`; Directors and Contact have `header: false`, so they're footer-only, and Enrol Now leads to Contact) plus three same-size buttons (`.nav-btn`): Brochure, Parent / Student Login (`portal` in `site.js`, external, new tab) and Enrol Now. The header container is up to 1,360px wide (the full row needs ~1,284px).
+  - Breakpoints are measured, not guessed: ≥1335px everything; 1187–1334px no header Brochure button (it's in the hero, CTA band, footer and phone menu); 1061–1186px the login button reads "Login" (`.nav-long` hidden; the full label stays in the HTML); ≤1060px the menu button and drawer (their own media block).
+  - After any header change, re-measure the row's natural width for each variant (brand left → `.header-tools` right, with `justify-content: flex-start`), set the breakpoints to that width + ~50px, and check each boundary width plus the phone drawer.
 - Breakpoints in `styles.css`: `max-width: 980px` (tablet) and `max-width: 640px` (phone). Put phone fixes in the 640px block.
 
 ## Animation

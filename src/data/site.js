@@ -75,7 +75,7 @@ export const nav = [
   { to: '/results/', label: 'Results' },
   { to: '/directors/', label: 'Directors', header: false }, // footer only: the header needs the room for the login button
   { to: '/life/', label: 'Life at fS' },
-  { to: '/contact/', label: 'Contact' },
+  { to: '/contact/', label: 'Contact', header: false }, // footer only: Enrol Now leads to the contact page
 ]
 
 export const heroStats = [

@@ -9,7 +9,7 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 - **Parent / Student Login** button in the header (opens https://fsadmin.truwise.in/install in a new tab), also in the phone menu and the footer.
 
 ### Changed
-- Header: Directors moved to the footer to make room; Brochure, Login and Enrol Now are the same size; more space between the logo and Home; the menu button now takes over below 1100px; on narrower laptops the login button reads "Login".
+- Header: Directors and Contact moved to the footer (Enrol Now already leads to Contact); Brochure, Login and Enrol Now are the same size; more space between the logo and Home; the header row may use up to 1,360px. Breakpoints measured: everything from 1335px, no header Brochure button below that, "Login" below 1187px, menu button at 1060px and below.
 - Brochure, dark edition, cover: the photo in the upper third shows through 60% more (same gradient); the text area is unchanged. PDFs regenerated.
 
 ### Fixed
