@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [6.8.0] - 2026-11-21
+
 ### Added
 - **Parent / Student Login** button in the header (opens https://fsadmin.truwise.in/install in a new tab), also in the phone menu and the footer.
 
