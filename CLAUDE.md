@@ -11,7 +11,8 @@ Git repo: github.com/fseduventures/futuresience.in (branch `main`, releases tagg
 - `npm run seo:check`: audits every page in `dist/` for the issues Seobility flags. **Run it after every build that touches content, markup or SEO, and fix anything it reports.**
 - `npm run release`: brochure PDFs + website build
 - `python release.py --patch|--minor|--set-version X.Y.Z`: version bump, build, seo:check, tag, push, GitHub Release with the zip attached (copied to `release-dist/`, see `deploy.md`)
-- `npm run deck`: the **futureScience presentation** (`deck/futureScience-Presentation.pptx`): 15 designed frames built from `site.js` (like the brochure) on one canvas, with Prezi-style Morph camera moves and preset timings, for File → Export → Create a Video. `release.py` runs it on every release.
+- `npm run deck`: the **futureScience presentation** (`deck/futureScience-Presentation.pptx`): a cinematic, photo-led film of about 22 scenes built from `site.js` (like the brochure), with Ken Burns motion via Morph and preset timings. `release.py` runs it on every release.
+- `npm run video` (`python scripts/export_video.py`): renders that presentation to MP4 with PowerPoint (1080p, 30fps; `--build`, `--height 2160`). `release.py --with-video` attaches it to the Release.
 - `npx lighthouse@12 https://www.futurescience.in/ --chrome-flags="--headless=new"` (`--preset=desktop` for desktop): the PageSpeed audit, locally (see `performance.md`)
 
 ## Where things live
@@ -23,7 +24,7 @@ Git repo: github.com/fseduventures/futuresience.in (branch `main`, releases tagg
 - `scripts/prerender.mjs`: writes `dist/<page>/index.html`, sitemap, robots, `llms.txt`, plus the analytics tags and `<meta name="version">`
 - `scripts/optimize-images.mjs`: recompresses `dist/images` and writes 720px `-sm` phone copies (originals in `public/images` stay untouched)
 - `scripts/zip-dist.mjs`: last build step, packs `dist/` into `dist-build.zip` (no dependencies)
-- `scripts/make-deck.mjs`: the presentation. Frames, look and timings (`T`) are in that one file. Output goes to `deck/` (gitignored). Results show without passing years, as in the brochure.
+- `scripts/make-deck.mjs` + `scripts/export_video.py`: the presentation and its video export. Scenes, look and timings (`T`) are in `make-deck.mjs`. Output goes to `deck/` (gitignored). Results show without passing years, as in the brochure.
 - `src/analytics.jsx`: GA4 / Meta Pixel events (leads, brochure downloads, theme). IDs are in `analytics` in `site.js`.
 - `CHANGELOG.md` + `release.py`: versioning. The version comes from `package.json` and shows in the header and footer.
 - `public/.htaccess`: HTTPS + www redirect, charset, compression, caching, header hardening

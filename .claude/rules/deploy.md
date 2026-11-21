@@ -12,13 +12,23 @@
 ## Upload file
 Every `npm run build` ends with `scripts/zip-dist.mjs`, which writes **`dist-build.zip`** at the project root (gitignored). It holds the contents of `dist/` at the zip's root, `.htaccess` included, so it extracts straight into `public_html`. After any build, point the user to this file. Don't ask them to upload the `dist/` folder by hand.
 
-## Presentation (`npm run deck`)
-- `scripts/make-deck.mjs` builds `deck/futureScience-Presentation.pptx` from `site.js`. It's a presentation **about futureScience**, like the brochure, not a website tour. 15 frames: title, about, top results, merit list, legacy, directors, method, Advantage, courses ×2, admissions, testimonials, alumni, Life at fS, contact.
-- The frames sit on one canvas, five per row in a snake. Every slide carries the whole canvas with each object named `!!f<frame>-<key>`, so Morph moves the "camera": title → overview → each frame → overview → contact. Hold time per frame comes from its word count (`T` at the top of the file).
-- Morph and `advTm` auto-advance are added to the slide XML afterwards (pptxgenjs can't write them), and images are de-duplicated.
+## Presentation (`npm run deck`, `npm run video`)
+- `scripts/make-deck.mjs` builds `deck/futureScience-Presentation.pptx` from `site.js`: a **cinematic, photo-led** presentation about futureScience (not a website tour), 19 scenes, about 3¾ minutes. The scenes run: opening, hook, about, numbers, Lyra spotlight, three toppers, merit list, legacy, method, Advantage, courses, admissions, two testimonials, alumni, three Life at fS photos, and the call to action. The director scenes were taken out for now (Nov 2026; they're in git history).
+- Each scene is a full-screen photo with the navy darkening **baked into the image** (`bg()`: `left`/`right`/`bottom`/`full` overlays, optional blur). Portraits are pre-cut lime-ringed circles (`ring()`), upscaled with lanczos because the student photos are small.
+- Each scene is **four slides** joined by Morph, giving a catchy two-beat entrance:
+  1. the new photo dissolves in on its own (1.2s);
+  2. **beat 1:** the titles fly in from the text's side (centred ones pop);
+  3. **beat 2:** cards, portraits and figures pop from their centre, while paragraphs and quotes sweep up from below;
+  4. a long, slow Ken Burns drift (zoom 1.0↔1.1, sideways drift) for the reading time, which comes from the word count.
+  - Defaults come from `entrance()`. Override per element with `beat` and `enter`.
+  - Hidden "pop" states are shrunk to 5% **and** fully transparent, or they show as specks.
+  - The logo badge (`!!logo`, big and popping in on the opening) and the lime progress bar (`!!progress`) carry across scenes. Timings live in `T`.
+- Don't use background images with text baked in (`ladder.jpg` clashed with the method list).
 - Results show **without passing years** (`noYear`), as in the brochure. Testimonials keep theirs.
-- Fonts: Sora and Inter are used only if installed on the PC; otherwise Segoe UI. A **missing** font makes PowerPoint repeat words at line breaks. To get the brand fonts, install `brochure/illustrator/fonts/*.ttf` and run `npm run deck` again.
-- Check a change by opening the file in PowerPoint (COM `Presentations.Open`) and exporting slides as PNG. PowerPoint refuses objects ~170in off the slide, so keep the canvas compact.
+- Fonts: Sora and Inter are installed for this Windows user (from `brochure/illustrator/fonts`, Nov 2026). The script falls back to Segoe UI if they're missing; a missing font makes PowerPoint repeat words at line breaks.
+- `scripts/export_video.py` (`npm run video`, `--build`, `--height 2160`) renders the MP4 with PowerPoint's own Create a Video engine through COM (PowerShell, standard library only). `release.py --with-video` also renders it and attaches it to the Release.
+- Check changes by opening the file in PowerPoint (COM `Presentations.Open`) and exporting slides as PNG; look at every scene's end slide for text overlaps, and at the first slide of each scene for leftover specks.
+- **Never open PowerPoint through COM while a video export is running.** COM attaches to the same PowerPoint, sees the old file, and `Quit()` kills the export.
 
 ## Release checklist
 1. Brochure changed? Run `npm run brochure` first and commit the PDFs. Close any open brochure PDFs first, because Windows locks them.
@@ -28,7 +38,7 @@ Every `npm run build` ends with `scripts/zip-dist.mjs`, which writes **`dist-bui
    - dates the changelog
    - runs `npm run build` and `npm run seo:check` (rolling back if either fails)
    - copies the build's `dist-build.zip` to `release-dist/futurescience-site-vX.Y.Z.zip` (gitignored, includes `.htaccess`)
-   - runs `npm run deck` and copies the presentation to `release-dist/futurescience-presentation-vX.Y.Z.pptx` (if it fails, for example because it's open in PowerPoint, the release carries on without it)
+   - runs `npm run deck` and copies the presentation to `release-dist/futurescience-presentation-vX.Y.Z.pptx` (if it fails, for example because it's open in PowerPoint, the release carries on without it); with `--with-video` it also renders the MP4
    - commits "Release vX.Y.Z", adds an annotated tag and pushes both to `origin` (github.com/fseduventures/futuresience.in)
    - creates the GitHub Release with the changelog notes, the zip and the deck attached
 4. The GitHub Release step needs `gh` (installed at `C:\Program Files\GitHub CLI`) and a one-time `gh auth login --web`. If it was skipped, run `python release.py --publish vX.Y.Z`.

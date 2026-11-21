@@ -17,6 +17,7 @@ Steps:
      it is copied to release-dist/futurescience-site-vX.Y.Z.zip for the GitHub Release.
      Then `npm run deck` regenerates the futureScience presentation (PowerPoint) from site.js
      (release-dist/futurescience-presentation-vX.Y.Z.pptx), also attached to the Release.
+     With --with-video it is also rendered to MP4 by PowerPoint (scripts/export_video.py) and attached.
      If either fails, the version and changelog edits are rolled back.
   4. Commits exactly those files ("Release vX.Y.Z"), creates an annotated tag
      vX.Y.Z, and pushes the branch and tag atomically.
@@ -150,6 +151,20 @@ def deck_path(tag):
     return ZIP_DIR / f"futurescience-presentation-{tag}.pptx"
 
 
+def video_path(tag):
+    return ZIP_DIR / f"futurescience-presentation-{tag}.mp4"
+
+
+def export_video(tag):
+    """--with-video: render the presentation to MP4 with PowerPoint (takes a few minutes).
+    A failure is reported but doesn't stop the release."""
+    if not deck_path(tag).exists():
+        return
+    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "export_video.py"), "--pptx", str(deck_path(tag)), "--out", str(video_path(tag))], cwd=ROOT)
+    if r.returncode:
+        print("warning: the video wasn't exported (run later: npm run video)")
+
+
 def build_deck(tag):
     """Regenerate the futureScience presentation (PowerPoint) from site.js. A failure (e.g. the deck is
     open in PowerPoint) is reported but doesn't stop the release."""
@@ -206,6 +221,8 @@ def publish_github_release(tag):
         print(f"note: {zip_path(tag).relative_to(ROOT)} not found, publishing without the upload bundle")
     if deck_path(tag).exists():
         cmd.append(f"{deck_path(tag)}#futureScience presentation (PowerPoint, export as video)")
+    if video_path(tag).exists():
+        cmd.append(f"{video_path(tag)}#futureScience presentation (video, 1080p)")
     r = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True)
     notes_file.unlink(missing_ok=True)
     if r.returncode != 0:
@@ -232,6 +249,7 @@ def get_args_parser():
     parser.add_argument("-r", "--remote", help="git remote to push to (default: origin)")
     parser.add_argument("--no-push", action="store_true", help="commit and tag locally, don't push")
     parser.add_argument("--no-github-release", action="store_true", help="don't create the GitHub Release after pushing")
+    parser.add_argument("--with-video", action="store_true", help="also render the presentation to MP4 (a few minutes) and attach it")
     parser.add_argument("--allow-branch", action="store_true", help=f"release from a branch other than {RELEASE_BRANCH}")
     return parser
 
@@ -294,6 +312,8 @@ def main():
     if not build_and_zip(tag):
         git("checkout", "--", *(str(f.relative_to(ROOT)) for f in files))
         fail("build or SEO check failed; version and changelog changes rolled back")
+    if args.with_video:
+        export_video(tag)
 
     git("add", "--", *(str(f.relative_to(ROOT)) for f in files))
     git("commit", "-m", f"Release {tag}")

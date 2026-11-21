@@ -13,14 +13,15 @@ description: Cut a new version of the futureScience website (bump version, chang
 3. **Changelog:** make sure `## [Unreleased]` in `CHANGELOG.md` lists every change since the last tag (`git log <last-tag>..HEAD`). Write plain, user-facing bullets under `### Added` / `### Changed` / `### Fixed`.
 4. **Brochure:** if `src/brochure/` or brochure content in `site.js` changed, run `npm run brochure` and commit the PDFs first.
 5. **Commit** the pending work with a descriptive message. `release.py` refuses a dirty tree.
-6. **Dry run:** `python release.py <bump> --dry-run`, then the real run. Prepend `export PATH="$PATH:/c/Program Files/GitHub CLI"` in Bash so `gh` is found.
-7. **If the GitHub Release was skipped** (gh not logged in), tell the user to run `gh auth login --web` and then `python release.py --publish vX.Y.Z`. Don't try to read stored git credentials to work around it.
-8. **Verify:**
+6. **Video (optional):** add `--with-video` to also render the presentation MP4 (a few minutes) and attach it. Don't use PowerPoint while it renders.
+7. **Dry run:** `python release.py <bump> --dry-run`, then the real run. Prepend `export PATH="$PATH:/c/Program Files/GitHub CLI"` in Bash so `gh` is found.
+8. **If the GitHub Release was skipped** (gh not logged in), tell the user to run `gh auth login --web` and then `python release.py --publish vX.Y.Z`. Don't try to read stored git credentials to work around it.
+9. **Verify:**
    - `grep 'name="version"' dist/index.html` shows the new version
    - `seo:check` passed
    - `dist-build.zip` and the copy in `release-dist/` exist and contain `.htaccess`
    - `release-dist/futurescience-presentation-vX.Y.Z.pptx` exists (if the deck step warned, close the deck in PowerPoint, run `npm run deck`, and attach it with `gh release upload vX.Y.Z <file>`)
    - delete older zips there so the wrong one can't be uploaded
-9. **Report:** version, commit and tag pushed, Release link or the pending `--publish` command, the zip path (`dist-build.zip` is the same file), and the reminder to upload it to `public_html` and extract it.
+10. **Report:** version, commit and tag pushed, Release link or the pending `--publish` command, the zip path (`dist-build.zip` is the same file), and the reminder to upload it to `public_html` and extract it.
 
 Never delete or move a pushed tag, and never force-push `main`. If a version was wrong, release the next one.

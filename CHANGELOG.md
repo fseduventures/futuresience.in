@@ -5,6 +5,12 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Changed
+- The futureScience presentation is now cinematic and photo-led: 19 full-screen photo scenes. Each new photo dissolves in, then the title flies in, then cards, portraits and figures pop in, followed by a slow Ken Burns drift. It has ringed topper portraits, Life at fS photos and a call to action with a QR code. About 3¾ minutes, in the brand fonts. The director scenes are left out for now.
+
+### Added
+- `npm run video` (`scripts/export_video.py`): exports the presentation to MP4 with PowerPoint (1080p or 4K). `python release.py --with-video` attaches the video to the GitHub Release.
+
 ## [6.8.0] - 2026-11-21
 
 ### Added
