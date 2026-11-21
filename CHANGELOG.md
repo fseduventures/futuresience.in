@@ -5,6 +5,9 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Changed
+- Brochure, dark edition, cover: the photo in the upper third shows through 60% more (same gradient); the text area is unchanged. PDFs regenerated.
+
 ### Fixed
 - Google Search Console indexing issues:
   - every internal link now points straight at the canonical slash URL (`/courses/` rather than `/courses`, which redirected), and `seo:check` guards against regressions
