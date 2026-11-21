@@ -65,12 +65,15 @@ export const brand = {
   legal: 'futureScience Eduventures LLP',
 }
 
+// Parent / student portal (external, opens in a new tab): header button, phone menu and footer
+export const portal = { label: 'Parent / Student Login', url: 'https://fsadmin.truwise.in/install' }
+
 export const nav = [
   { to: '/', label: 'Home' },
   { to: '/about/', label: 'About' },
   { to: '/courses/', label: 'Courses' },
   { to: '/results/', label: 'Results' },
-  { to: '/directors/', label: 'Directors' },
+  { to: '/directors/', label: 'Directors', header: false }, // footer only: the header needs the room for the login button
   { to: '/life/', label: 'Life at fS' },
   { to: '/contact/', label: 'Contact' },
 ]

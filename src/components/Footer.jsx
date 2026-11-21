@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { brand, contact, nav, programs, branches, VERSION } from '../data/site.js'
+import { brand, contact, nav, portal, programs, branches, VERSION } from '../data/site.js'
 import Icon from './Icon.jsx'
 import { BrochureButton } from './Section.jsx'
 
@@ -26,7 +26,10 @@ export default function Footer() {
         </div>
         <div>
           <p className="card-title">Explore</p>
-          <ul>{nav.map((n) => <li key={n.to}><Link to={n.to}>{n.label}</Link></li>)}</ul>
+          <ul>
+            {nav.map((n) => <li key={n.to}><Link to={n.to}>{n.label}</Link></li>)}
+            <li><a href={portal.url} target="_blank" rel="noopener">{portal.label}</a></li>
+          </ul>
         </div>
         <div>
           <p className="card-title">Programmes</p>

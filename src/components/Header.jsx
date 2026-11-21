@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { nav, contact, brand, ACADEMIC_YEAR, VERSION } from '../data/site.js'
+import { nav, contact, brand, portal, ACADEMIC_YEAR, VERSION } from '../data/site.js'
 import Icon from './Icon.jsx'
 import { BrochureButton } from './Section.jsx'
 import { useTheme } from '../theme.jsx'
@@ -46,13 +46,15 @@ export default function Header() {
             <img src="/images/logo-tag.png" alt={brand.full} />
           </Link>
           <nav className={`nav ${open ? 'is-open' : ''}`}>
-            {nav.map((n) => (
+            {nav.filter((n) => n.header !== false).map((n) => (
               <NavLink key={n.to} to={n.to} end={n.to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}>
                 {n.label}
               </NavLink>
             ))}
-            <BrochureButton className="btn btn-outline nav-brochure" label="Brochure" size={16} />
-            <Link to="/contact/" className="btn btn-primary nav-cta">Enrol Now <Icon name="ArrowUpRight" size={16} /></Link>
+            <BrochureButton className="btn btn-outline nav-btn nav-brochure" label="Brochure" size={16} />
+            {/* narrow laptops show just "Login"; the full label stays in the HTML for crawlers and screen readers */}
+            <a href={portal.url} target="_blank" rel="noopener" className="btn btn-dark nav-btn nav-login"><Icon name="LogIn" size={16} /> <span className="nav-long">Parent / Student </span>Login</a>
+            <Link to="/contact/" className="btn btn-primary nav-btn nav-cta">Enrol Now <Icon name="ArrowUpRight" size={16} /></Link>
           </nav>
           <div className="header-tools">
             <ThemeToggle />
