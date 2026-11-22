@@ -10,7 +10,7 @@ export default function Directors() {
       <PageHero
         eyebrow="The Visionaries · Directors"
         title={<>Nilesh Vedant & Prasanna Raut: <span className="hl">the visionaries behind futureScience.</span></>}
-        lead="Revered across Mumbai for XI & XII Science, for their care for students' welfare, and for the careers in science and technology that began in their classrooms."
+        lead="Known to their students for XI & XII Science teaching, for their care for students' welfare, and for the careers in science and technology that began in their classrooms."
         image="/images/gallery/results-day.jpg"
       />
 

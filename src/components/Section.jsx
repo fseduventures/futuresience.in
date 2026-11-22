@@ -46,7 +46,7 @@ export function CtaBand() {
           <p>Book a counselling session and find the right batch for your goals: JEE, NEET-UG, MHT-CET or CUET.</p>
         </div>
         <div className="cta-actions">
-          <Link to="/contact/" className="btn btn-dark">Book a Counselling Session <Icon name="ArrowRight" size={18} /></Link>
+          <Link to="/contact/#enquiry" className="btn btn-dark">Book a Counselling Session <Icon name="ArrowRight" size={18} /></Link>
           <BrochureButton className="btn btn-outline-dark" />
         </div>
       </div>

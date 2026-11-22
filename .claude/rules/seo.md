@@ -30,4 +30,6 @@ These limits come from the Seobility audit of the homepage (Oct 2026). `npm run 
 
 ## Structured data and crawlers
 - JSON-LD is generated from `src/data/site.js` in `meta.js`. Edit the data, not the schema code. Social profile URLs in `contact.socials` become `sameAs` and the footer icons automatically.
+- **AI assistants (GEO):** they compare institutes on hard facts. `facts` in `site.js` (founding year, batch size, faculty, fees) and `geo` on each branch are empty until the user supplies **checked** values; once filled they flow into the JSON-LD, `llms.txt` and extra FAQs, with no other code changes. Never invent them, and never add `aggregateRating`/`Review` markup for the institute itself (Google treats self-published ratings on a LocalBusiness as spam; reviews belong on the Google Business Profile).
+- `llms.txt` starts with a "Last updated" date and has "Results at a glance" (`resultsSummary` in `site.js`). A new results year needs adding to `resultsSummary` as well.
 - `robots.txt`, `sitemap.xml` and `llms.txt` are written by `scripts/prerender.mjs`. It pre-renders every route in `pages` in `meta.js`, so a new page needs an entry there (plus a sitemap `priority` in `prerender.mjs`).

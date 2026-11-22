@@ -37,12 +37,16 @@ export const branches = [
     id: 'kandivali-west',
     name: 'Kandivali West',
     street: 'Mahavir Nagar',
+    // Unit and building as on the Google Business listing: Contact page card, JSON-LD and llms.txt (footer and brochure keep `street`)
+    building: 'LG-124, Lower Ground Floor, Xth Central Mall, Boraspada Road',
     locality: 'Kandivali West',
     city: 'Mumbai',
     region: 'Maharashtra',
     postalCode: '400067',
-    mapQuery: 'futureScience Private Tutorials, Mahavir Nagar, Kandivali West, Mumbai',
+    mapQuery: 'futureScience Private Tutorials, Xth Central Mall, Boraspada Road, Kandivali West, Mumbai',
     nearby: ['Kandivali', 'Borivali', 'Charkop', 'Dahanukar Wadi'],
+    geo: { lat: 19.2135167, lng: 72.841629 }, // the branch's Google Maps pin; null = not published
+    shift: 'Morning shift',
   },
   {
     id: 'malad-west',
@@ -54,8 +58,25 @@ export const branches = [
     postalCode: '400064',
     mapQuery: 'futureScience Private Tutorials, S.V. Road, Malad West, Mumbai',
     nearby: ['Malad', 'Goregaon', 'Orlem', 'Marve Road'],
+    geo: null,
+    shift: 'Afternoon shift',
   },
 ]
+
+// Hard facts that AI assistants compare institutes on. Empty = not published anywhere.
+// Once filled, they appear in the JSON-LD, llms.txt and the FAQs automatically. Only enter checked facts.
+export const facts = {
+  foundedYear: '2018', // the year the futureScience brand was founded
+  maxBatchSize: '25', // students per batch
+  faculty: 'A team of 15+ teachers, led by senior faculty with more than 20 years of experience teaching Class 11 and 12 science',
+  schedule: 'Classes 4 days a week, 6 hours a day, plus 1 revision day and 1 test day every week',
+  tests: 'Weekly chapter-wise tests, cumulative tests and prelims, in both the subjective (board) and objective (entrance) exam patterns',
+  // Fees: not published for now (user's decision, Nov 2026)
+  // Fees per course id from `programs`, shown as written, e.g. { 'xi-xii-integrated': '₹1,50,000 for two years, in instalments' }
+  // `price` (digits, rupees) is optional and goes into the schema.org Offer
+  fees: {}, // { 'xi-xii-integrated': { text: '...', price: 150000 } }
+  feesNote: '', // e.g. 'Instalments available. Fees include study material and the test series.'
+}
 
 export const brand = {
   name: 'futureScience',
@@ -81,8 +102,8 @@ export const nav = [
 export const heroStats = [
   { value: 99.98, decimals: 2, suffix: '%ile', label: 'Top MHT-CET score, 2024' },
   { value: 100, suffix: '%ile', label: 'Physics & Biology, perfect scores' },
-  { value: 2, prefix: '#', label: 'Rank, Mumbai University' },
-  { value: 100, suffix: '%', label: 'Students qualified for professional courses' },
+  { value: 2, prefix: '#', label: 'Rank, Mumbai University, 2024' },
+  { value: 100, suffix: '%', label: 'Students qualified for professional courses, 2024' },
 ]
 
 export const exams = ['JEE Main', 'JEE Advanced', 'NEET-UG', 'MHT-CET', 'CUET-UG', 'HSC Board', 'Std. XI Science', 'Std. XII Science', 'Engineering Entrance', 'Medical Entrance', 'Pharmacy Entrance', 'PCM', 'PCB']
@@ -230,27 +251,28 @@ export const methodology = [
   { n: '02', icon: 'BookOpenCheck', title: 'Manage', text: 'Managing self-study is one of the most important factors that makes the difference towards the end. With our researched methodology we provide the support you need.' },
   { n: '03', icon: 'Target', title: 'Strategise', text: 'Performance in competitive exams depends on well-planned, well-executed strategy. With careful analysis of strengths and weaknesses, we guide you to the best plan to crack them.' },
   { n: '04', icon: 'TrendingUp', title: 'Grow with Confidence', text: 'With properly managed studies and a personalised strategy, we stand by you till you achieve your targets, so you always have the confidence to face academic challenges.' },
-  { n: '05', icon: 'Trophy', title: 'Succeed', text: 'Success is what we work together for. Your sincere efforts and our round-the-clock support and monitoring set every student on a successful career in science & technology.' },
+  { n: '05', icon: 'Trophy', title: 'Succeed', text: 'Success is what we work together for. Your sincere efforts and our support and monitoring through both years set every student on a successful career in science & technology.' },
 ]
 
 export const pillars = [
   { icon: 'MessagesSquare', title: 'No doubt left unsolved', text: 'Tutors ready to answer any query at any time: a "knowledge ATM" for every student.' },
   { icon: 'Microscope', title: 'Concepts to the core', text: 'Teaching goes deep into the why, so you can face any level of MCQ with confidence.' },
   { icon: 'ShieldCheck', title: 'Disciplined system', text: 'A structured rhythm of class-work, home-work and tests that keeps preparation on track.' },
-  { icon: 'Users', title: 'Small, focused batches', text: 'Personal attention and mentoring that feels like a friendly discussion with professionals.' },
+  { icon: 'Users', title: 'Small, focused batches', text: `At most ${facts.maxBatchSize} students per batch: personal attention and mentoring that feels like a friendly discussion with professionals.` },
   { icon: 'LineChart', title: 'Tests with analysis', text: 'Every test is followed by analysis of strengths and weaknesses to refine strategy.' },
-  { icon: 'Laptop', title: 'Online & offline', text: 'Our online classroom was the closest thing to the best offline classroom, so learning never stops.' },
+  { icon: 'CalendarDays', title: 'A structured week', text: 'Classes 4 days a week, 6 hours a day, plus a revision day and a test day every week.' },
 ]
 
 // The two faces of futureScience. Deliberately no subject labels.
 export const mentors = [
   {
     id: 'nilesh-vedant',
+    linkedin: 'https://www.linkedin.com/in/nilesh-vedant-8821366',
     name: 'Nilesh Vedant',
     role: 'Director',
     title: 'The Architect of Concepts',
     photo: '/images/mentors/nilesh-vedant.png',
-    lead: 'A name generations of Mumbai science students say with gratitude. Nilesh Vedant built futureScience on one conviction: a student who truly understands will always outperform one who only memorises.',
+    lead: 'A name generations of Mumbai science students say with gratitude. Nilesh Vedant co-founded futureScience in 2018 on one conviction: a student who truly understands will always outperform one who only memorises.',
     traits: [
       { icon: 'Microscope', label: 'Goes to the crux of every concept' },
       { icon: 'ShieldCheck', label: 'Discipline that becomes a habit for life' },
@@ -264,6 +286,7 @@ export const mentors = [
   },
   {
     id: 'prasanna-raut',
+    linkedin: 'https://www.linkedin.com/in/prasanna-raut-b99b77113',
     name: 'Prasanna Raut',
     role: 'Director',
     title: 'The Guide Students Never Outgrow',
@@ -307,9 +330,9 @@ export const alumniColleges = [
 export const legacy = [
   { when: 'Then', title: 'A legacy of doctors & engineers', text: 'Students from the earliest batches went on to MBBS at KEM and Government Medical College, Kolhapur, and to IIT, BITS Pilani, VJTI and ICT.' },
   { when: '2013–14', exam: 'MHT-CET', title: 'From HSC to MBBS', text: 'Akshay Parag Raut prepared for CET with futureScience and secured General-category MBBS admission at Government Medical College, Kolhapur.' },
-  { when: 'NEET-UG', title: '630 / 720', text: 'Shrey Soni scored 630/720 (99.36 percentile) in NEET-UG, with 99.46 percentile in Physics.' },
+  { when: '2020', exam: 'NEET-UG', title: '630 / 720', text: 'Shrey Soni scored 630/720 (99.36 percentile) in NEET-UG, with 99.46 percentile in Physics.' },
   { when: '2022', exam: 'MHT-CET', title: '99.97 percentile', text: 'Tvisha Vedant: Rank 2 Mumbai University and Rank 4 Maharashtra (Female/General) in MHT-CET.' },
-  { when: '2024', exam: 'MHT-CET', title: '99.98 percentile', text: 'Lyra Uchil: Rank 2 Mumbai University, with perfect 100 percentiles in Physics and Biology. 100% of students qualified for professional courses.' },
+  { when: '2024', exam: 'MHT-CET', title: '99.98 percentile', text: 'Lyra Uchil: overall Rank 2 Mumbai University, with perfect 100 percentiles in Physics and Biology. 100% of students qualified for professional courses.' },
   { when: 'Now', title: `Admissions ${'2027–29'}`, text: 'Two branches in Kandivali West and Malad West, and the next generation of futureScience toppers.' },
 ]
 
@@ -341,7 +364,7 @@ export const gallery = [
 
 export const toppers = [
   {
-    name: 'Lyra Uchil', stream: 'PCB', score: 99.98, photo: '/images/achievers/lyra-uchil.jpg', badge: 'Rank 2 · Mumbai University',
+    name: 'Lyra Uchil', stream: 'PCB', score: 99.98, photo: '/images/achievers/lyra-uchil.jpg', badge: 'Overall Rank 2 · Mumbai University',
     breakdown: [['Physics', '100'], ['Chemistry', '97.21'], ['Biology', '100']],
   },
   {
@@ -377,7 +400,7 @@ export const cet2025 = {
 export const neetTopper = {
   name: 'Shrey Soni',
   photo: '/images/achievers/shrey-soni.jpg',
-  exam: 'NEET-UG',
+  exam: 'NEET-UG 2020',
   marks: '630',
   outOf: '720',
   percentile: '99.36',
@@ -397,6 +420,17 @@ export const cet2022 = {
     ['34', 'Maharashtra State', 'General'],
   ],
 }
+
+// Year-by-year summary from the results above, for llms.txt: the top score and everyone at 99+ by name.
+// Names, not head counts: a count of listed students reads as a small batch, which it isn't.
+const summarise = (exam, list) => {
+  const sorted = [...list].sort((a, b) => b.score - a.score)
+  return { exam, top: sorted[0].score, above99: sorted.filter((s) => s.score >= 99).map((s) => `${s.name} (${s.score.toFixed(2)})`) }
+}
+export const resultsSummary = [
+  summarise(cet2025.exam, cet2025.students),
+  summarise('MHT-CET 2024', [...toppers, ...achievers]),
+]
 
 // Homepage hero carousel, in display order. Built from the records above so scores live in one place.
 // `breakdown` rows draw subject bars; `facts` rows (no bar) suit ranks.
@@ -494,11 +528,11 @@ export const quote = {
 export const faqs = [
   {
     q: 'Which is the best coaching for JEE, NEET and MHT-CET in Kandivali West and Malad West?',
-    a: 'futureScience Private Tutorials coaches Class 11 and 12 science students for JEE Main, JEE Advanced, NEET-UG, MHT-CET and CUET-UG at two branches: Mahavir Nagar, Kandivali West and S.V. Road, Malad West, Mumbai. In MHT-CET 2024 our students scored up to 99.98 percentile (Rank 2, Mumbai University), with perfect 100 percentiles in Physics and Biology.',
+    a: 'futureScience Private Tutorials coaches Class 11 and 12 science students for JEE Main, JEE Advanced, NEET-UG, MHT-CET and CUET-UG at two branches: Mahavir Nagar, Kandivali West and S.V. Road, Malad West, Mumbai. In MHT-CET 2024 our students scored up to 99.98 percentile (overall Rank 2, Mumbai University), with perfect 100 percentiles in Physics and Biology.',
   },
   {
     q: 'Where are the futureScience branches?',
-    a: 'We have two branches in Mumbai: Mahavir Nagar, Kandivali West (Mumbai 400067) and S.V. Road, Malad West (Mumbai 400064). Both are convenient for students from Kandivali, Borivali, Charkop, Malad, Goregaon and nearby areas. Call or WhatsApp +91 93217 84940.',
+    a: 'We have two branches in Mumbai: Mahavir Nagar, Kandivali West (Mumbai 400067) and S.V. Road, Malad West (Mumbai 400064). Both are convenient for students from Kandivali, Borivali, Charkop, Malad, Goregaon and nearby areas. Kandivali West runs the morning shift and Malad West the afternoon shift. Call or WhatsApp +91 93217 84940.',
   },
   {
     q: 'When do the 2027–29 batches start?',
@@ -526,11 +560,11 @@ export const faqs = [
   },
   {
     q: 'What results have futureScience students achieved?',
-    a: 'In MHT-CET 2024, Lyra Uchil scored 99.98 percentile (Rank 2, Mumbai University; 100 percentile in Physics and Biology) and Atharv Vedant scored 99.82 percentile. Five more students scored between 94.83 and 99.01 percentile. In MHT-CET 2022, Tvisha Vedant scored 99.97 percentile (Rank 2, Mumbai University, Female/General). In NEET-UG, Shrey Soni scored 630/720 (99.36 percentile). 100% of futureScience students qualified for professional courses. Alumni have gone on to IIT Patna, BITS Pilani, Seth G.S. Medical College & KEM Hospital, Government Medical College Kolhapur, VJTI, ICT Mumbai and leading pharmacy colleges.',
+    a: 'In MHT-CET 2025, Aarna Diwan scored 99.97 percentile, with Aarya Mankame (99.50), Manthan Joshi (99.47) and Param Shah (99.41) also above 99 percentile. In MHT-CET 2024, Lyra Uchil scored 99.98 percentile (overall Rank 2, Mumbai University; 100 percentile in Physics and Biology) and Atharv Vedant scored 99.82 percentile. Five more students scored between 94.83 and 99.01 percentile. In MHT-CET 2022, Tvisha Vedant scored 99.97 percentile (Rank 2, Mumbai University, Female/General). In NEET-UG 2020, Shrey Soni scored 630/720 (99.36 percentile). In MHT-CET 2024, 100% of futureScience students qualified for professional courses. Alumni have gone on to IIT Patna, BITS Pilani, Seth G.S. Medical College & KEM Hospital, Government Medical College Kolhapur, VJTI, ICT Mumbai and leading pharmacy colleges.',
   },
   {
     q: 'Who leads futureScience?',
-    a: 'futureScience is led by its directors, Nilesh Vedant and Prasanna Raut, known across Mumbai for XI & XII Science teaching, student mentoring and welfare. Their students have gone on to IIT, BITS, KEM, ICT, VJTI and universities abroad.',
+    a: 'futureScience is led by its directors, Nilesh Vedant and Prasanna Raut, who founded it in 2018. They are known across Mumbai for XI & XII Science teaching, student mentoring and welfare. Their students have gone on to IIT, BITS, KEM, ICT, VJTI and universities abroad.',
   },
   {
     q: 'Which boards do you teach?',
@@ -541,3 +575,24 @@ export const faqs = [
     a: 'Call or WhatsApp +91 93217 84940, or send an enquiry from the Contact page. You can also download the futureScience brochure from this website.',
   },
 ]
+
+// Fact-based answers, added only once the facts above are filled in (parents and AI assistants ask these first)
+const feeLines = programs.filter((p) => facts.fees[p.id]).map((p) => `${p.title}: ${facts.fees[p.id].text}`)
+if (feeLines.length) {
+  faqs.push({ q: 'What are the fees at futureScience?', a: `${feeLines.join('. ')}.${facts.feesNote ? ` ${facts.feesNote}` : ''}` })
+}
+if (facts.maxBatchSize) {
+  faqs.push({ q: 'How many students are there in a batch?', a: `At most ${facts.maxBatchSize} students per batch, so every student gets personal attention and doubt-solving.` })
+}
+if (facts.foundedYear || facts.faculty) {
+  faqs.push({
+    q: 'When was futureScience founded, and who teaches?',
+    a: [facts.foundedYear && `futureScience Private Tutorials was founded in ${facts.foundedYear}.`, facts.faculty && `${facts.faculty}.`].filter(Boolean).join(' '),
+  })
+}
+if (facts.schedule) {
+  faqs.push({ q: 'What is the weekly class schedule?', a: `${facts.schedule}. The Kandivali West branch runs the morning shift and Malad West the afternoon shift.` })
+}
+if (facts.tests) {
+  faqs.push({ q: 'How often are tests held?', a: `${facts.tests}. Every test is followed by an analysis of strengths and weaknesses.` })
+}

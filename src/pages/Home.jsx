@@ -7,7 +7,7 @@ import {
   TopperCard, AchieverCard, ProgramCard, Methodology, Testimonials, BatchTable, Branches, Faq, Tracks,
   MentorsFeature, AlumniWall, Gallery, TestimonialWall, NeetCard, Legacy, Cet2025Ribbon,
 } from '../components/Blocks.jsx'
-import { heroStats, exams, toppers, achievers, programs, cet2022, testimonials, spotlight, ACADEMIC_YEAR } from '../data/site.js'
+import { heroStats, exams, toppers, achievers, programs, cet2022, testimonials, spotlight, facts, ACADEMIC_YEAR } from '../data/site.js'
 import { pages } from '../seo/meta.js'
 
 // Hero carousel: a scroll-snap track, so phones can swipe natively. All slides are in the
@@ -93,7 +93,7 @@ export default function Home() {
         <div className="hero-bg" />
         <div className="container hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow light"><Icon name="Trophy" size={14} /> Achievers 2024 · Rank 2 Mumbai University</span>
+            <span className="eyebrow light"><Icon name="Trophy" size={14} /> MHT-CET 2025 · Top score 99.97 %ile</span>
             <h1 className="hero-kicker">{pages['/'].h1}</h1>
             <p className="hero-title">
               Where curious minds become <span className="hl">top rankers.</span>
@@ -103,7 +103,7 @@ export default function Home() {
               with deep concepts, disciplined systems and mentors who are there for every doubt.
             </p>
             <div className="hero-actions">
-              <Link to="/contact/" className="btn btn-primary btn-lg">Book Free Counselling <Icon name="ArrowRight" size={18} /></Link>
+              <Link to="/contact/#enquiry" className="btn btn-primary btn-lg">Book Free Counselling <Icon name="ArrowRight" size={18} /></Link>
               <Link to="/results/" className="btn btn-ghost btn-lg"><Icon name="Award" size={18} /> See Our Results</Link>
             </div>
             <div className="hero-trust">
@@ -111,7 +111,7 @@ export default function Home() {
                 {achievers.slice(0, 4).map((a) => <img key={a.name} src={a.photo} alt={a.name} />)}
                 <span><Icon name="Plus" size={18} strokeWidth={3} /></span>
               </Link>
-              <p><Link to="/results/"><b>100% students</b> qualified for <b>professional courses</b></Link></p>
+              <p><Link to="/results/"><b>100% of our MHT-CET 2024 students</b> qualified for <b>professional courses</b></Link></p>
             </div>
             <BrochureButton className="hero-brochure" label={`Download the ${ACADEMIC_YEAR} brochure (PDF)`} size={17} />
           </div>
@@ -144,8 +144,8 @@ export default function Home() {
           <SectionHead
             center light
             eyebrow="Hall of Fame"
-            title={<>Results that speak <span className="hl">louder than claims.</span></>}
-            lead="Top of the MHT-CET merit list, perfect 100 percentiles, and 630/720 in NEET-UG."
+            title={<>MHT-CET and NEET-UG results, <span className="hl">name by name.</span></>}
+            lead="99.97 percentile in MHT-CET 2025, overall Rank 2 Mumbai University in 2024 with perfect 100 percentiles, and 630/720 in NEET-UG 2020."
           />
           <Cet2025Ribbon />
           <div className="toppers three">
@@ -191,13 +191,12 @@ export default function Home() {
             <SectionHead
               eyebrow="Why futureScience"
               title={<>A launchpad for science careers, <span className="hl-dark">built for the top 1%.</span></>}
-              lead="We teach science the way scientists think. Concepts are taken to the core, doubts are cleared the same day, and a researched system keeps every student moving towards a career in science and technology."
+              lead="We teach science the way scientists think. Concepts are taken to the core, doubts are answered whenever students ask, and a researched system keeps every student moving towards a career in science and technology."
             />
             <ul className="check-list">
               <li><Icon name="CheckCircle2" size={20} /> Board + competitive-exam preparation in one integrated flow</li>
               <li><Icon name="CheckCircle2" size={20} /> Tutors available for doubts, like a "knowledge ATM"</li>
               <li><Icon name="CheckCircle2" size={20} /> Weekly tests with analysis of strengths & weaknesses</li>
-              <li><Icon name="CheckCircle2" size={20} /> Online classes as good as the best offline classroom</li>
             </ul>
             <Link to="/about/" className="btn btn-dark">Discover Our Story <Icon name="ArrowRight" size={18} /></Link>
           </div>
@@ -292,7 +291,7 @@ export default function Home() {
             <SectionHead
               eyebrow={`Upcoming Batches · ${ACADEMIC_YEAR}`}
               title={<>Admissions <span className="hl-dark">now open.</span></>}
-              lead="Seats in each batch are limited to protect personal attention. Contact your nearest branch to reserve yours."
+              lead={`At most ${facts.maxBatchSize} students per batch. Send an enquiry and we'll suggest the right batch and a time to visit your nearest branch.`}
             />
             <BrochureButton />
           </div>

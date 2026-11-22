@@ -195,7 +195,7 @@ const pct = (n) => [{ text: n.toFixed(2), color: C.lime }, { text: ' %ile', colo
   s.text('head', [{ text: 'A legacy written in ', color: C.white }, { text: 'ranks, white coats and IIT IDs.', color: C.lime }], { x: M, y: 1.8, w: SW - 2 * M, h: 0.9, size: 34, bold: true, font: HEAD })
   const cards = [
     { p: cet2022.photo, exam: noYear(cet2022.exam), name: cet2022.name, big: cet2022.score, lines: cet2022.ranks.map(([r, w, c]) => `#${r}  ${w} · ${c}`) },
-    { p: neetTopper.photo, exam: neetTopper.exam, name: neetTopper.name, big: `${neetTopper.marks}/${neetTopper.outOf} · ${neetTopper.percentile} %ile`, lines: neetTopper.breakdown.map(([sub, v]) => `${sub}  ${v} percentile`) },
+    { p: neetTopper.photo, exam: noYear(neetTopper.exam), name: neetTopper.name, big: `${neetTopper.marks}/${neetTopper.outOf} · ${neetTopper.percentile} %ile`, lines: neetTopper.breakdown.map(([sub, v]) => `${sub}  ${v} percentile`) },
   ]
   for (const [i, c] of cards.entries()) {
     const x = M + i * 6.0

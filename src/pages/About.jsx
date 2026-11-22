@@ -21,7 +21,7 @@ export default function About() {
             <SectionHead
               eyebrow="Our Story"
               title={<>A classroom where <span className="hl-dark">wonder meets rigour.</span></>}
-              lead="futureScience began with a simple belief: when students truly understand science, results follow. We combine unconventional, curiosity-led teaching with a strict, disciplined system of class-work, home-work and tests."
+              lead="Nilesh Vedant and Prasanna Raut founded futureScience in 2018 on a simple belief: when students truly understand science, results follow. We combine unconventional, curiosity-led teaching with a strict, disciplined system of class-work, home-work and tests."
             />
             <p className="body">
               futureScience is a mentorship-driven academy where no doubt is left unsolved, teaching goes to the core,

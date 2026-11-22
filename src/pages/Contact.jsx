@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Icon from '../components/Icon.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { PageHero, SectionHead, BrochureButton } from '../components/Section.jsx'
@@ -11,6 +11,13 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', grade: 'Std. X (going to XI)', course: programs[0].title, branch: branches[0].name, message: '' })
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value })
 
+  // "Enquire about this course" links pass ?course=<id>; applied after hydration so the pre-rendered HTML stays identical
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get('course')
+    const p = programs.find((x) => x.id === id)
+    if (p) setForm((f) => ({ ...f, course: p.title }))
+  }, [])
+
   const submit = (e) => {
     e.preventDefault()
     const body = encodeURIComponent(
@@ -19,11 +26,17 @@ export default function Contact() {
     const url = contact.whatsapp
       ? `https://wa.me/${contact.whatsapp}?text=${body}`
       : `mailto:${contact.email}?subject=${encodeURIComponent('Admission enquiry — ' + form.course)}&body=${body}`
+    // window.open isn't a link click, so analytics.jsx can't see it: report the lead here
+    window.gtag?.('event', 'generate_lead', { method: 'form' })
+    window.fbq?.('track', 'Contact', { method: 'form' })
     window.open(url, '_blank')
   }
 
   const cards = [
-    { icon: 'Phone', title: 'Call / WhatsApp', value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}` },
+    {
+      icon: 'Phone', title: 'Call / WhatsApp', value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}`,
+      extra: contact.whatsapp && { label: 'Chat on WhatsApp', href: `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(`Hello futureScience, I'd like to know about admissions ${ACADEMIC_YEAR}.`)}` },
+    },
     { icon: 'Mail', title: 'Email', value: contact.email, href: `mailto:${contact.email}` },
     { icon: 'Clock', title: 'Hours', value: contact.hours },
   ]
@@ -45,6 +58,7 @@ export default function Contact() {
                 <span className="pillar-icon"><Icon name={c.icon} size={22} /></span>
                 <span className="muted">{c.title}</span>
                 {c.href ? <a href={c.href}>{c.value}</a> : <b>{c.value}</b>}
+                {c.extra && <a className="text-link" href={c.extra.href} target="_blank" rel="noreferrer"><Icon name="MessageCircle" size={16} /> {c.extra.label}</a>}
               </Reveal>
             ))}
             <Reveal className="contact-card brochure-card" delay={240}>
@@ -58,8 +72,8 @@ export default function Contact() {
           <Branches withMap />
 
           <div className="contact-grid single">
-            <Reveal className="enquiry">
-              <SectionHead eyebrow="Enquiry" title={<>Request a <span className="hl-dark">call-back.</span></>} />
+            <Reveal className="enquiry" id="enquiry">
+              <SectionHead eyebrow="Enquiry" title={<>Book a free <span className="hl-dark">counselling session.</span></>} />
               <form onSubmit={submit}>
                 <div className="field-row">
                   <label>Student name<input required value={form.name} onChange={set('name')} placeholder="Full name" /></label>
@@ -88,9 +102,9 @@ export default function Contact() {
                 <label>Message<textarea rows="4" value={form.message} onChange={set('message')} placeholder="Board, target exam, preferred batch timing…" /></label>
                 <button className="btn btn-primary btn-lg" type="submit">
                   <Icon name={contact.whatsapp ? 'MessageCircle' : 'Send'} size={18} />
-                  {contact.whatsapp ? 'Send via WhatsApp' : 'Send via Email'}
+                  {contact.whatsapp ? 'Send on WhatsApp' : 'Send by Email'}
                 </button>
-                <p className="form-note">Your details are not stored on this website; the message opens in your own {contact.whatsapp ? 'WhatsApp' : 'email app'}.</p>
+                <p className="form-note">The message opens in your own {contact.whatsapp ? 'WhatsApp' : 'email app'}; your details are not stored on this website. Office hours: {contact.hours}.</p>
               </form>
             </Reveal>
             <div>

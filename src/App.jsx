@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import ActionBar from './components/ActionBar.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Courses from './pages/Courses.jsx'
@@ -49,6 +50,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <ActionBar />
     </ThemeProvider>
   )
 }

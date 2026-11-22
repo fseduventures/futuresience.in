@@ -5,16 +5,33 @@ import { build } from 'vite'
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { execFileSync } from 'node:child_process'
 import { pages, keywords, canonical, schemasFor } from '../src/seo/meta.js'
 import {
   SITE_URL, BROCHURE_URL, ACADEMIC_YEAR, brand, contact, branches, programs, batches, faqs, toppers, achievers, cet2022, tracks, mentors,
-  neetTopper, alumniColleges, testimonials, analytics, cet2025,
+  neetTopper, alumniColleges, testimonials, analytics, cet2025, facts, resultsSummary,
 } from '../src/data/site.js'
 
 const root = path.resolve(import.meta.dirname, '..')
 const dist = path.join(root, 'dist')
 const ssrOut = path.join(root, 'dist-ssr')
 const { version } = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'))
+// Content date: sitemap lastmod, WebPage dateModified and the "Last updated" line in llms.txt.
+// The last commit that touched content, or today if content has uncommitted changes. Stamping every
+// build with today's date would make the date meaningless, and Google ignores lastmod it can't trust.
+const CONTENT = ['src/data', 'src/pages', 'src/components', 'src/seo', 'public/downloads']
+function contentDate() {
+  const now = new Date().toISOString().slice(0, 10)
+  try {
+    const git = (args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim()
+    if (git(['status', '--porcelain', '--', ...CONTENT])) return now
+    return git(['log', '-1', '--format=%cs', '--', ...CONTENT]) || now
+  } catch {
+    return now
+  }
+}
+const today = contentDate()
+const todayLong = new Date(`${today}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
 
 await build({ root, logLevel: 'warn', build: { ssr: 'src/entry-server.jsx', outDir: ssrOut, emptyOutDir: true } })
 const { render } = await import(pathToFileURL(path.join(ssrOut, 'entry-server.js')).href)
@@ -53,7 +70,7 @@ function head(route, { noindex = false } = {}) {
     `<meta name="twitter:description" content="${esc(page.description)}" />`,
     `<meta name="twitter:image" content="${image}" />`,
     `<link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt" />`,
-    ...(noindex ? [] : schemasFor(route).map((s) => `<script type="application/ld+json">${json(s)}</script>`)),
+    ...(noindex ? [] : schemasFor(route, { modified: today }).map((s) => `<script type="application/ld+json">${json(s)}</script>`)),
     ...trackers(),
   ].filter(Boolean).join('\n    ')
 }
@@ -111,7 +128,6 @@ for (const route of routes) {
 fs.writeFileSync(path.join(dist, '404.html'), page('/404', { noindex: true }))
 
 // ── sitemap.xml ──
-const today = new Date().toISOString().slice(0, 10)
 const priority = { '/': '1.0', '/courses': '0.9', '/results': '0.9', '/contact': '0.9', '/about': '0.7', '/directors': '0.8', '/life': '0.6', '/privacy': '0.3' }
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -132,8 +148,31 @@ Sitemap: ${SITE_URL}/sitemap.xml
 `)
 
 // ── llms.txt: a plain-text brief that AI assistants can quote accurately ──
-const addr = (b) => `${b.street}, ${b.locality}, ${b.city}, ${b.region} ${b.postalCode}`
+const addr = (b) => `${b.building ? `${b.building}, ` : ''}${b.street}, ${b.locality}, ${b.city}, ${b.region} ${b.postalCode}`
+const mapLink = (b) => b.geo
+  ? `https://www.google.com/maps/search/?api=1&query=${b.geo.lat},${b.geo.lng}`
+  : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.mapQuery)}`
+// Ready-to-send WhatsApp enquiries an assistant can hand straight to a parent or student
+const waLink = (text) => `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(text)}`
+const factLines = [
+  facts.foundedYear && `- Founded: ${facts.foundedYear}`,
+  facts.maxBatchSize && `- Batch size: at most ${facts.maxBatchSize} students per batch`,
+  facts.faculty && `- Faculty: ${facts.faculty}`,
+  facts.schedule && `- Weekly schedule: ${facts.schedule}`,
+  facts.tests && `- Tests: ${facts.tests}`,
+  `- Mode: classroom (onsite) coaching at both branches`,
+].filter(Boolean)
+const feeLines = programs.filter((p) => facts.fees[p.id]).map((p) => `- ${p.title}: ${facts.fees[p.id].text}`)
+const feeSection = feeLines.length
+  ? `\n## Fees (${ACADEMIC_YEAR})\n${feeLines.join('\n')}${facts.feesNote ? `\n\n${facts.feesNote}` : ''}\n`
+  : ''
+const waLines = contact.whatsapp
+  ? branches.map((b) => `- WhatsApp, ${b.name} branch: ${waLink(`Hello futureScience, I'd like a counselling session for Std. XI Science (${ACADEMIC_YEAR}) at the ${b.name} branch.`)}`)
+  : []
+
 fs.writeFileSync(path.join(dist, 'llms.txt'), `# ${brand.full}
+
+Last updated: ${todayLong} (website version ${version})
 
 > ${brand.full} (${brand.legal}) is a science coaching institute in Mumbai for Class 11 and Class 12 students, preparing them for JEE Main, JEE Advanced, NEET-UG, MHT-CET and CUET-UG, with engineering, medical and pharmacy entrance coaching. Branches: Kandivali West and Malad West. Tagline: "${brand.tagline}".
 
@@ -144,9 +183,13 @@ fs.writeFileSync(path.join(dist, 'llms.txt'), `# ${brand.full}
 - Phone / WhatsApp: ${contact.phone}
 - Email: ${contact.email}
 - Website: ${SITE_URL}/
-
+- Hours: ${contact.hours}
+${[...factLines, ''].join('\n')}
 ## Branches
-${branches.map((b) => `- ${brand.name} ${b.name}: ${addr(b)} (serves ${b.nearby.join(', ')})`).join('\n')}
+${branches.map((b) => `- ${brand.name} ${b.name}: ${addr(b)} (serves ${b.nearby.join(', ')})${b.shift ? `. ${b.shift}` : ''}. Map: ${mapLink(b)}`).join('\n')}
+${feeSection}
+## How to enquire or book a counselling session
+${[`- Phone: ${contact.phone} (${contact.hours})`, ...waLines, `- Enquiry form (opens WhatsApp with the details filled in): ${SITE_URL}/contact/`, `- Email: ${contact.email}`].join('\n')}
 
 ## Upcoming batches (${ACADEMIC_YEAR})
 ${batches.map((b) => `- ${b.course}: starts ${b.start}. ${b.for}. ${b.details}`).join('\n')}
@@ -157,10 +200,14 @@ ${tracks.map((t) => `- ${t.title} (${t.exams}): ${t.text}`).join('\n')}
 ## Courses
 ${programs.map((p) => `- [${p.title}](${SITE_URL}/courses/#${p.id}): ${p.sub}. ${p.summary} Audience: ${p.audience}. Duration: ${p.duration}.`).join('\n')}
 
-## Results
+## Results at a glance
+${resultsSummary.map((r) => `- ${r.exam}: top score ${r.top.toFixed(2)} percentile. At or above 99 percentile: ${r.above99.join(', ')}.`).join('\n')}
+- 100% of futureScience students qualified for professional courses (MHT-CET 2024).
+
+## Results (newest first)
+${cet2025.students.map((t) => `- ${t.name} (${t.stream}): ${t.score.toFixed(2)} percentile, ${cet2025.exam}. ${t.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
 ${toppers.map((t) => `- ${t.name} (${t.stream}): ${t.score} percentile, MHT-CET 2024${t.badge ? `, ${t.badge}` : ''}. ${t.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
 ${achievers.map((a) => `- ${a.name} (${a.stream}): ${a.score} percentile, MHT-CET 2024.`).join('\n')}
-${cet2025.students.map((t) => `- ${t.name} (${t.stream}): ${t.score.toFixed(2)} percentile, ${cet2025.exam}. ${t.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
 - ${cet2022.name}: ${cet2022.score}, ${cet2022.exam}. ${cet2022.ranks.map(([r, w, c]) => `Rank ${r} ${w} (${c})`).join('; ')}.
 - ${neetTopper.name}: ${neetTopper.marks}/${neetTopper.outOf} (${neetTopper.percentile} percentile), ${neetTopper.exam}. ${neetTopper.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.
 
@@ -168,7 +215,7 @@ ${cet2025.students.map((t) => `- ${t.name} (${t.stream}): ${t.score.toFixed(2)} 
 ${alumniColleges.map((c) => `- ${c.name}: ${c.course}`).join('\n')}
 
 ## Directors
-${mentors.map((m) => `- [${m.name}](${SITE_URL}/directors/#${m.id}): ${m.lead}`).join('\n')}
+${mentors.map((m) => `- [${m.name}](${SITE_URL}/directors/#${m.id}): ${m.lead}${m.linkedin ? ` LinkedIn: ${m.linkedin}` : ''}`).join('\n')}
 
 ## Student testimonials
 ${testimonials.map((t) => `- ${t.name} (${t.meta}): "${t.quote}"`).join('\n')}

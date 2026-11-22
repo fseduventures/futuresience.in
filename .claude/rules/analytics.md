@@ -11,7 +11,7 @@
 | Event | When | Parameters |
 |---|---|---|
 | `page_view` | every page, including in-app navigation (GA4 enhanced measurement; the Pixel gets `PageView` from `analytics.jsx`) | `site_theme` |
-| `generate_lead` (Meta: `Contact`) | tap on a `tel:`, WhatsApp or `mailto:` link | `method`: phone / whatsapp / email |
+| `generate_lead` (Meta: `Contact`) | tap on a `tel:`, WhatsApp or `mailto:` link, or sending the Contact form (fired in `submit()` in `Contact.jsx`, because `window.open` isn't a link click) | `method`: phone / whatsapp / email / form |
 | `brochure_download` (Meta: `BrochureDownload`) | click on any `.pdf` link | `edition`: dark / light, `button_location`: header / footer / page, `file_name` |
 | `theme_change` | visitor flips the theme toggle | `site_theme` |
 

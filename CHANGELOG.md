@@ -6,9 +6,47 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 ## [Unreleased]
 
 ### Changed
+- Design polish (unslop pass; same colours, fonts and layout):
+  - Highlighted heading words are solid lime (light theme: the darker `--lime-ink` green) instead of gradient text.
+  - No lime glow under the primary buttons.
+  - Cards and buttons no longer jump up on hover. Cards get a soft shadow or lime edge, and buttons a small press.
+  - Big numbers use weight 700 instead of 800.
+  - Labels (eyebrows, timeline years, director titles, badges, course facts) are no longer upper-case with wide letter spacing.
+- Copy that the site couldn't back up is now specific:
+  - The hero leads with the MHT-CET 2025 top score (99.97 %ile).
+  - Online classes aren't offered now:
+    - The homepage line "Online classes as good as the best offline classroom" is removed.
+    - The "Online & offline" promise card is now **A structured week** (classes 4 days a week, 6 hours a day, plus a revision day and a test day).
+    - `llms.txt` says the coaching is classroom-based.
+  - New facts:
+    - The weekly schedule and the test pattern (weekly chapter-wise tests, cumulative tests and prelims, in subjective and objective patterns), with two new FAQs.
+    - Branch shifts, Kandivali West mornings and Malad West afternoons, on the branch cards, in the branch FAQ, the JSON-LD and `llms.txt`.
+  - The directors' LinkedIn profiles are in the JSON-LD (`sameAs`) and `llms.txt` only. The Directors page is unchanged.
+  - Lyra Uchil's MHT-CET 2024 rank is marked as **overall** Rank 2, Mumbai University.
+  - Shrey Soni's NEET-UG result (630/720, 99.36 percentile) now carries its year, 2020, on the website, in the Results meta description, the FAQ, the timeline and `llms.txt`. The brochure and presentation still show it without the year.
+  - "100% qualified" and "Rank 2, Mumbai University" now say 2024.
+  - "Top of the merit list", "same day" doubts, "round-the-clock" and "Revered across Mumbai" are replaced with what the site shows.
+  - The homepage results heading now names the exams.
+  - Enquiry form: "Book a free counselling session" and "Send on WhatsApp".
+- Structured data:
+  - FAQPage marks up only the questions each page shows (homepage 14, Courses 12, Contact 5).
+  - Each director is one `Person` node (`founder` and `employee` point to it; `mainEntity` of /directors/).
+  - Removed: `award`, which listed student scores; `priceRange`, since fees aren't published; and the unconfirmed "Online" course mode.
+- Facts published: founded 2018, at most 25 students per batch, a team of 15+ teachers led by senior faculty with 20+ years of experience. They appear in the JSON-LD (`foundingDate`), `llms.txt`, two new FAQs, and the "Small, focused batches" card. Fees stay unpublished. The founding year also appears on the About page ("Our Story"), in the Nilesh Vedant profile, in the "Who leads futureScience?" FAQ and as `founder` in the JSON-LD. Brochure PDFs regenerated.
+- Kandivali West branch: the full address from the Google listing (LG-124, Lower Ground Floor, Xth Central Mall, Boraspada Road) on the Contact page card, in the JSON-LD and in `llms.txt`, plus the map pin coordinates (`GeoCoordinates`). The footer and brochure keep the short address.
+- FAQ "What results have futureScience students achieved?" now leads with MHT-CET 2025 (Aarna Diwan, 99.97 percentile, plus the three other students above 99, by name).
 - The futureScience presentation is now cinematic and photo-led: 19 full-screen photo scenes. Each new photo dissolves in, then the title flies in, then cards, portraits and figures pop in, followed by a slow Ken Burns drift. It has ringed topper portraits, Life at fS photos and a call to action with a QR code. About 3¾ minutes, in the brand fonts. The director scenes are left out for now.
 
 ### Added
+- AI assistant / agent readiness (GEO):
+  - `llms.txt` now opens with a "Last updated" date and lists opening hours, a map link per branch, a **How to enquire** section with ready-to-send WhatsApp links per branch, and **Results at a glance** (each year's top score and every student at 99+ percentile, by name). Results are listed newest first (MHT-CET 2025 at the top).
+  - Every page carries a `WebPage` JSON-LD block with `dateModified`. It and the sitemap `lastmod` now use the date content last changed (the last git commit touching content, or today if content has uncommitted changes) instead of every build's date.
+- **Call / WhatsApp bar on phones** (640px and below): fixed to the bottom of every page, so parents can call or WhatsApp in one tap while scrolling. Both links count as leads automatically. The footer is padded so nothing hides behind it.
+- Enquiries (from a marketing-skills audit: ai-seo, seo-audit, schema, cro, copywriting):
+  - Direct WhatsApp links: "Chat on WhatsApp" on the Contact page phone card, and a WhatsApp button on each branch card.
+  - Every "Book counselling" and "Enquire" button goes straight to the enquiry form (`/contact/#enquiry`). Course and batch buttons preselect that course in the form (`?course=<id>`).
+  - Sending the form is now counted as a lead (`generate_lead`, `method: form`). The Privacy page says so (updated 22 November 2026).
+  - New `facts` in `site.js` (founding year, maximum batch size, faculty, fees per course) and `geo` per branch. They are empty for now; once filled in they appear automatically in the JSON-LD (`foundingDate`, `GeoCoordinates`, course `Offer`), in `llms.txt` and as new FAQs.
 - `npm run video` (`scripts/export_video.py`): exports the presentation to MP4 with PowerPoint (1080p or 4K). `python release.py --with-video` attaches the video to the GitHub Release.
 
 ## [6.8.0] - 2026-11-21

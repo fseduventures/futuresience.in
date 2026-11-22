@@ -4,7 +4,7 @@ import { brand, contact, analytics, SITE_URL } from '../data/site.js'
 
 // Linked from the footer only. Describe what the site really does: keep it in step with
 // src/analytics.jsx and the `analytics` IDs in site.js.
-const UPDATED = '1 November 2026'
+const UPDATED = '22 November 2026'
 
 export default function Privacy() {
   const site = SITE_URL.replace('https://', '')
@@ -39,7 +39,7 @@ export default function Privacy() {
           <ul>
             <li>the pages you view, how long you stay and the site or search that brought you here;</li>
             <li>your device type, browser, screen size and approximate location (city level);</li>
-            <li>taps on our phone number, WhatsApp or email links, brochure downloads, and whether you use the light or dark theme.</li>
+            <li>taps on our phone number, WhatsApp or email links, sending the enquiry form (only that it was sent, never what you typed), brochure downloads, and whether you use the light or dark theme.</li>
           </ul>
           <p>
             Google Analytics uses cookies and similar technology to do this. It does not give us your name, phone number or

@@ -190,7 +190,7 @@ function Legacy({ n }) {
           <div className="b-legacy neet">
             <img src={neetTopper.photo} alt="" />
             <div className="lg-head">
-              <span className="muted-l">{neetTopper.exam}</span>
+              <span className="muted-l">{noYear(neetTopper.exam)}</span>
               <h3>{neetTopper.name}</h3>
               <b>{neetTopper.marks}/{neetTopper.outOf} · {neetTopper.percentile} %ile</b>
             </div>

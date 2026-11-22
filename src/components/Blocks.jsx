@@ -195,12 +195,18 @@ export function Branches({ withMap = false }) {
             <span className="muted">futureScience branch</span>
             <h3>{b.name}</h3>
             <address>
-              {b.street}, {b.locality},<br />{b.city}, {b.region} {b.postalCode}
+              {b.building ? <>{b.building},<br /></> : null}{b.street}, {b.locality},<br />{b.city}, {b.region} {b.postalCode}
             </address>
             <p className="branch-near">Convenient for {b.nearby.join(', ')}</p>
+            {b.shift && <p className="branch-near branch-shift"><Icon name="Clock" size={15} /> {b.shift}</p>}
             <div className="branch-actions">
               <a className="btn btn-primary btn-sm" href={mapsLink(b.mapQuery)} target="_blank" rel="noreferrer"><Icon name="Navigation" size={15} /> Directions<span className="sr-only"> to {b.name}</span></a>
               <a className="btn btn-outline btn-sm" href={`tel:${contact.phone.replace(/\s/g, '')}`}><Icon name="Phone" size={15} /> {contact.phone}</a>
+              {contact.whatsapp && (
+                <a className="btn btn-outline btn-sm" href={`https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(`Hello futureScience, I'd like to visit the ${b.name} branch.`)}`} target="_blank" rel="noreferrer">
+                  <Icon name="MessageCircle" size={15} /> WhatsApp<span className="sr-only"> the {b.name} branch</span>
+                </a>
+              )}
             </div>
           </div>
         </Reveal>
@@ -406,7 +412,7 @@ export function BatchTable() {
           </div>
           <div className="batch-status">
             <span><span className="live-dot" /> {b.status}</span>
-            <Link to="/contact/" className="btn btn-primary btn-sm">Enquire</Link>
+            <Link to={`/contact/?course=${b.programId}#enquiry`} className="btn btn-primary btn-sm">Enquire<span className="sr-only"> about the {b.course} batch</span></Link>
           </div>
         </Reveal>
       ))}
