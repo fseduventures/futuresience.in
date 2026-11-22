@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [6.9.0] - 2026-11-22
+
 ### Changed
 - Design polish (unslop pass; same colours, fonts and layout):
   - Highlighted heading words are solid lime (light theme: the darker `--lime-ink` green) instead of gradient text.
