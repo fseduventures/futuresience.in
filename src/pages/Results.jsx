@@ -21,7 +21,7 @@ export default function Results() {
             <Cet2025 />
           </div>
           <div className="results-divider" />
-          <SectionHead center light eyebrow="MHT-CET 2024 · NEET-UG" title={<>Toppers who <span className="hl">set the bar.</span></>} />
+          <SectionHead center light eyebrow="MHT-CET 2024 · JEE Main · NEET-UG" title={<>Toppers who <span className="hl">set the bar.</span></>} />
           <div className="toppers three">
             {toppers.map((t, i) => <TopperCard t={t} key={t.name} delay={i * 120} />)}
             <NeetCard delay={240} />

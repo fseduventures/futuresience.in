@@ -13,8 +13,8 @@ export default function Footer() {
       <div className="footer-glow" />
       <div className="container footer-grid">
         <div className="footer-brand">
-          <div className="footer-logo"><img src="/images/logo-tag.png" alt={brand.full} /></div>
-          <p>Class 11 & 12 Science coaching for JEE, NEET-UG, MHT-CET and CUET, plus engineering, medical and pharmacy entrance, in Kandivali West and Malad West, Mumbai.</p>
+          <div className="footer-logo"><picture><source srcSet={brand.logoStill} media="(prefers-reduced-motion: reduce)" /><img src={brand.logo} alt={brand.full} /></picture></div>
+          <p>IIT-JEE and Medical (NEET-UG) coaching for Class 11 & 12 Science, plus MHT-CET, CUET and pharmacy entrance, in Kandivali West and Malad West, Mumbai.</p>
           <BrochureButton className="btn btn-primary btn-sm footer-brochure" label="Download Brochure (PDF)" size={16} />
           {socials.length > 0 && (
             <div className="socials">

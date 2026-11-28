@@ -166,6 +166,11 @@ p { margin: 0; }
 .b-program ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1mm 3mm; }
 .b-program li { display: flex; gap: 1.2mm; align-items: flex-start; font-size: 7pt; color: var(--ink); font-weight: 500; line-height: 1.35; }
 .b-program li svg { color: var(--lime-600); flex-shrink: 0; margin-top: 0.3mm; }
+.b-programs.compact { gap: 3mm; }
+.b-programs.compact .b-program { height: 41mm; }
+.b-programs.compact .b-program .pb { padding: 2.8mm 4.5mm; }
+.b-programs.compact .b-program p { line-height: 1.35; margin-bottom: 1.1mm; }
+.b-programs.compact .b-program .facts { margin-bottom: 1.1mm; }
 
 /* ── 6 Method ── */
 .ladder { display: grid; gap: 3.5mm; margin-bottom: 9mm; }

@@ -45,7 +45,8 @@ function Cover() {
       <div className="cover-bg" />
       <div className="safe">
         <div className="cover-top">
-          <div className="logo-plate"><img src="/images/logo-tag.png" alt="" /></div>
+          {/* New name on the cover; the back page keeps the original Private Tutorials logo */}
+          <div className="logo-plate"><img src="/images/logo-academy.png" alt="" /></div>
           <span className="cover-year">Admissions {ACADEMIC_YEAR}</span>
         </div>
         <div className="cover-mid">
@@ -278,8 +279,9 @@ function ProgrammesB({ n }) {
       <div className="safe">
         <Eyebrow>Programmes · {ACADEMIC_YEAR}</Eyebrow>
         <h2>Specialised tracks &amp; <span className="hl-dark">beyond the syllabus.</span></h2>
-        <p className="lead sm">CUET-UG, a 45-day CET sprint, exam-pattern practice, and STEM enrichment that builds a true scientific mindset.</p>
-        <div className="b-programs">{programs.slice(4).map((p) => <ProgramRow p={p} key={p.id} />)}</div>
+        <p className="lead sm">CUET-UG, a 45-day CET sprint, exam-pattern practice, STEM enrichment that builds a true scientific mindset, and a career interest test.</p>
+        {/* Five or more rows don't fit at full height (Discover-U made it five) */}
+        <div className={`b-programs ${programs.length - 4 > 4 ? 'compact' : ''}`}>{programs.slice(4).map((p) => <ProgramRow p={p} key={p.id} />)}</div>
       </div>
       <Folio n={n} />
     </section>
@@ -450,7 +452,7 @@ function OgCard() {
     <div className="og">
       <div className="cover-bg" />
       <div className="og-inner">
-        <div className="logo-plate"><img src="/images/logo-tag.png" alt="" /></div>
+        <div className="logo-plate"><img src="/images/logo-academy.png" alt="" /></div>
         <h1>JEE · NEET-UG · MHT-CET · CUET<br /><span className="hl">Class 11 &amp; 12 Science Coaching</span></h1>
         <p>Kandivali West &amp; Malad West, Mumbai · Admissions {ACADEMIC_YEAR}</p>
         <div className="og-stats">

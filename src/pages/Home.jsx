@@ -48,16 +48,34 @@ function TopperSpotlight() {
       </div>
       <div className="spot-track" ref={track} onScroll={onScroll}>
         {spotlight.map((t, i) => (
-          <div className="spot-slide" key={t.name} aria-hidden={i !== active}>
-            <div className="hero-card-main">
+          <div className="spot-slide" key={`${t.name} ${t.exam}`} aria-hidden={i !== active}>
+            <div className={`hero-card-main ${t.jee ? 'duo' : ''}`}>
               <img src={t.photo} alt={t.name} loading={i === 0 ? 'eager' : 'lazy'} />
               <div>
                 <p className="hero-card-name">{t.name}</p>
-                <div className="mega"><Counter value={t.score} decimals={2} /><small>%ile</small></div>
+                {t.jee ? (
+                  // Two exams on one slide: the scores side by side, subjects in a table below
+                  <div className="spot-duo">
+                    <div><div className="mega"><Counter value={t.score} decimals={2} /><small>%ile</small></div><span className="muted-light">{t.first}</span></div>
+                    <div><div className="mega">{t.jee.score.toFixed(2)}<small>%ile</small></div><span className="muted-light">{t.jee.exam}</span></div>
+                  </div>
+                ) : (
+                  <div className="mega"><Counter value={t.score} decimals={2} /><small>%ile</small></div>
+                )}
                 {t.badge && <span className="badge-gold"><Icon name="Medal" size={14} /> {t.badge}</span>}
               </div>
             </div>
-            {t.breakdown && (
+            {t.jee && (
+              <table className="spot-table">
+                <thead><tr><th>Subject</th><th>{t.first}</th><th>{t.jee.exam}</th></tr></thead>
+                <tbody>
+                  {t.breakdown.map(([s, v]) => (
+                    <tr key={s}><td>{s}</td><td>{v}</td><td>{t.jee.breakdown.find(([js]) => js === s)?.[1]}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+            {t.breakdown && !t.jee && (
               <div className="hero-card-bars">
                 {t.breakdown.map(([s, v]) => (
                   <div key={s} className="bar">
@@ -78,7 +96,7 @@ function TopperSpotlight() {
       </div>
       <div className="spot-dots">
         {spotlight.map((t, i) => (
-          <button key={t.name} type="button" onClick={() => go(i)} aria-label={`Show ${t.name}`} aria-current={i === active} />
+          <button key={`${t.name} ${t.exam}`} type="button" onClick={() => go(i)} aria-label={`Show ${t.name}, ${t.exam}`} aria-current={i === active} />
         ))}
       </div>
     </Reveal>
@@ -93,13 +111,13 @@ export default function Home() {
         <div className="hero-bg" />
         <div className="container hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow light"><Icon name="Trophy" size={14} /> MHT-CET 2025 · Top score 99.97 %ile</span>
+            <span className="eyebrow light"><Icon name="Trophy" size={14} /> MHT-CET 2025 · 99.97 %ile · JEE Main · 97.67 %ile</span>
             <h1 className="hero-kicker">{pages['/'].h1}</h1>
             <p className="hero-title">
               Where curious minds become <span className="hl">top rankers.</span>
             </p>
             <p className="lead">
-              futureScience Private Tutorials prepares Class 11 & 12 Science students for <b>JEE</b>, <b>NEET-UG</b>, <b>MHT-CET</b> and <b>CUET</b>,
+              futureScience IIT-Medical Academy prepares Class 11 & 12 Science students for <b>IIT-JEE</b>, <b>Medical (NEET-UG)</b>, <b>MHT-CET</b> and <b>CUET</b>,
               with deep concepts, disciplined systems and mentors who are there for every doubt.
             </p>
             <div className="hero-actions">
@@ -145,7 +163,7 @@ export default function Home() {
             center light
             eyebrow="Hall of Fame"
             title={<>MHT-CET and NEET-UG results, <span className="hl">name by name.</span></>}
-            lead="99.97 percentile in MHT-CET 2025, overall Rank 2 Mumbai University in 2024 with perfect 100 percentiles, and 630/720 in NEET-UG 2020."
+            lead="99.97 percentile in MHT-CET 2025, overall Rank 2 Mumbai University in 2024 with perfect 100 percentiles, 97.67 percentile in JEE Main 2024 and 630/720 in NEET-UG 2020."
           />
           <Cet2025Ribbon />
           <div className="toppers three">
@@ -223,7 +241,7 @@ export default function Home() {
             <SectionHead
               eyebrow="Programmes"
               title={<>Courses crafted for <span className="hl-dark">every ambition.</span></>}
-              lead="From the Bridge Course to the two-year integrated programme, every course combines coaching, tests and mentoring."
+              lead="From the Class XI Foundation Course to the two-year integrated programme, every course combines coaching, tests and mentoring."
             />
             <Link to="/courses/" className="btn btn-outline">All Courses <Icon name="ArrowRight" size={18} /></Link>
           </div>

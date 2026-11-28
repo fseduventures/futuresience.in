@@ -1,6 +1,6 @@
 # futureScience: static React website + print brochure
 
-Display-only (no backend) site for **futureScience Private Tutorials**, built with Vite + React + React Router.
+Display-only (no backend) site for **futureScience IIT-Medical Academy**, built with Vite + React + React Router.
 Every page is pre-rendered to plain HTML at build time so Google and AI search assistants
 (ChatGPT, Perplexity, Claude, Gemini) can read the full content without running JavaScript.
 

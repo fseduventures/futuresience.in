@@ -126,7 +126,7 @@ const pct = (n) => [{ text: n.toFixed(2), color: C.lime }, { text: ' %ile', colo
 // 2. Hook
 {
   const s = scene(await bg('/images/hero-cosmos.jpg', 'left'))
-  s.eyebrow('futureScience Private Tutorials')
+  s.eyebrow(brand.full)
   s.head('Where curious minds become ', 'top rankers.', { size: 50, h: 2.3 })
   s.body('Deep concepts, disciplined systems and mentors who are there for every doubt, from the first lecture to exam day.', { y: 4.45 })
 }
@@ -323,8 +323,10 @@ pptx.layout = 'LAYOUT_WIDE'
 pptx.title = `${brand.full}: presentation`
 pptx.author = brand.legal
 const timings = []
-const logoFile = pub('/images/logo-tag.png')
-const logoRatio = 701 / 193
+// Animated logo (IIT-Medical Academy ⇄ Private Tutorials), made by scripts/make-logo-gif.py. PowerPoint restarts
+// a GIF on every slide, so this one starts and ends on the finished Academy logo and a restart can't be seen.
+const logoFile = path.join(root, 'scripts', 'logo-src', 'logo-academy-deck.gif')
+const logoRatio = 1000 / 256
 const readTime = (s) => Math.round(Math.min(T.maxRead, Math.max(T.minRead, 3000 + s.words * T.perWord)))
 
 // Who comes in when, and how. Titles fly in from the text's side on beat 1 (centred ones pop);

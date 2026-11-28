@@ -1,6 +1,6 @@
 # futureScience website
 
-Static marketing site for **futureScience Private Tutorials** (Class 11–12 science coaching, Kandivali West & Malad West, Mumbai).
+Static marketing site for **futureScience IIT-Medical Academy** (formerly futureScience Private Tutorials) (Class 11–12 science coaching, Kandivali West & Malad West, Mumbai).
 Vite + React + React Router, pre-rendered to plain HTML per page so search engines and AI assistants read it without JavaScript.
 Live at https://www.futurescience.in on cPanel (MilesWeb, Apache/LiteSpeed). There is no backend.
 Git repo: github.com/fseduventures/futuresience.in (branch `main`, releases tagged `vX.Y.Z`, current line 6.x).
@@ -25,6 +25,7 @@ Git repo: github.com/fseduventures/futuresience.in (branch `main`, releases tagg
 - `scripts/optimize-images.mjs`: recompresses `dist/images` and writes 720px `-sm` phone copies (originals in `public/images` stay untouched)
 - `scripts/zip-dist.mjs`: last build step, packs `dist/` into `dist-build.zip` (no dependencies)
 - `scripts/make-deck.mjs` + `scripts/export_video.py`: the presentation and its video export. Scenes, look and timings (`T`) are in `make-deck.mjs`. Output goes to `deck/` (gitignored). Results show without passing years, as in the brochure.
+- `scripts/make-logo-gif.py` (Python + Pillow): builds the animated logos from `scripts/logo-src/` (the logo PDF and masters): `public/images/logo-academy.gif` for the website and `scripts/logo-src/logo-academy-deck.gif` for the presentation. Both are committed; rerun only when the logo or the animation changes.
 - `src/analytics.jsx`: GA4 / Meta Pixel events (leads, brochure downloads, theme). IDs are in `analytics` in `site.js`.
 - `CHANGELOG.md` + `release.py`: versioning. The version comes from `package.json` and shows in the header and footer.
 - `public/.htaccess`: HTTPS + www redirect, charset, compression, caching, header hardening

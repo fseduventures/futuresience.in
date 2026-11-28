@@ -43,7 +43,7 @@ export default function Header() {
       <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
         <div className="container header-inner">
           <Link to="/" className="brand" aria-label={brand.full}>
-            <img src="/images/logo-tag.png" alt={brand.full} />
+            <picture><source srcSet={brand.logoStill} media="(prefers-reduced-motion: reduce)" /><img src={brand.logo} alt={brand.full} /></picture>
           </Link>
           <nav className={`nav ${open ? 'is-open' : ''}`}>
             {nav.filter((n) => n.header !== false).map((n) => (

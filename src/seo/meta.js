@@ -3,6 +3,7 @@
 import { SITE_URL, ACADEMIC_YEAR, brand, contact, branches, programs, batches, faqs, mentors, facts } from '../data/site.js'
 
 const KEYWORDS = [
+  'IIT-Medical Academy', 'IIT-JEE coaching', 'IIT coaching', 'medical entrance coaching', 'IIT and medical coaching Kandivali', 'IIT and medical coaching Malad',
   'science coaching for class 11 and 12', 'JEE coaching', 'NEET coaching', 'MHT-CET coaching', 'CET coaching', 'CUET coaching',
   'engineering coaching', 'medical coaching', 'pharmacy entrance coaching', 'B.Pharm CET coaching',
   'class 11 science coaching', 'class 12 science coaching', 'HSC science classes', 'PCM coaching', 'PCB coaching',
@@ -15,43 +16,43 @@ const KEYWORDS = [
 export const pages = {
   '/': {
     // Keep under ~60 chars / ~155 chars: search results truncate longer titles and descriptions
-    title: 'JEE & NEET Coaching in Kandivali & Malad | futureScience',
-    description: 'Class 11 & 12 science coaching in Kandivali West & Malad West, Mumbai for JEE, NEET-UG, MHT-CET & CUET. 99.98 %ile in MHT-CET 2024.',
-    h1: 'Science coaching for Class 11 & 12: JEE, NEET-UG, MHT-CET & CUET in Kandivali West & Malad West, Mumbai',
+    title: 'IIT & Medical Coaching in Kandivali & Malad | futureScience',
+    description: 'IIT-JEE, Medical (NEET-UG), MHT-CET & CUET coaching for Class 11 & 12 in Kandivali West & Malad West, Mumbai. 99.98 %ile in MHT-CET 2024.',
+    h1: 'IIT-JEE & Medical (NEET-UG) coaching for Class 11 & 12 Science, plus MHT-CET & CUET, in Kandivali West & Malad West, Mumbai',
   },
   '/about': {
-    title: 'About futureScience | Science Coaching in Kandivali & Malad',
-    description: 'futureScience Private Tutorials teaches Class 11 & 12 science with deep concepts, disciplined systems and personal mentoring for JEE, NEET and CET.',
+    title: 'About futureScience IIT-Medical Academy | Kandivali & Malad',
+    description: 'futureScience IIT-Medical Academy teaches Class 11 & 12 science with deep concepts, disciplined systems and personal mentoring for IIT-JEE, NEET and CET.',
     breadcrumb: 'About',
   },
   '/courses': {
-    title: `Courses ${ACADEMIC_YEAR} | JEE, NEET, CET & CUET | futureScience`,
-    description: 'Class 11–12 Science integrated programme, Bridge Course, JEE Main, NEET-UG & MHT-CET coaching, CUET, crash course and test series in Kandivali & Malad.',
+    title: `Courses ${ACADEMIC_YEAR} | IIT-JEE, NEET, CET & CUET | futureScience`,
+    description: 'Class 11–12 Science, Class XI Foundation, IIT-JEE, Medical (NEET-UG) & MHT-CET, CUET, crash course, test series and Discover-U in Kandivali & Malad.',
     breadcrumb: 'Courses',
   },
   '/results': {
-    title: 'Results | 99.98 %ile MHT-CET 2024 | futureScience',
-    description: 'MHT-CET 2025: Aarna Diwan 99.97 %ile, Param Shah 99.41. MHT-CET 2024: Lyra Uchil 99.98 %ile (Rank 2, Mumbai University). Shrey Soni 630/720 NEET-UG 2020.',
+    title: 'Results | MHT-CET, IIT-JEE & Medical Toppers | futureScience',
+    description: 'MHT-CET 2025: Aarna Diwan 99.97 %ile. MHT-CET 2024: Lyra Uchil 99.98 %ile (Rank 2, Mumbai University). JEE Main 2024: 97.67 %ile. NEET-UG: 630/720.',
     breadcrumb: 'Results',
   },
   '/directors': {
     title: 'Nilesh Vedant & Prasanna Raut | Directors | futureScience',
-    description: 'Meet Nilesh Vedant and Prasanna Raut, directors of futureScience, whose Class 11 & 12 science students went on to IIT, BITS, KEM, ICT and VJTI.',
+    description: 'Meet Nilesh Vedant and Prasanna Raut, directors of futureScience IIT-Medical Academy, whose students went on to IIT, BITS, KEM, ICT and VJTI.',
     breadcrumb: 'Directors',
   },
   '/contact': {
     title: 'Contact & Branches | Kandivali & Malad | futureScience',
-    description: 'Visit futureScience at Mahavir Nagar, Kandivali West or S.V. Road, Malad West, Mumbai. Call/WhatsApp +91 93217 84940 for JEE, NEET, CET & CUET admissions.',
+    description: 'Visit futureScience at Mahavir Nagar, Kandivali West or S.V. Road, Malad West, Mumbai. Call/WhatsApp +91 93217 84940 for IIT-JEE, NEET & CET admissions.',
     breadcrumb: 'Contact',
   },
   '/life': {
     title: 'Life at futureScience | Festivals, Classes & Results',
-    description: 'Diwali 2026, results-day felicitations and tests in real exam conditions: life at futureScience classes in Kandivali West & Malad West, Mumbai.',
+    description: 'Diwali 2026, results-day felicitations and tests in real exam conditions: life at futureScience IIT-Medical Academy, Kandivali West & Malad West.',
     breadcrumb: 'Life at futureScience',
   },
   '/privacy': {
     title: 'Privacy Policy | futureScience',
-    description: 'How futureScience Private Tutorials, Kandivali West & Malad West, Mumbai, handles enquiries and Google Analytics data on futurescience.in.',
+    description: 'How futureScience IIT-Medical Academy, Kandivali West & Malad West, Mumbai, handles enquiries and Google Analytics data on futurescience.in.',
     breadcrumb: 'Privacy Policy',
   },
 }
@@ -81,12 +82,12 @@ export function organizationSchema() {
         '@type': ['EducationalOrganization', 'Organization'],
         '@id': ORG_ID,
         name: brand.full,
-        alternateName: ['futureScience', 'fS Private Tutorials', 'futureScience Eduventures LLP'],
+        alternateName: ['futureScience', brand.formerly, 'fS Private Tutorials', 'fS IIT-Medical Academy', 'futureScience Eduventures LLP'],
         legalName: brand.legal,
         ...(facts.foundedYear ? { foundingDate: facts.foundedYear } : {}),
         slogan: brand.tagline,
         url: `${SITE_URL}/`,
-        logo: `${SITE_URL}/images/logo-tag.png`,
+        logo: `${SITE_URL}${brand.logoStill}`,
         image: `${SITE_URL}/images/og-image.png`,
         telephone: contact.phone,
         email: contact.email,

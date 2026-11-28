@@ -28,7 +28,7 @@ export function MentorsFeature({ withVoices = false }) {
           {mentors.map((m, i) => (
             <Reveal as="article" className={`mentor-hero ${i % 2 ? 'rev' : ''}`} id={m.id} key={m.id} delay={i * 120}>
               <div className="mentor-portrait">
-                <img src={m.photo} alt={`${m.name}, ${m.role}, futureScience Private Tutorials`} loading="lazy" />
+                <img src={m.photo} alt={`${m.name}, ${m.role}, ${brand.full}`} loading="lazy" />
               </div>
               <div className="mentor-copy">
                 <span className="mentor-title">{m.role} · {m.title}</span>
@@ -266,13 +266,28 @@ export function TopperCard({ t, exam = 'MHT-CET 2024', framed = false, delay = 0
       <div className="topper-body">
         {t.badge && <span className="badge-gold"><Icon name="Medal" size={14} /> {t.badge}</span>}
         <h3>{t.name}</h3>
-        <div className="topper-score"><Counter value={t.score} decimals={2} /><small>%ile</small></div>
-        <span className="muted">{exam}</span>
-        <ul className="breakdown">
-          {t.breakdown.map(([s, v]) => (
-            <li key={s}><span>{s}</span><b className={v === '100' ? 'perfect' : ''}>{v}</b></li>
-          ))}
-        </ul>
+        {/* A second exam (Atharv: JEE Main) sits beside the first, so the card stays as tall as its neighbours */}
+        <div className={`topper-results ${t.jee ? 'two' : ''}`}>
+          <div>
+            <div className="topper-score"><Counter value={t.score} decimals={2} /><small>%ile</small></div>
+            <span className="muted">{exam}</span>
+            <ul className="breakdown">
+              {t.breakdown.map(([s, v]) => (
+                <li key={s}><span>{s}</span><b className={v === '100' ? 'perfect' : ''}>{v}</b></li>
+              ))}
+            </ul>
+          </div>
+          {t.jee && (
+            <div className="topper-also">
+              <div className="topper-score">{t.jee.score.toFixed(2)}<small>%ile</small></div>
+              <span className="muted">{t.jee.exam}</span>
+              <ul className="breakdown">
+                {t.jee.breakdown.map(([s, v]) => <li key={s}><span>{s}</span><b>{v}</b></li>)}
+              </ul>
+              <span className="muted topper-note">{t.jee.note}</span>
+            </div>
+          )}
+        </div>
       </div>
     </Reveal>
   )

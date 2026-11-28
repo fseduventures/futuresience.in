@@ -5,6 +5,19 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+### Changed
+- IIT and Medical positioning everywhere: homepage title, `<h1>` and description (and the `index.html` fallback), the About, Courses, Results, Directors, Contact and Life titles or descriptions, the keywords, the hero and footer copy, and the `llms.txt` intro.
+- The Bridge Course is now the **Class XI Foundation Course** and starts on 5 April 2027; the JEE Main / MHT-CET (PCM) and NEET-UG / MHT-CET (PCB) batches start on 24 May 2027 (website, FAQs and brochure).
+- Rebranded as **futureScience IIT-Medical Academy** (was futureScience Private Tutorials): site text, page descriptions, JSON-LD (old name kept as `alternateName`), `llms.txt`, `robots.txt` and the presentation.
+- New logo in the header and footer: an animated GIF (`logo-academy.gif`, 192 KB, 13.6s loop) that alternates the IIT-Medical Academy and Private Tutorials logos, built by `scripts/make-logo-gif.py` from the logo PDF in `scripts/logo-src/`. Visitors with reduced motion get the still Academy PNG, which is also the JSON-LD logo. Map links still search the old name, which the Google listings use.
+
+### Added
+- Atharv Vedant's JEE Main 2024 result (97.67 percentile, qualified for JEE Advanced) beside his MHT-CET 2024 result on his topper card (two columns; stacked on phones), in the results FAQ and in `llms.txt`.
+- Atharv's JEE Main 2024 result on his homepage spotlight slide (split: MHT-CET 2024 beside JEE Main 2024), the hero line, the homepage results lead and the Results page description.
+- Discover-U, a career interest assessment (100 questions, about 30 minutes), listed after STEMQUEST on the Courses page and in the brochure.
+- Brochure: the IIT-Medical Academy logo on the cover and the social share image; the back page keeps the original Private Tutorials logo.
+- Presentation: the logo is an animated GIF (`scripts/logo-src/logo-academy-deck.gif`) that starts and ends on the finished Academy logo, because PowerPoint restarts a GIF on every slide.
+
 ## [6.9.0] - 2026-11-22
 
 ### Changed

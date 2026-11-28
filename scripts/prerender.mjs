@@ -138,7 +138,7 @@ ${routes.map((r) => `  <url><loc>${canonical(r)}</loc><lastmod>${today}</lastmod
 
 // ── robots.txt: welcome both search engines and AI answer engines ──
 const aiBots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'Bingbot', 'CCBot', 'meta-externalagent', 'Amazonbot', 'DuckAssistBot']
-fs.writeFileSync(path.join(dist, 'robots.txt'), `# futureScience Private Tutorials: all crawlers, including AI search assistants, are welcome.
+fs.writeFileSync(path.join(dist, 'robots.txt'), `# ${brand.full}: all crawlers, including AI search assistants, are welcome.
 User-agent: *
 Allow: /
 
@@ -174,7 +174,7 @@ fs.writeFileSync(path.join(dist, 'llms.txt'), `# ${brand.full}
 
 Last updated: ${todayLong} (website version ${version})
 
-> ${brand.full} (${brand.legal}) is a science coaching institute in Mumbai for Class 11 and Class 12 students, preparing them for JEE Main, JEE Advanced, NEET-UG, MHT-CET and CUET-UG, with engineering, medical and pharmacy entrance coaching. Branches: Kandivali West and Malad West. Tagline: "${brand.tagline}".
+> ${brand.full} (${brand.legal}) is a science coaching institute in Mumbai for Class 11 and Class 12 students, preparing them for IIT-JEE (JEE Main and JEE Advanced), medical entrance (NEET-UG), MHT-CET and CUET-UG, with engineering, medical and pharmacy entrance coaching. Branches: Kandivali West and Malad West. Tagline: "${brand.tagline}".
 
 ## Key facts
 - Classes: Std. XI and Std. XII Science (HSC, CBSE, ICSE/ISC and other boards), integrated with entrance-exam preparation.
@@ -207,6 +207,7 @@ ${resultsSummary.map((r) => `- ${r.exam}: top score ${r.top.toFixed(2)} percenti
 ## Results (newest first)
 ${cet2025.students.map((t) => `- ${t.name} (${t.stream}): ${t.score.toFixed(2)} percentile, ${cet2025.exam}. ${t.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
 ${toppers.map((t) => `- ${t.name} (${t.stream}): ${t.score} percentile, MHT-CET 2024${t.badge ? `, ${t.badge}` : ''}. ${t.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
+${toppers.filter((t) => t.jee).map((t) => `- ${t.name}: ${t.jee.score.toFixed(2)} percentile, ${t.jee.exam}. ${t.jee.note}. ${t.jee.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.`).join('\n')}
 ${achievers.map((a) => `- ${a.name} (${a.stream}): ${a.score} percentile, MHT-CET 2024.`).join('\n')}
 - ${cet2022.name}: ${cet2022.score}, ${cet2022.exam}. ${cet2022.ranks.map(([r, w, c]) => `Rank ${r} ${w} (${c})`).join('; ')}.
 - ${neetTopper.name}: ${neetTopper.marks}/${neetTopper.outOf} (${neetTopper.percentile} percentile), ${neetTopper.exam}. ${neetTopper.breakdown.map(([s, v]) => `${s} ${v}`).join(', ')}.

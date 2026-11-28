@@ -53,6 +53,9 @@
 [data-theme='light'] .spot-dots button[aria-current='true']::before { background: var(--lime-600); }
 [data-theme='light'] .spot-fact { border-color: var(--line); }
 [data-theme='light'] .spot-fact b { color: var(--ink); }
+[data-theme='light'] .spot-duo > div + div, [data-theme='light'] .spot-table td { border-color: var(--line); }
+[data-theme='light'] .spot-table td { color: var(--ink); }
+[data-theme='light'] .spot-table td:first-child, [data-theme='light'] .spot-table th { color: var(--muted); }
 [data-theme='light'] .stats, [data-theme='light'] .stat { border-color: var(--line); }
 [data-theme='light'] .stat b { color: var(--navy); }
 [data-theme='light'] .stat:nth-child(odd) b { color: var(--lime-600); }
@@ -65,7 +68,7 @@
 [data-theme='light'] .topper-score { color: var(--lime-600); }
 [data-theme='light'] .topper-score small, [data-theme='light'] .breakdown b, [data-theme='light'] .achiever-score { color: var(--ink); }
 [data-theme='light'] .topper .muted, [data-theme='light'] .breakdown b::after, [data-theme='light'] .topper.neet .topper-score small, [data-theme='light'] .achiever-name { color: var(--muted); }
-[data-theme='light'] .breakdown li { border-color: var(--line); }
+[data-theme='light'] .breakdown li, [data-theme='light'] .topper-also { border-color: var(--line); }
 [data-theme='light'] .breakdown b.perfect { color: var(--gold-ink); }
 [data-theme='light'] .achiever-score small { color: var(--lime-600); }
 [data-theme='light'] .new-results { background: linear-gradient(120deg, var(--lime-50), #fff); border-color: rgba(111, 168, 42, 0.35); box-shadow: var(--shadow); }

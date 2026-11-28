@@ -12,7 +12,7 @@ export default function Courses() {
       <PageHero
         eyebrow={`Courses & Programmes · ${ACADEMIC_YEAR}`}
         title={<>JEE, NEET, CET & CUET coaching <span className="hl">for Class 11 & 12.</span></>}
-        lead="Integrated Class 11 & 12 Science, a Bridge Course, engineering, medical and pharmacy entrance coaching, CUET, crash courses and test series at our Kandivali West and Malad West branches."
+        lead="Integrated Class 11 & 12 Science, a Class XI Foundation Course, engineering, medical and pharmacy entrance coaching, CUET, crash courses and test series at our Kandivali West and Malad West branches."
         image="/images/gallery/lecture.jpg"
       />
 

@@ -80,7 +80,12 @@ export const facts = {
 
 export const brand = {
   name: 'futureScience',
-  full: 'futureScience Private Tutorials',
+  full: 'futureScience IIT-Medical Academy',
+  formerly: 'futureScience Private Tutorials', // the old name, kept as alternateName in the JSON-LD
+  // Animated logo (plays once, then holds) and its still for reduced motion and the JSON-LD.
+  // Rebuild the GIF with python scripts/make-logo-gif.py
+  logo: '/images/logo-academy.gif',
+  logoStill: '/images/logo-academy.png',
   tagline: 'Science is the Future',
   parent: 'an endeavour of futureScience Eduventures LLP',
   legal: 'futureScience Eduventures LLP',
@@ -115,7 +120,7 @@ export const tracks = [
   { icon: 'Pill', title: 'Pharmacy entrance coaching', exams: 'MHT-CET for B.Pharm', text: 'Admission to B.Pharm in Maharashtra is through MHT-CET; our PCB and PCM batches cover the full CET syllabus.' },
   { icon: 'BookMarked', title: 'CUET-UG coaching', exams: 'CUET-UG Science domain', text: 'Preparation for the Physics, Chemistry, Mathematics and Biology domain papers of CUET-UG.' },
   { icon: 'GraduationCap', title: 'Class 11 & 12 Science', exams: 'HSC · CBSE · ICSE / ISC', text: 'Board-exam teaching integrated with entrance preparation, so school and competitive exams move together.' },
-  { icon: 'Rocket', title: 'Bridge to Std. XI', exams: 'Std. X → Std. XI', text: 'A head start for students moving into Std. XI Science, building the base that Class 11 assumes.' },
+  { icon: 'Rocket', title: 'Class XI Foundation', exams: 'Std. X → Std. XI', text: 'A head start for students moving into Std. XI Science, building the base that Class 11 assumes.' },
 ]
 
 export const programs = [
@@ -132,13 +137,13 @@ export const programs = [
     tag: 'Flagship',
   },
   {
-    id: 'bridge-course',
+    id: 'xi-foundation',
     icon: 'Rocket',
-    title: 'Bridge Course',
+    title: 'Class XI Foundation Course',
     sub: 'Std. X → Std. XI Science',
     image: '/images/vision.png',
     audience: 'Students going to Std. XI',
-    duration: 'Starts 13 April 2027',
+    duration: 'Starts 5 April 2027',
     summary: 'A head start before Std. XI begins: the jump from Class 10 to Class 11 Science is steep, and this course builds the concepts and study habits it assumes.',
     points: ['Class 11 readiness in PCM / PCB', 'Concept gaps from Std. X closed', 'Study habits & time management', 'Smooth entry into the main batch'],
     tag: 'New',
@@ -150,7 +155,7 @@ export const programs = [
     sub: 'Engineering entrance coaching',
     image: '/images/ai.jpg',
     audience: 'Class 11 & 12 engineering aspirants',
-    duration: 'Starts 25 May 2027',
+    duration: 'Starts 24 May 2027',
     summary: 'Concept-first Physics, Chemistry and Mathematics that builds the problem-solving depth demanded by JEE Main, JEE Advanced and MHT-CET (PCM).',
     points: ['Deep conceptual PCM', 'Advanced problem-solving drills', 'Mock tests in real exam pattern', 'Doubt-solving any time'],
   },
@@ -161,7 +166,7 @@ export const programs = [
     sub: 'Medical & pharmacy entrance coaching',
     image: '/images/medical-tech.jpg',
     audience: 'Class 11 & 12 medical and pharmacy aspirants',
-    duration: 'Starts 25 May 2027',
+    duration: 'Starts 24 May 2027',
     summary: 'Structured Physics, Chemistry and Biology with NCERT mastery and MCQ speed-building for NEET-UG, plus full MHT-CET (PCB) coverage for medical and B.Pharm admissions.',
     points: ['NCERT-anchored Biology', 'MCQ speed & accuracy training', 'Full-syllabus mock tests', 'Pharmacy (B.Pharm) CET guidance'],
   },
@@ -212,25 +217,36 @@ export const programs = [
     summary: 'Our initiative to build a genuine scientific mindset: exploration, reasoning and innovation that goes beyond exams.',
     points: ['Scientific thinking', 'Exploration & inquiry', 'Innovation challenges', 'STEM careers awareness'],
   },
+  {
+    id: 'discover-u',
+    icon: 'Target',
+    title: 'Discover-U',
+    sub: 'Career interest assessment',
+    image: '/images/discover-u.jpg',
+    audience: 'Students choosing a stream',
+    duration: '100 questions · about 30 minutes',
+    summary: 'Finds out what a student enjoys and reports which stream (Science, Commerce or Arts) suits them best. Paired with STEMQUEST, it shows whether a student both likes a field and is strong in it.',
+    points: ['Simple "Would you like to…?" questions', 'No right or wrong answers', 'Science, commerce, arts & more', 'Report on the most suitable stream'],
+  },
 ]
 
 // Batch dates for the 2027–29 academic year
 export const batches = [
   {
-    course: 'Bridge Course',
+    course: 'Class XI Foundation Course',
     for: 'Students going to Std. XI',
     details: 'A head start in Class 11 Science before the regular batch begins.',
-    start: '13 April 2027',
-    startISO: '2027-04-13',
-    programId: 'bridge-course',
+    start: '5 April 2027',
+    startISO: '2027-04-05',
+    programId: 'xi-foundation',
     status: 'Admissions open',
   },
   {
     course: 'JEE Main / MHT-CET (PCM)',
     for: `Std. XI + XII Science · ${ACADEMIC_YEAR}`,
     details: 'Engineering entrance coaching integrated with the Class 11 & 12 board syllabus.',
-    start: '25 May 2027',
-    startISO: '2027-05-25',
+    start: '24 May 2027',
+    startISO: '2027-05-24',
     programId: 'jee-cet-pcm',
     status: 'Admissions open',
   },
@@ -238,8 +254,8 @@ export const batches = [
     course: 'NEET-UG / MHT-CET (PCB)',
     for: `Std. XI + XII Science · ${ACADEMIC_YEAR}`,
     details: 'Medical & pharmacy entrance coaching integrated with the Class 11 & 12 board syllabus.',
-    start: '25 May 2027',
-    startISO: '2027-05-25',
+    start: '24 May 2027',
+    startISO: '2027-05-24',
     programId: 'neet-cet-pcb',
     status: 'Admissions open',
   },
@@ -370,6 +386,11 @@ export const toppers = [
   {
     name: 'Atharv Vedant', stream: 'PCM', score: 99.82, photo: '/images/achievers/atharv-vedant.jpg',
     breakdown: [['Physics', '99.70'], ['Chemistry', '99.94'], ['Mathematics', '99.69']],
+    // JEE Main 2024 (NTA score card): the official final percentile, and his best NTA score in each subject
+    jee: {
+      exam: 'JEE Main 2024', score: 97.67, note: 'Qualified for JEE Advanced 2024',
+      breakdown: [['Physics', '98.00'], ['Chemistry', '99.35'], ['Mathematics', '93.90']],
+    },
   },
 ]
 
@@ -445,7 +466,8 @@ export const spotlight = [
     name: neetTopper.name, photo: neetTopper.photo, exam: `${neetTopper.exam} · PCB`, score: parseFloat(neetTopper.percentile),
     badge: `${neetTopper.marks} / ${neetTopper.outOf} marks`, breakdown: neetTopper.breakdown,
   },
-  { ...toppers[1], exam: 'MHT-CET 2024 · PCM' },
+  // Atharv: one slide split in two, MHT-CET 2024 beside JEE Main 2024 (`jee` on his record)
+  { ...toppers[1], exam: `MHT-CET · ${toppers[1].jee.exam} · PCM`, first: 'MHT-CET 2024', badge: toppers[1].jee.note },
 ]
 
 // Student testimonials (from the futureScience prospectus; lightly trimmed, "…" marks a cut)
@@ -528,7 +550,7 @@ export const quote = {
 export const faqs = [
   {
     q: 'Which is the best coaching for JEE, NEET and MHT-CET in Kandivali West and Malad West?',
-    a: 'futureScience Private Tutorials coaches Class 11 and 12 science students for JEE Main, JEE Advanced, NEET-UG, MHT-CET and CUET-UG at two branches: Mahavir Nagar, Kandivali West and S.V. Road, Malad West, Mumbai. In MHT-CET 2024 our students scored up to 99.98 percentile (overall Rank 2, Mumbai University), with perfect 100 percentiles in Physics and Biology.',
+    a: 'futureScience IIT-Medical Academy coaches Class 11 and 12 science students for JEE Main, JEE Advanced, NEET-UG, MHT-CET and CUET-UG at two branches: Mahavir Nagar, Kandivali West and S.V. Road, Malad West, Mumbai. In MHT-CET 2024 our students scored up to 99.98 percentile (overall Rank 2, Mumbai University), with perfect 100 percentiles in Physics and Biology.',
   },
   {
     q: 'Where are the futureScience branches?',
@@ -536,7 +558,7 @@ export const faqs = [
   },
   {
     q: 'When do the 2027–29 batches start?',
-    a: 'Admissions for the 2027–29 academic year are open. The Bridge Course for students going to Std. XI starts on 13 April 2027. The JEE Main / MHT-CET (PCM) and NEET-UG / MHT-CET (PCB) batches for Std. XI + XII Science start on 25 May 2027.',
+    a: 'Admissions for the 2027–29 academic year are open. The Class XI Foundation Course for students going to Std. XI starts on 5 April 2027. The JEE Main / MHT-CET (PCM) and NEET-UG / MHT-CET (PCB) batches for Std. XI + XII Science start on 24 May 2027.',
   },
   {
     q: 'Do you offer Class 11 and 12 science coaching along with JEE, NEET and CET?',
@@ -555,12 +577,12 @@ export const faqs = [
     a: 'Yes. We prepare Class 12 science students for the Physics, Chemistry, Mathematics and Biology domain papers of CUET-UG, alongside their board preparation.',
   },
   {
-    q: 'What is the Bridge Course?',
-    a: 'The Bridge Course is for students who have finished Std. X and are going to Std. XI Science. It closes concept gaps from Class 10 and builds the base Class 11 assumes, before the regular batch begins. The 2027 Bridge Course starts on 13 April 2027.',
+    q: 'What is the Class XI Foundation Course?',
+    a: 'The Class XI Foundation Course is for students who have finished Std. X and are going to Std. XI Science. It closes concept gaps from Class 10 and builds the base Class 11 assumes, before the regular batch begins. The 2027 course starts on 5 April 2027.',
   },
   {
     q: 'What results have futureScience students achieved?',
-    a: 'In MHT-CET 2025, Aarna Diwan scored 99.97 percentile, with Aarya Mankame (99.50), Manthan Joshi (99.47) and Param Shah (99.41) also above 99 percentile. In MHT-CET 2024, Lyra Uchil scored 99.98 percentile (overall Rank 2, Mumbai University; 100 percentile in Physics and Biology) and Atharv Vedant scored 99.82 percentile. Five more students scored between 94.83 and 99.01 percentile. In MHT-CET 2022, Tvisha Vedant scored 99.97 percentile (Rank 2, Mumbai University, Female/General). In NEET-UG 2020, Shrey Soni scored 630/720 (99.36 percentile). In MHT-CET 2024, 100% of futureScience students qualified for professional courses. Alumni have gone on to IIT Patna, BITS Pilani, Seth G.S. Medical College & KEM Hospital, Government Medical College Kolhapur, VJTI, ICT Mumbai and leading pharmacy colleges.',
+    a: 'In MHT-CET 2025, Aarna Diwan scored 99.97 percentile, with Aarya Mankame (99.50), Manthan Joshi (99.47) and Param Shah (99.41) also above 99 percentile. In MHT-CET 2024, Lyra Uchil scored 99.98 percentile (overall Rank 2, Mumbai University; 100 percentile in Physics and Biology) and Atharv Vedant scored 99.82 percentile; Atharv also scored 97.67 percentile in JEE Main 2024 and qualified for JEE Advanced. Five more students scored between 94.83 and 99.01 percentile. In MHT-CET 2022, Tvisha Vedant scored 99.97 percentile (Rank 2, Mumbai University, Female/General). In NEET-UG 2020, Shrey Soni scored 630/720 (99.36 percentile). In MHT-CET 2024, 100% of futureScience students qualified for professional courses. Alumni have gone on to IIT Patna, BITS Pilani, Seth G.S. Medical College & KEM Hospital, Government Medical College Kolhapur, VJTI, ICT Mumbai and leading pharmacy colleges.',
   },
   {
     q: 'Who leads futureScience?',
@@ -587,7 +609,7 @@ if (facts.maxBatchSize) {
 if (facts.foundedYear || facts.faculty) {
   faqs.push({
     q: 'When was futureScience founded, and who teaches?',
-    a: [facts.foundedYear && `futureScience Private Tutorials was founded in ${facts.foundedYear}.`, facts.faculty && `${facts.faculty}.`].filter(Boolean).join(' '),
+    a: [facts.foundedYear && `futureScience IIT-Medical Academy was founded in ${facts.foundedYear}.`, facts.faculty && `${facts.faculty}.`].filter(Boolean).join(' '),
   })
 }
 if (facts.schedule) {
