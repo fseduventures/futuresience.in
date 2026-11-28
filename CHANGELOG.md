@@ -5,6 +5,8 @@ Unreleased section into the next version and uses it as the GitHub Release notes
 
 ## [Unreleased]
 
+## [7.0.0] - 2026-11-28
+
 ### Changed
 - IIT and Medical positioning everywhere: homepage title, `<h1>` and description (and the `index.html` fallback), the About, Courses, Results, Directors, Contact and Life titles or descriptions, the keywords, the hero and footer copy, and the `llms.txt` intro.
 - The Bridge Course is now the **Class XI Foundation Course** and starts on 5 April 2027; the JEE Main / MHT-CET (PCM) and NEET-UG / MHT-CET (PCB) batches start on 24 May 2027 (website, FAQs and brochure).
